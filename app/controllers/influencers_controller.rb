@@ -1,0 +1,2 @@
+class InfluencersController < ApplicationController
+end
