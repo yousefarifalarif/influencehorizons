@@ -10,10 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_145858) do
+ActiveRecord::Schema.define(version: 2021_11_22_160332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "company_name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name"
+    t.bigint "business_id", null: false
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_campaigns_on_business_id"
+  end
+
+  create_table "influencers", force: :cascade do |t|
+    t.string "ig_username"
+    t.integer "ig_followers"
+    t.string "youtube_channel_name"
+    t.integer "youtube_subscribers"
+    t.string "twitter_username"
+    t.integer "twitter_followers"
+    t.string "facebook_username"
+    t.integer "facebook_followers"
+    t.string "gender"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_influencers_on_user_id"
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.string "title"
+    t.string "status"
+    t.boolean "accepted"
+    t.bigint "campaign_id", null: false
+    t.bigint "influencer_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campaign_id"], name: "index_proposals_on_campaign_id"
+    t.index ["influencer_id"], name: "index_proposals_on_influencer_id"
+    t.index ["user_id"], name: "index_proposals_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.bigint "influencer_id", null: false
+    t.string "content"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_reviews_on_business_id"
+    t.index ["influencer_id"], name: "index_reviews_on_influencer_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +83,22 @@ ActiveRecord::Schema.define(version: 2021_11_22_145858) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "role"
+    t.string "phone_number"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "location"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "businesses", "users"
+  add_foreign_key "campaigns", "businesses"
+  add_foreign_key "influencers", "users"
+  add_foreign_key "proposals", "campaigns"
+  add_foreign_key "proposals", "influencers"
+  add_foreign_key "proposals", "users"
+  add_foreign_key "reviews", "businesses"
+  add_foreign_key "reviews", "influencers"
+  add_foreign_key "reviews", "users"
 end
