@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_160332) do
+ActiveRecord::Schema.define(version: 2021_11_22_171023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 2021_11_22_160332) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "archived"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "description"
+    t.integer "budget"
     t.index ["business_id"], name: "index_campaigns_on_business_id"
   end
 
@@ -63,15 +68,13 @@ ActiveRecord::Schema.define(version: 2021_11_22_160332) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "business_id", null: false
-    t.bigint "influencer_id", null: false
     t.string "content"
     t.integer "rating"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_id"], name: "index_reviews_on_business_id"
-    t.index ["influencer_id"], name: "index_reviews_on_influencer_id"
+    t.bigint "proposal_id", null: false
+    t.index ["proposal_id"], name: "index_reviews_on_proposal_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -98,7 +101,6 @@ ActiveRecord::Schema.define(version: 2021_11_22_160332) do
   add_foreign_key "proposals", "campaigns"
   add_foreign_key "proposals", "influencers"
   add_foreign_key "proposals", "users"
-  add_foreign_key "reviews", "businesses"
-  add_foreign_key "reviews", "influencers"
+  add_foreign_key "reviews", "proposals"
   add_foreign_key "reviews", "users"
 end
