@@ -2,6 +2,10 @@ class InfluencersController < ApplicationController
   before_action set_user, only: %i[new create]
   before_action find_influencer, only: %i[show edit update]
 
+  def index
+    @influencers = Influencer.all
+  end
+
   def new
     @influencer = Influencer.new
   end
