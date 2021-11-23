@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   has_many :proposals
 
-  validates :role, :phone_number, :first_name, :last_name, :location, presence: true
+  validates :phone_number, :first_name, :last_name, :location, presence: true
+  validates :role, presence: true, inclusion: { in: %w[Business Influencer] }
 end

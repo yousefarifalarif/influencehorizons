@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Business Sign up</h2>
+
+  <%= simple_form_for [@user, @business] do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :company_name %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
+</div>
