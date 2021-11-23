@@ -3,5 +3,5 @@ class Influencer < ApplicationRecord
   has_many :proposals
   has_many :reviews, through: :proposal
   # photo is a must
-  validates :gender, presence: true
+  validates :gender, presence: true, inclusion: { in: ['Male', 'Female', 'Prefer not to say'] }
 end
