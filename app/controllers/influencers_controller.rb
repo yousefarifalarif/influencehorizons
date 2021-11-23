@@ -14,7 +14,7 @@ class InfluencersController < ApplicationController
     @influencer = Influencer.new(influencer_params)
     @influencer.user = @user
     if @influencer.save
-      redirect_to dashboard_path
+      redirect_to root_path
     else
       render :new
     end
