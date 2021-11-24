@@ -1,4 +1,3 @@
-
 <div class="container py-5">
 <%if @campaigns.size == 0 %>
     <h1>You have no active campaigns</h1>
@@ -24,14 +23,7 @@
       <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
       <div class="card-container" data-dropdown-target="container">
         <%@open_campaigns.each do |campaign|%>
-          <div class="campaign-card">
-            <h3><%=campaign.name%></h3>
-            <p>Start date: <%=campaign.start_date%></p>
-            <p>End date: <%=campaign.end_date %></p>
-            <p>Region: <%=campaign.location%></p>
-            <p>Pending proposals: <%=campaign.proposals.size%></p>
-            <%# <p>IV images go here</p> %>
-          </div>
+          <%= render "campaign_cards", campaign: campaign %>
         <% end %>
       </div>
     </div>
@@ -39,16 +31,9 @@
       <h4>Closed Campaigns</h4>
       <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
       <div class="card-container" data-dropdown-target="container">
-        <%@closed_campaigns.each do |campaign|%>
-          <div class="campaign-card">
-            <h3><%=campaign.name%></h3>
-            <p>Start date: <%=campaign.start_date%></p>
-            <p>End date: <%=campaign.end_date %></p>
-            <p>Region: <%=campaign.location%></p>
-            <p>Pending proposals: <%=campaign.proposals.size%></p>
-            <%# <p>IV images go here</p> %>
-          </div>
-        <% end %>
+      <%@closed_campaigns.each do |campaign|%>
+        <%= render "campaign_cards", campaign: campaign %>
+      <% end %>
       </div>
     </div>
   <%end%>
