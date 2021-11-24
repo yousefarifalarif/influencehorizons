@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
-  before_action set_user, only: %i[new create]
-  before_action find_business, only: %i[show edit update]
+  before_action :set_user, only: %i[new create]
+  before_action :find_business, only: %i[show edit update]
 
   def new
     @business = Business.new
@@ -10,7 +10,7 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     @business.user = @user
     if @business.save
-      redirect_to dashboard_path
+      redirect_to root_path
     else
       render :new
     end

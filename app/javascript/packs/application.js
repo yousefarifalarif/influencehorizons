@@ -22,14 +22,14 @@ const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
 
-/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
 
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-}
+$(function () {
+  $('a[data-toggle="tab"]').on('click', function (e) {
+    window.localStorage.setItem('activeTab', $(e.target).attr('href'));
+  });
+  var activeTab = window.localStorage.getItem('activeTab');
+  if (activeTab) {
+    $('#myTab a[href="' + activeTab + '"]').tab('show');
+    window.localStorage.removeItem("activeTab");
+  }
+});

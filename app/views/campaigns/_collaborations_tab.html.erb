@@ -1,0 +1,57 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Create Collaboration
+</button>
+
+<div class="open-proposals" data-controller="dropdown">
+  <h4>Open</h4>
+  <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
+  <div class="card-container" data-dropdown-target="container">
+    <% @proposals.each do |proposal| %>
+      <% if proposal.accepted && proposal.status != "closed"  %>
+        <%= render 'proposal_card', proposal: proposal %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="pending-proposals" data-controller="dropdown">
+  <h4>Pending</h4>
+  <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
+  <div class="card-container" data-dropdown-target="container">
+    <% @proposals.each do |proposal| %>
+      <% unless proposal.accepted %>
+        <%= render 'proposal_card', proposal: proposal %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="closed-proposals" data-controller="dropdown">
+  <h4>Closed</h4>
+  <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
+  <div class="card-container" data-dropdown-target="container">
+    <% @proposals.each do |proposal| %>
+      <% if proposal.accepted && proposal.status == "closed"  %>
+        <%= render 'proposal_card', proposal: proposal %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Collaboration</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'proposals/form', { campaign: @campaign, proposal: @proposal} %>
+      </div>
+    </div>
+  </div>
+</div>

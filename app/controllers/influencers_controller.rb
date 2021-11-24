@@ -1,8 +1,10 @@
 class InfluencersController < ApplicationController
-  before_action set_user, only: %i[new create]
-  before_action find_influencer, only: %i[show edit update]
+  before_action :set_user, only: %i[new create]
+  before_action :find_influencer, only: %i[show edit update]
 
   def index
+    raise
+    @proposal = proposal
     @influencers = Influencer.all
   end
 
@@ -14,7 +16,7 @@ class InfluencersController < ApplicationController
     @influencer = Influencer.new(influencer_params)
     @influencer.user = @user
     if @influencer.save
-      redirect_to dashboard_path
+      redirect_to root_path
     else
       render :new
     end
