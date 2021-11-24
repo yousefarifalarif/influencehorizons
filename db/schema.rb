@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_114545) do
     t.string "status", default: "pending"
     t.boolean "accepted", default: false
     t.bigint "campaign_id", null: false
-    t.bigint "influencer_id", null: false
+    t.bigint "influencer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "creator"
