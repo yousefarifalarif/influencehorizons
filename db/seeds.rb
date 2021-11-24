@@ -47,8 +47,8 @@ emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef@gmail.com"
     campaign.save!
 
     # Create 1-3 Proposals for each Campaign
-    rand(2..4).times do
-      proposal = Proposal.new(title: campaign.name, creator: "Business")
+    rand(2..4).times do |i|
+      proposal = Proposal.new(title: "#{campaign.name} #{i + 1}", creator: %w[Business Influencer].sample)
       proposal.campaign = campaign
       proposal.influencer = influencers.sample
       proposal.save!
