@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
-  before_action set_business, only: %i[new create]
-  before_action find_campaign, only: %i[show edit update]
+  before_action :set_business, only: %i[new create]
+  before_action :find_campaign, only: %i[show edit update]
 
   def new
     @campaign = Campaign.new
@@ -16,6 +16,15 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def index
+    if current_user.role === 'Business'
+      @business = current_user.business
+      @campaigns = @business.campaigns
+    else
+
+    end
+  end
+
   def show; end
 
   def edit; end
@@ -24,7 +33,6 @@ class CampaignsController < ApplicationController
     @campaign.update(campaign_params)
     redirect_to campaign_path(@campaign)
   end
-
 
   private
 

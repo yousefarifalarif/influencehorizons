@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :proposals
+  has_one :business
+  has_one :influencer
 
   validates :phone_number, :first_name, :last_name, :location, presence: true
   validates :role, presence: true, inclusion: { in: %w[Business Influencer] }

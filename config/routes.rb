@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :influencers, only: %i[index show]
 
-  resources :businesses, only: %i[edit update] do
+  resources :businesses, only: %i[edit update index] do
     resources :campaigns, only: %i[new create]
   end
 
