@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="header"></div>
+  <%# <% if @campaigns.size == 0
+    <h1>You have no active campaigns</h1>
+    <div>
+      <%=link_to "Create new campaign", new_business_campaign_path(@business)
+    </div>
+  <%else%>
+    <h1>Campaigns Overview</h1>
+    <%= link_to "Create Campaign", new_business_campaign_path(@business) %>
+    <div class="card-container">
+      <%@campaigns.each do |campaign|%>
+      <div class="campaign-card">
+        <h3><%=campaign.name%></h3>
+        <p><%=campaign.start_date%></p>
+        <p><%=campaign.end_date %></p>
+        <p><%=campaign.location%></p>
+        <p><%=campaign.proposals.size%></p>
+        <%# <p>IV images go here</p> %>
+      </div>
+    <% end %>
+  <%# <%end %>
+  </div>
+</div>
