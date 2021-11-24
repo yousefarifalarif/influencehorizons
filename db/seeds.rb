@@ -5,3 +5,52 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+User.destroy_all
+influencers = []
+
+# Create 10 Influencers
+puts "Creating Influencers ..."
+10.times do
+  user = User.create!(email: Faker::Internet.email, password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+                      first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "London", role: "Influencer")
+  username = Faker::Twitter.screen_name
+  followers = rand(1000..200_000)
+  influencer = Influencer.new(ig_username: username, ig_followers: followers,
+                              youtube_channel_name: username, youtube_subscribers: followers,
+                              twitter_username: username, twitter_followers: followers,
+                              facebook_username: username, facebook_followers: followers,
+                              gender: ['Male', 'Female', 'Prefer not to say'].sample, estimated_price: followers / 1000)
+  influencer.user = user
+  influencer.save!
+  influencers << influencer
+end
+
+# Create 5 Businesses
+puts "Creating Businesses ..."
+5.times do
+  user = User.create!(email: Faker::Internet.email, password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+                      first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "london", role: "Business")
+  business = Business.new(company_name: Faker::Company.name)
+  business.user = user
+  business.save!
+
+  # Create 1-2 Campaign for each Business
+  puts "Creating Campaigns ..."
+  rand(1..2).times do
+    date = Faker::Date.forward(days: rand(10..30))
+    campaign = Campaign.new(name: Faker::Commerce.product_name, location: "London", start_date: date,
+                            end_date: date + rand(15..45), description: Faker::Marketing.buzzwords, budget: Faker::Commerce.price(range: 500..1000))
+    campaign.business = business
+    campaign.save!
+
+    # Create 1-3 Proposals for each Campaign
+    puts "Creating Proposals ..."
+    rand(1..3).times do
+      proposal = Proposal.new(title: campaign.name, creator: "Business")
+      proposal.campaign = campaign
+      proposal.influencer = influencers.sample
+      proposal.save!
+    end
+  end
+end

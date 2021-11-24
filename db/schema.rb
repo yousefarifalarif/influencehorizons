@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_171023) do
+ActiveRecord::Schema.define(version: 2021_11_24_114545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_171023) do
     t.date "end_date"
     t.text "description"
     t.integer "budget"
+    t.boolean "visibility", default: true
     t.index ["business_id"], name: "index_campaigns_on_business_id"
   end
 
@@ -50,32 +51,31 @@ ActiveRecord::Schema.define(version: 2021_11_22_171023) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "estimated_price"
     t.index ["user_id"], name: "index_influencers_on_user_id"
   end
 
   create_table "proposals", force: :cascade do |t|
     t.string "title"
-    t.string "status"
-    t.boolean "accepted"
+    t.string "status", default: 'pending'
+    t.boolean "accepted", default: false
     t.bigint "campaign_id", null: false
     t.bigint "influencer_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "creator"
     t.index ["campaign_id"], name: "index_proposals_on_campaign_id"
     t.index ["influencer_id"], name: "index_proposals_on_influencer_id"
-    t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.string "content"
     t.integer "rating"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "proposal_id", null: false
+    t.string "creator"
     t.index ["proposal_id"], name: "index_reviews_on_proposal_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,7 +100,5 @@ ActiveRecord::Schema.define(version: 2021_11_22_171023) do
   add_foreign_key "influencers", "users"
   add_foreign_key "proposals", "campaigns"
   add_foreign_key "proposals", "influencers"
-  add_foreign_key "proposals", "users"
   add_foreign_key "reviews", "proposals"
-  add_foreign_key "reviews", "users"
 end
