@@ -1,23 +1,14 @@
 <div class="container py-5">
 <%if @campaigns.size == 0 %>
     <h1>You have no active campaigns</h1>
-    <div><%=link_to "Create new campaign", new_business_campaign_path(@business)%></div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button>
+    <%=link_to "Create new campaign", new_business_campaign_path(@business)%>
   <%else%>
     <h1>Campaigns Overview</h1>
-    <div class="form-row">
-      <div class="col-4">
-        <%= form_tag campaigns_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Search for Campaigns" %>
-      </div>
-      <div class="form-row">
-        <%= submit_tag "Search", class: "btn btn-secondary" %>
-        <% end %>
-      </div>
-    </div>
-    <%= link_to "Create Campaign", new_business_campaign_path(@business) %>
+    <%= render "search_bar" %>
+    <%= render "./shared/modal", campaign: @campaign, modal_title: "Create a Campaign", button_name: "Create campaign"%>
     <div class="open-campaigns" data-controller="dropdown">
       <h4>Open Campaigns</h4>
       <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
