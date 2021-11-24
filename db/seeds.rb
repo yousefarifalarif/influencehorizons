@@ -11,7 +11,7 @@ influencers = []
 
 # Create 10 Influencers
 puts "Creating Influencers ..."
-10.times do
+11.times do
   user = User.create!(email: Faker::Internet.email, password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
                       first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "London", role: "Influencer")
   username = Faker::Twitter.screen_name
@@ -28,16 +28,18 @@ end
 
 # Create 5 Businesses
 puts "Creating Businesses ..."
-5.times do
-  user = User.create!(email: Faker::Internet.email, password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef@gmail.com", "katiekklht@gmail.com"]
+4.times do |index|
+  puts "Creating Business #{index + 1} ..."
+  user = User.create!(email: emails[index], password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
                       first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "london", role: "Business")
   business = Business.new(company_name: Faker::Company.name)
   business.user = user
   business.save!
 
   # Create 1-2 Campaign for each Business
-  puts "Creating Campaigns ..."
-  rand(1..2).times do
+  puts "Creating Campaigns & Proposals for Business #{index + 1} ..."
+  rand(2..3).times do
     date = Faker::Date.forward(days: rand(10..30))
     campaign = Campaign.new(name: Faker::Commerce.product_name, location: "London", start_date: date,
                             end_date: date + rand(15..45), description: Faker::Marketing.buzzwords, budget: Faker::Commerce.price(range: 500..1000))
@@ -45,8 +47,7 @@ puts "Creating Businesses ..."
     campaign.save!
 
     # Create 1-3 Proposals for each Campaign
-    puts "Creating Proposals ..."
-    rand(1..3).times do
+    rand(2..4).times do
       proposal = Proposal.new(title: campaign.name, creator: "Business")
       proposal.campaign = campaign
       proposal.influencer = influencers.sample
