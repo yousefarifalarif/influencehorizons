@@ -1,0 +1,13 @@
+<div class="form-row">
+  <div class="col-4">
+    <%= form_tag campaigns_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for Campaigns" %>
+  </div>
+  <div class="form-row">
+    <%= submit_tag "Search", class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+</div>

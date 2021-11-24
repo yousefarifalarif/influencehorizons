@@ -19,6 +19,7 @@ class CampaignsController < ApplicationController
   def index
     if current_user.role == 'Business'
       @business = current_user.business
+      @campaign = Campaign.new
       @campaigns = @business.campaigns
       @open_campaigns = @business.campaigns.where(archived: false)
       @closed_campaigns = @business.campaigns.where(archived: true)
