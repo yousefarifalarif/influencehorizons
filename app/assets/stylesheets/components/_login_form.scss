@@ -1,0 +1,42 @@
+.form-login {
+  background: white;
+  padding: 10px 20px;
+  margin-top: 50px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  h2 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    background-color: rgba(252,163,17,0.7);
+  }
+  .btn:hover {
+    border: none;
+    background-color: rgba(252,163,17,1);
+  }
+  .form-links {
+    color: $blue;
+  }
+  .signup {
+    color: $orange;
+    width: 100%;
+    margin-bottom: 20px;
+    border: $blue;
+    background-color: rgba(20,33,61,0.8);
+  }
+  .signup:hover {
+    border: none;
+    background-color: rgba(20,33,61,1);
+  }
+}
+
+.format-login {
+  margin: 50px auto;
+}
