@@ -1,4 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <% if current_user %>
+  <button class="fas fa-bars"  data-action="click->side-bar#toggle"></button>
+  <% end %>
+
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>

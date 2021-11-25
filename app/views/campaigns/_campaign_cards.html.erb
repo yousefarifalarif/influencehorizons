@@ -1,0 +1,10 @@
+<%= link_to campaign_path(campaign) do %>
+  <div class="campaign-card">
+    <h3><%=campaign.name%></h3>
+    <p>Start date: <%=campaign.start_date%></p>
+    <p>End date: <%=campaign.end_date %></p>
+    <p>Region: <%=campaign.location%></p>
+    <p>Pending proposals: <%=campaign.proposals.size%></p>
+    <%# <p>IV images go here</p> %>
+  </div>
+<% end %>

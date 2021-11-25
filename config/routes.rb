@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :influencers, only: %i[index show]
 
-  resources :businesses, only: %i[edit update] do
+  resources :businesses, only: %i[edit update index] do
     resources :campaigns, only: %i[new create]
   end
 
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :proposals, only: %i[show edit update] do
+    get "choose_influencers", to: "in"
     resources :reviews, only: %i[new create]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

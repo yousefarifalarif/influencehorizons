@@ -1,8 +1,10 @@
 class InfluencersController < ApplicationController
-  before_action set_user, only: %i[new create]
-  before_action find_influencer, only: %i[show edit update]
+  before_action :set_user, only: %i[new create]
+  before_action :find_influencer, only: %i[show edit update]
 
   def index
+    raise
+    @proposal = proposal
     @influencers = Influencer.all
   end
 

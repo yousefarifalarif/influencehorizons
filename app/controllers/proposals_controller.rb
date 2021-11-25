@@ -1,19 +1,15 @@
 class ProposalsController < ApplicationController
-  before_action set_campaign, only: %i[new create]
-  before_action find_proposal, only: %i[show edit update]
-
-  def new
-    @proposal = Proposal.new
-  end
+  before_action :set_campaign, only: [:create]
+  before_action :find_proposal, only: %i[show edit update]
 
   def create
     @proposal = Proposal.new(proposal_params)
     @proposal.campaign = @campaign
-    @proposal.user = current_user
+    @proposal.creator = current_user.role
     if @proposal.save
-      redirect_to proposal_path(@proposal)
+      redirect_to influencers_path
     else
-      render :new
+      render 'campaigns/show'
     end
   end
 
@@ -37,6 +33,6 @@ class ProposalsController < ApplicationController
   end
 
   def proposal_params
-    params.require(:proposal).permit(:influencer)
+    params.require(:proposal).permit(:title)
   end
 end

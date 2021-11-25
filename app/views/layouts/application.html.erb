@@ -18,10 +18,12 @@
 
   <body>
     <%= render 'shared/flashes' %>
-
-    <div class="page-container">
+    <div class="page-container" data-controller="side-bar">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
-      <div class="content-container"><%= yield %></div>
+      <div class="content-container">
+      <div><%= render "shared/sidebar" %></div>
+        <%= yield %>
+      </div>
       <div class="footer-container"><%= render "shared/footer" %></div>
     </div>
   </body>
