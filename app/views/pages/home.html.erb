@@ -7,7 +7,9 @@
     <br>
     <br>
     <br>
-    <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-outline-light btn-lg", role:"button" %>
+    <% unless current_user %>
+      <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-outline-light btn-lg", role:"button" %>
+    <% end %>
   </div>
 </div>
 
