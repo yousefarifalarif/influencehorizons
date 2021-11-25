@@ -15,13 +15,12 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
+// import { Application } from "stimulus"
+// import { definitionsFromContext } from "stimulus/webpack-helpers"
 
-const application = Application.start()
-const context = require.context("./controllers", true, /\.js$/)
-application.load(definitionsFromContext(context))
-
+// const application = Application.start()
+// const context = require.context("./controllers", true, /\.js$/)
+// application.load(definitionsFromContext(context))
 
 $(function () {
   $('a[data-toggle="tab"]').on('click', function (e) {
