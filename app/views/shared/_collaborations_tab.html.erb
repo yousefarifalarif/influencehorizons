@@ -8,8 +8,8 @@
   <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
   <div class="card-container" data-dropdown-target="container">
     <% @proposals.each do |proposal| %>
-      <% if proposal.accepted && proposal.status != "closed"  %>
-        <%= render 'proposal_card', proposal: proposal %>
+      <% if proposal.accepted && proposal.status != "closed" %>
+        <%= render 'shared/proposal_card', proposal: proposal %>
       <% end %>
     <% end %>
   </div>
@@ -21,7 +21,7 @@
   <div class="card-container" data-dropdown-target="container">
     <% @proposals.each do |proposal| %>
       <% unless proposal.accepted %>
-        <%= render 'proposal_card', proposal: proposal %>
+        <%= render 'shared/proposal_card', proposal: proposal %>
       <% end %>
     <% end %>
   </div>
@@ -33,7 +33,7 @@
   <div class="card-container" data-dropdown-target="container">
     <% @proposals.each do |proposal| %>
       <% if proposal.accepted && proposal.status == "closed"  %>
-        <%= render 'proposal_card', proposal: proposal %>
+        <%= render 'shared/proposal_card', proposal: proposal %>
       <% end %>
     <% end %>
   </div>

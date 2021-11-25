@@ -14,17 +14,17 @@
   <div class="tab-content py-5" id="myTabContent">
 
     <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-      <%= render 'details_tab', campaign: @campaign %>
+      <%= render 'shared/details_tab', campaign: @campaign %>
     </div>
 
     <div class="tab-pane fade" id="collaborations" role="tabpanel" aria-labelledby="collaborations-tab">
-      <%= render 'collaborations_tab', proposals: @proposals %>
+      <%= render 'shared/collaborations_tab', proposals: @proposals %>
     </div>
 
     <div class="tab-pane fade" id="incoming" role="tabpanel" aria-labelledby="incoming-tab">
       <% @campaign.proposals.each do |proposal| %>
         <% if proposal.creator == "Influencer" %>
-          <%= render 'proposal_card', proposal: proposal %>
+          <%= render 'shared/proposal_card', proposal: proposal %>
         <% end %>
       <% end %>
     </div>
