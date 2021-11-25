@@ -18,13 +18,23 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <div class="page-container" data-controller="side-bar">
+    <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
-      <div class="content-container">
-      <div><%= render "shared/sidebar" %></div>
-        <%= yield %>
+      <div class="content-container" data-controller="side-bar">
+        <% if current_page?(root_path) %>
+          <%= yield %>
+        <% else %>
+          <div class="sidebar-container"><%= render "shared/sidebar" %></div>
+          <div class="main-container" data-side-bar-target="main">
+            <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
+            <%= yield %>
+            <div class="footer-container"><%= render "shared/footer" %></div>
+          </div>
+        <% end %>
       </div>
-      <div class="footer-container"><%= render "shared/footer" %></div>
+      <% if current_page?(root_path) %>
+        <div class="footer-container"><%= render "shared/footer" %></div>
+      <% end %>
     </div>
   </body>
 </html>

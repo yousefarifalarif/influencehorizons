@@ -11,13 +11,7 @@ export default class extends Controller {
 
   toggleContent () {
     this.containerTarget.classList.toggle("d-none");
-    if (toggled === false) {
-      this.btnTarget.innerText = "Expand";
-      toggled = true;
-    }
-    else {
-      this.btnTarget.innerText = "Collapse";
-      toggled = false;
-    }
+    this.btnTarget.classList.toggle("fa-caret-up");
+    this.btnTarget.classList.toggle("fa-caret-down");
   }
 }

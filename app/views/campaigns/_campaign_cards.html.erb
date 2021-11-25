@@ -1,10 +1,17 @@
 <%= link_to campaign_path(campaign) do %>
-  <div class="campaign-card">
-    <h3><%=campaign.name%></h3>
-    <p>Start date: <%=campaign.start_date%></p>
-    <p>End date: <%=campaign.end_date %></p>
-    <p>Region: <%=campaign.location%></p>
-    <p>Pending proposals: <%=campaign.proposals.size%></p>
-    <%# <p>IV images go here</p> %>
+  <div class="card-campaign">
+    <div class="card-campaign-info">
+      <h3><%=campaign.name%></h3>
+      <p><i class="far fa-calendar-alt"></i> <%=campaign.start_date%> to <%=campaign.end_date %></p>
+    </div>
+    <div class="card-campaign-info">
+      <p><i class="fas fa-map-marked-alt"></i> <%=campaign.location%></p>
+      <p>Pending proposals: <%=campaign.proposals.size%></p>
+    </div>
+    <div class="card-campaign-ivs">
+      <img class="avatar-bordered" src="https://images.unsplash.com/photo-1605405748313-a416a1b84491?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODQ3MTgw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600">
+      <img class="avatar-bordered" src="https://images.unsplash.com/photo-1570158268183-d296b2892211?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8ZmFjZXx8fHx8fDE2Mzc4NDcyNTk&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600">
+      <img class="avatar-bordered" src="https://images.unsplash.com/photo-1578489758854-f134a358f08b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8ZmFjZXx8fHx8fDE2Mzc4NDcyMjQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600">
+    </div>
   </div>
 <% end %>
