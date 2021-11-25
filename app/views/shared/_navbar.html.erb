@@ -1,4 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+<% if current_page?(root_path)%>
+<div class="navbar navbar-expand-sm navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
+<% else %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-lewagon-white fixed-top">
+<% end %>
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>
@@ -11,14 +15,8 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
         <li class="nav-item dropdown d-flex align-items-center">
-          <p class="m-0">Welcome, <%= current_user.first_name %></p>
+          <p class="my-0 mr-2">Welcome, <%= current_user.first_name %></p>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>

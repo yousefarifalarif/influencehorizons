@@ -25,17 +25,19 @@
           <%= yield %>
         <% else %>
           <div class="sidebar-container"><%= render "shared/sidebar" %></div>
-            <% if user_signed_in? %>
-              <div class="main-container" data-side-bar-target="main">
-                <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
-                <%= yield %>
-              </div>
-            <% else %>
-              <div class="format-login"><%= yield %></div>
-            <% end %>
+          <% if user_signed_in? %>
+            <div class="main-container" data-side-bar-target="main">
+              <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
+              <%= yield %>
+            </div>
+          <% else %>
+            <div class="format-login"><%= yield %></div>
+          <% end %>
         <% end %>
       </div>
-      <div class="footer-container"><%= render "shared/footer" %></div>
+      <% if current_page?(root_path) %>
+        <div class="footer-container"><%= render "shared/footer" %></div>
+      <% end %>
     </div>
   </body>
 </html>

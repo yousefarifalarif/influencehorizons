@@ -12,7 +12,7 @@
     <%= render "search_bar" %>
     <%= render "./shared/modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign", button_name: "Create campaign"%>
     <div class="open-campaigns" data-controller="dropdown">
-      <div class="campaign-header">
+      <div class="dropdown-header">
         <h4>Open Campaigns</h4>
         <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
       </div>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="closed-campaigns" data-controller="dropdown">
-      <div class="campaign-header">
+      <div class="dropdown-header">
         <h4>Closed Campaigns</h4>
         <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
       </div>
