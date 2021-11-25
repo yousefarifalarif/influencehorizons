@@ -1,4 +1,5 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && (current_user.business || current_user.influencer) %>
+  <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
   <div>
     <div id="mySidebar" class="sidebar" data-side-bar-target="sidebar">
       <%= link_to "Statistics", dashboard_path %>

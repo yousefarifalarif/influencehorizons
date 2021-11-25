@@ -21,18 +21,17 @@
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
       <div class="content-container" data-controller="side-bar">
-        <% if current_page?(root_path) %>
+        <% if current_page?(root_path) || !user_signed_in? %>
           <%= yield %>
         <% else %>
           <div class="sidebar-container"><%= render "shared/sidebar" %></div>
           <div class="main-container" data-side-bar-target="main">
-            <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
             <%= yield %>
             <div class="footer-container"><%= render "shared/footer" %></div>
           </div>
         <% end %>
       </div>
-      <% if current_page?(root_path) %>
+      <% if current_page?(root_path) || user_signed_in? %>
         <div class="footer-container"><%= render "shared/footer" %></div>
       <% end %>
     </div>
