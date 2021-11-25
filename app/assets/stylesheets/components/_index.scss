@@ -1,9 +1,16 @@
 // Import your components CSS files here.
 @import "alert";
 @import "avatar";
+
+// Navs
 @import "navbar";
+@import "sidebar";
 @import "footer";
+
+// Homepage
 @import "banner";
 @import "card_homepage";
-@import "sidebar";
+
+// Campaign
+@import "card_campaign";
 @import "dropdown";

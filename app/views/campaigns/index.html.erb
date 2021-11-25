@@ -1,17 +1,21 @@
 <div class="container py-5">
 <%if @campaigns.size == 0 %>
-    <h1>You have no active campaigns</h1>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Launch demo modal
-    </button>
-    <%=link_to "Create new campaign", new_business_campaign_path(@business)%>
+    <div class="d-flex justify-content-between">
+      <h1>You have no active campaigns</h1>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new campaign</button>
+    </div>
   <%else%>
-    <h1>Campaigns Overview</h1>
+    <div class="d-flex justify-content-between">
+      <h1>Campaigns Overview</h1>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new campaign</button>
+    </div>
     <%= render "search_bar" %>
     <%= render "./shared/modal", campaign: @campaign, modal_title: "Create a Campaign", button_name: "Create campaign"%>
     <div class="open-campaigns" data-controller="dropdown">
-      <h4>Open Campaigns</h4>
-      <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
+      <div class="campaign-header">
+        <h4>Open Campaigns</h4>
+        <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+      </div>
       <div class="card-container" data-dropdown-target="container">
         <%@open_campaigns.each do |campaign|%>
           <%= render "campaign_cards", campaign: campaign %>
@@ -19,8 +23,10 @@
       </div>
     </div>
     <div class="closed-campaigns" data-controller="dropdown">
-      <h4>Closed Campaigns</h4>
-      <div class="dropdown-btn" data-dropdown-target="btn" data-action="click->dropdown#toggleContent">Collapse</div>
+      <div class="campaign-header">
+        <h4>Closed Campaigns</h4>
+        <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+      </div>
       <div class="card-container" data-dropdown-target="container">
       <%@closed_campaigns.each do |campaign|%>
         <%= render "campaign_cards", campaign: campaign %>

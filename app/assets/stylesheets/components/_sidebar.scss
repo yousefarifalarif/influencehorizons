@@ -5,11 +5,13 @@
 }
 
 .fa-angle-left, .fa-angle-right {
-  color: $blue;
-  padding: 8px 16px;
+  background-color: $blue;
+  border-bottom-right-radius: 5px;
+  color: white;
+  padding: 20px 8px;
   position: absolute;
   font-size: 32px;
-  top: 80px;
+  top: 65px;
   left: 250px;
   transition: left .5s; /* If you want a transition effect */
 }
@@ -25,7 +27,7 @@
   left: 0;
   background-color: $blue;
   overflow-x: hidden; /* Disable horizontal scroll */
-  transition: 0.3s; /* 0.5 second transition effect to slide in the sidebar */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   padding-top: 80px; /* Place content 60px from the top */
 }
 .main-expanded {
@@ -50,9 +52,10 @@
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
+.sidebar a:active, .sidebar a:hover {
   color: $orange;
 }
+
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
