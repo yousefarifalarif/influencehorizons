@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 2021_11_25_164102) do
 
   create_table "proposals", force: :cascade do |t|
     t.string "title"
-    t.string "status", default: "pending"
-    t.boolean "accepted", default: false
+    t.string "status"
+    t.boolean "accepted"
     t.bigint "campaign_id", null: false
     t.bigint "influencer_id"
     t.datetime "created_at", precision: 6, null: false

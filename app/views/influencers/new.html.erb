@@ -1,25 +1,29 @@
-<div class="container py-5">
-  <h2>Influencer Sign up</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-6 col-sm-6 col-sm-offset-6">
+      <div class="form-login">
+        <h2>Influencer Sign up</h2>
+        <%= simple_form_for [@user, @influencer] do |f| %>
+          <%= f.error_notification %>
 
-  <%= simple_form_for [@user, @influencer] do |f| %>
-    <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :ig_username %>
+            <%= f.input :ig_followers %>
+            <%= f.input :youtube_channel_name %>
+            <%= f.input :youtube_subscribers %>
+            <%= f.input :twitter_username %>
+            <%= f.input :twitter_followers %>
+            <%= f.input :facebook_username %>
+            <%= f.input :facebook_followers %>
+            <%= f.input :gender %>
+          </div>
 
-    <div class="form-inputs">
-      <%= f.input :ig_username %>
-      <%= f.input :ig_followers %>
-      <%= f.input :youtube_channel_name %>
-      <%= f.input :youtube_subscribers %>
-      <%= f.input :twitter_username %>
-      <%= f.input :twitter_followers %>
-      <%= f.input :facebook_username %>
-      <%= f.input :facebook_followers %>
-      <%= f.input :gender %>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-outline-light" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+  </div>
 </div>
