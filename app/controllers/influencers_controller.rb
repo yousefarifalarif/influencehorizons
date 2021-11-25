@@ -3,8 +3,6 @@ class InfluencersController < ApplicationController
   before_action :find_influencer, only: %i[show edit update]
 
   def index
-    raise
-    @proposal = proposal
     @influencers = Influencer.all
   end
 
