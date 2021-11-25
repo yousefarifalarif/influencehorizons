@@ -1,0 +1,13 @@
+<div class="form-row">
+  <div class="col-4 mb-4">
+    <%= form_tag influencers_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for Influencers" %>
+  </div>
+  <div class="form-row mb-4">
+    <%= submit_tag "Search", class: "btn btn-secondary" %>
+    <% end %>
+  </div>
+</div>
