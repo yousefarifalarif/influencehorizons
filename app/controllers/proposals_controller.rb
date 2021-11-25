@@ -9,6 +9,8 @@ class ProposalsController < ApplicationController
     if @proposal.save
       redirect_to influencers_path
     else
+      @proposals = @campaign.proposals.where(creator: "Business")
+      @incoming_proposals = @campaign.proposals.where(creator: "Influencer")
       render 'campaigns/show'
     end
   end
