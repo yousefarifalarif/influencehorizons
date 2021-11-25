@@ -1,24 +1,52 @@
 .banner {
-  background-size: cover;
-  background-position: center center;
-  padding: 100px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 500px;
+  position:relative;
+  background-image: url("/assets/IMG_lake.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 2;
   h1 {
+    opacity: 0.4;
+    text-shadow: -1px 0 $blue, 0 1px $blue, 1px 0 $blue, 0 -1px $blue;
     font-size: 120px;
-    font-weight: 400;
-    margin: 0;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-weight: 600;
+    // background: url("/assets/IMG_lake.jpg");
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
   p {
     font-size: 24px;
     font-weight: 400;
-    color: white;
-    opacity: .8;
+    color: $blue;
+    text-align: center;
+    opacity: 1;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
-  .btn {
-    size: 24px;
-    color: rgb(252,163,17);
-  }
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  size: 24px;
+  color: $blue;
+  border-color: whitesmoke;
+  background-color: rgba(252,163,17,0.2);
+}
+
+.btn:hover {
+  size: 24px;
+  color: $blue;
+  border-color: $blue;
+  background-color: rgba(252,163,17,1);
 }
