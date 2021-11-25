@@ -1,6 +1,6 @@
-<div class="proposal-card">
+<div class="card-proposal">
+  <img class="avatar-bordered" src="https://images.unsplash.com/photo-1605405748313-a416a1b84491?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODQ3MTgw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600">
+  <p><%= proposal.influencer.user.first_name + ' ' + proposal.influencer.user.last_name if proposal.influencer %></p>
   <h5><%= proposal.title %></h5>
-  <p><%= proposal.status %></p>
-  <p><%= proposal.accepted %></p>
-  <p><%#= proposal.influencer.user.first_name %> <%#= proposal.influencer.user.last_name %></p>
+  <p class="status"><%= proposal.status %></p>
 </div>

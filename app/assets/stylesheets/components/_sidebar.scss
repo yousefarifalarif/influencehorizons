@@ -1,7 +1,10 @@
 .main-container {
   transition: margin-left .5s; /* If you want a transition effect */
-  padding: 35px 20px;
+  padding: 35px 20px 0px 20px;
   margin-left: 250px;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }
 
 .fa-angle-left, .fa-angle-right {
@@ -9,7 +12,7 @@
   border-bottom-right-radius: 5px;
   color: white;
   padding: 20px 8px;
-  position: absolute;
+  position: fixed;
   font-size: 32px;
   top: 65px;
   left: 250px;

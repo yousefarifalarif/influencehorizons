@@ -28,10 +28,13 @@
           <div class="main-container" data-side-bar-target="main">
             <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
             <%= yield %>
+            <div class="footer-container"><%= render "shared/footer" %></div>
           </div>
         <% end %>
       </div>
-      <div class="footer-container"><%= render "shared/footer" %></div>
+      <% if current_page?(root_path) %>
+        <div class="footer-container"><%= render "shared/footer" %></div>
+      <% end %>
     </div>
   </body>
 </html>
