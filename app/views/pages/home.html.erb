@@ -1,9 +1,77 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/assets/IMG_lake.jpg);">
+  <div class="container">
+    <h1>InfluenceHorizons</h1>
+    <p>The #1 Platform for Regional Influencer Marketing</p>
+    <br>
+    <br>
+    <a class="btn btn-outline-light btn-lg" href="#" role="button">Join us now!</a>
+  </div>
+</div>
+
 <div class="container">
-  <% if current_user.role == "Business" %>
-    <h1>Welcome, Business!</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-  <% elsif current_user.role == "Influencer" %>
-    <h1>Welcome, Influencer!</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-  <% end %>
+  <div class="card-info d-flex">
+    <div class="card-description">
+      <h2>For Regional Businesses</h2>
+      <p>Great products deserve even greater advertising!</p>
+      <p>InfluenceHorizons makes it easy to find influencers for authentic and successful marketing.
+          This way you can grow regionally and nationally very easily!</p>
+    </div>
+    <div class="card-image">
+      <img src="/assets/business_picture.png" alt="">
+    </div>
+  </div>
+
+  <div class="card-info d-flex">
+    <div class="card-image">
+      <img src="/assets/influencer_picture.png" alt="">
+    </div>
+    <div class="card-description">
+      <h2>For Micro-Influencers</h2>
+      <p>It's easy to make money with your reach!</p>
+      <p>With InfluenceHorizons you can find suitable collaborations and jobs for influencer marketing. Completely free of charge!</p>
+    </div>
+  </div>
+
+  <div class="card-info">
+
+    <div class="header d-flex">
+      <h2>Why Influencer Marketing?</h2>
+    </div>
+
+    <div class="body">
+      <div class="images d-inline-flex" style="font-size: 48px">
+        <i class="fas fa-map-marked-alt"></i>
+        <i class="fas fa-chart-line"></i>
+        <i class="far fa-paper-plane"></i>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card-description-column">
+            <h3>Close by</h3>
+            <p>We bring influencers and businesses together! This is how the influencer marketing of the future is created,
+              which is authentic and creates customer loyalty.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card-description-column">
+            <h3>Growth</h3>
+            <p>For every product, there are suitable influencers who reach exactly those people who are really enthusiastic about this particular product - since advertising should be authentic and informative.
+              With social media marketing, you can reach your target group quickly and easily and continue to grow.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card-description-column">
+            <h3>Direct</h3>
+            <p>People place their trust in influencers. At the same time, influencers know best which topics are currently popular.
+              This makes influencer advertising personalised and creates the basis for sustainable advertising success at low cost.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
