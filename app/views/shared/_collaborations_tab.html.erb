@@ -25,7 +25,9 @@
   <div class="card-container" data-dropdown-target="container">
     <% @proposals.each do |proposal| %>
       <% unless proposal.accepted %>
-        <%= render 'shared/proposal_card', proposal: proposal %>
+      <% @show = proposal %>
+      <%= render "./shared/show_proposal_modal", proposal: @show, campaign: @campaign, modal_title: @show.title%>
+      <%= render 'shared/proposal_card', proposal: proposal %>
       <% end %>
     <% end %>
   </div>
@@ -39,25 +41,16 @@
   <div class="card-container" data-dropdown-target="container">
     <% @proposals.each do |proposal| %>
       <% if proposal.accepted && proposal.status == "closed"  %>
-        <%= render 'shared/proposal_card', proposal: proposal %>
+        <div class="proposal-card">
+          <% @show = proposal %>
+          <%= render "./shared/show_proposal_modal", proposal: @show, modal_title: @show.title%>
+          <h5><%= proposal.title %></h5>
+          <p><%= proposal.status %></p>
+          <p><%#= proposal.influencer.user.first_name %> <%#= proposal.influencer.user.last_name %></p>
+        </div>
       <% end %>
     <% end %>
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create Collaboration</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'proposals/form', { campaign: @campaign, proposal: @proposal} %>
-      </div>
-    </div>
-  </div>
-</div>
+<%# <%= render "./shared/create_proposal_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>

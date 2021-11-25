@@ -20,7 +20,7 @@ puts "Creating Influencers ..."
                               youtube_channel_name: username, youtube_subscribers: followers,
                               twitter_username: username, twitter_followers: followers,
                               facebook_username: username, facebook_followers: followers,
-                              gender: ['Male', 'Female', 'Prefer not to say'].sample, estimated_price: followers / 1000)
+                              gender: ['Male', 'Female', 'Others'].sample, estimated_price: followers / 1000)
   influencer.user = user
   influencer.save!
   influencers << influencer
