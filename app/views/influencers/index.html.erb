@@ -1,1 +1,31 @@
-<%= @proposal.title %>
+
+<div class="container py-5 d-flex flex-wrap justify-content-around">
+  <% @influencers.each do |influencer| %>
+  <div class="card-product">
+    <div class="card-product-infos">
+      <h2><%= influencer.user.first_name %>
+      <%= influencer.user.last_name %></h2>
+      <p><%= influencer.gender %></p>
+      <div class="d-inline-flex justify-content-around influencer-info" >
+        <div class="d-flex flex-column align-items-center">
+          <i class="fab fa-instagram card-icon"></i>
+          <%= influencer.ig_followers/1000 %>k
+        </div>
+         <div class="d-flex flex-column">
+         <i class="fab fa-youtube card-icon"></i>
+          <%= influencer.youtube_subscribers/1000 %>k
+         </div>
+         <div class="d-flex flex-column">
+         <i class="fab fa-twitter card-icon"></i>
+          <%= influencer.twitter_followers/1000 %>k
+         </div>
+         <div class="d-flex flex-column">
+         <i class="fab fa-facebook card-icon"></i>
+          <%= influencer.facebook_followers/1000 %>k
+         </div>
+      </div>
+    </div>
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  </div>
+  <% end %>
+</div>
