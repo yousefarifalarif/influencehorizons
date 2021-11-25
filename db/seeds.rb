@@ -33,9 +33,10 @@ emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef@gmail.com"
   puts "Creating Business #{index + 1} ..."
   user = User.create!(email: emails[index], password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
                       first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "london", role: "Business")
-  business = Business.new(company_name: Faker::Company.name)
+  business = Business.new(company_name: Faker::Company.name, company_url: Faker::Internet.url, industry: Faker::Company.industry )
   business.user = user
   business.save!
+  # Faker::Company.logo
 
   # Create 1-2 Campaign for each Business
   puts "Creating Campaigns & Proposals for Business #{index + 1} ..."

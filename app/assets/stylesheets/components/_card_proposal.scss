@@ -6,15 +6,25 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(20,33,61,0.5);
-  h5, p {
+  p {
     margin: 0 16px;
+  }
+  h6 {
+    margin: 0 120px 0 16px;
   }
 }
 
-.card-proposal h5{
+.card-proposal-title{
+  margin-left: 50px;
   flex-grow: 1;
 }
 
 .card-proposal img {
   object-fit: cover;
+}
+
+.card-proposal-status {
+  background-color: lightgrey;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
