@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations"}
 
   root to: 'pages#home'
-  # get 'dashboard', to: 'pages#dashboard', as: :dashboard
+  get 'dashboard', to: 'pages#dashboard', as: :dashboard
 
   resources :users do
     resources :businesses, only: %i[new create]
