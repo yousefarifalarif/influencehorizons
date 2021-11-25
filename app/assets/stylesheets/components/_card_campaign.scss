@@ -1,0 +1,52 @@
+.campaign-header {
+  margin-top: 50px;
+  background-color: $blue;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+  h4{
+    margin: 0;
+  }
+}
+.fa-caret-up, .fa-caret-down {
+  font-size: 24px;
+}
+
+.card-campaign {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+  padding: 32px;
+  display: flex;
+  border-bottom: 1px solid rgba(20,33,61,0.5);
+}
+
+.card-campaign:hover {
+  background-color: #EEEEEE;
+}
+
+.card-campaign-info {
+  flex-grow: 1;
+}
+
+.card-campaign-ivs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-content: center;
+  justify-content: center;
+  width:180px;
+}
+
+.card-campaign-ivs img {
+  object-fit: cover;
+
+}
+.card-campaign-ivs img:nth-child(1) {
+  grid-area: 1 / 1 / 2 / 3;
+}
+.card-campaign-ivs img:nth-child(2) {
+  grid-area: 1 / 3 / 2 / 5;
+}
+.card-campaign-ivs img:nth-child(3) {
+  grid-area: 2 / 2 / 3 / 4;
+}
