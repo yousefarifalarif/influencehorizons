@@ -1,9 +1,15 @@
-
-<div class="container py-5 d-flex flex-wrap justify-content-around">
-  <% @influencers.each do |influencer| %>
-    <div class="card-product">
+<div class="container py-5" data-controller="dropdown">
+  <div class="d-flex justify-content-between">
+    <h1>Influencers</h1>
+    <button type="button" class="btn btn-primary" data-influencer-target="btn" disabled>Send Proposal</button>
+  </div>
+  <%= render "search_bar" %>
+  <div class="d-flex flex-wrap justify-content-between">
+    <% @influencers.each do |influencer| %>
+    <div class="card-product" data-influencer-target="product" data-action="click->influencer#toggleDisable">
       <div class="card-product-infos">
-        <h2><%= influencer.user.first_name %> <%= influencer.user.last_name %></h2>
+        <h2><%= influencer.user.first_name %>
+        <%= influencer.user.last_name %></h2>
         <p><%= influencer.gender %></p>
         <div class="d-inline-flex justify-content-around influencer-info" >
           <div class="d-flex flex-column align-items-center">
