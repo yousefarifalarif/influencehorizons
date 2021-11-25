@@ -1,15 +1,23 @@
 <div class="container">
-  <h2>Business Sign up</h2>
+  <div class="row justify-content-center">
+    <div class="col-xs-6 col-sm-6 col-sm-offset-6">
+      <div class="form-login">
+        <h2>Business Sign up</h2>
+        <%= simple_form_for [@user, @business] do |f| %>
+          <%= f.error_notification %>
 
-  <%= simple_form_for [@user, @business] do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :company_name %>
+          <div class="form-inputs">
+            <%= f.input :company_name %>
+            <%= f.input :company_url %>
+            <%= f.input :industry %>
+            <%= f.input :photo, as: :file %>
+          </div>
+        
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-outline-light" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
+  </div>
 </div>

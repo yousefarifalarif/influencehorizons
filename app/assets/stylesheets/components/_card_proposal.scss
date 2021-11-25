@@ -1,0 +1,30 @@
+.card-proposal {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(20,33,61,0.5);
+  p {
+    margin: 0 16px;
+  }
+  h6 {
+    margin: 0 120px 0 16px;
+  }
+}
+
+.card-proposal-title{
+  margin-left: 50px;
+  flex-grow: 1;
+}
+
+.card-proposal img {
+  object-fit: cover;
+}
+
+.card-proposal-status {
+  background-color: lightgrey;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

@@ -3,7 +3,8 @@ class Business < ApplicationRecord
   has_many :campaigns, dependent: :destroy
 
   has_many :proposals, through: :campaign
-  has_many :proposals, through: :campaign
 
-  validates :company_name, presence: true
+  has_one_attached :photo
+
+  validates :company_name, :company_url, presence: true
 end
