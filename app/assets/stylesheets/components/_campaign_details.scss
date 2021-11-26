@@ -1,0 +1,32 @@
+.campaign-card-info {
+  width: 33% !important;
+  margin: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  h4 {
+    font-weight: 600
+  }
+  i {
+    font-size: 24px;
+    padding: 24px;
+  }
+  p {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  .campaign-card-small-text {
+    font-size: 16px;
+  }
+}
+
+.large-details-card {
+  width: calc(100% - 64px) !important;
+  margin: 32px 32px 64px 32px;
+
+}
+
+.campaign-status {
+  text-align: right;
+  margin-right: 32px;
+}

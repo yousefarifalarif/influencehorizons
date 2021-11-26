@@ -1,4 +1,46 @@
-<p><%= @campaign.location %></p>
-<p><strong><%= @campaign.start_date %></strong> to <strong><%= @campaign.end_date %></strong></p>
-<p><%= @campaign.description %></p>
-<p><%= @campaign.budget %></p> <!--hide on influencer -->
+<div class="details">
+
+  <div class="campaign-status">
+    <% if @campaign.visibility == true %>
+      <p>Public visibility: <strong>Activated</strong></p>
+    <% else %>
+      <p>Public visibility: <strong>Deactivated</strong></p>
+    <% end %>
+  </div>
+
+  <div class="small-details d-flex justify-content-between">
+    <div class="card-info campaign-card-info">
+      <h4>Location</h4>
+      <i class="fas fa-map-marker-alt"></i>
+      <p><%= @campaign.location %></p>
+    </div>
+
+    <div class="card-info campaign-card-info">
+      <h4>Dates</h4>
+      <i class="fas fa-calendar-alt"></i>
+      <p class="campaign-card-small-text"><strong><%= @campaign.start_date %>
+      <br>
+      </strong> to <strong>
+      <br>
+      <%= @campaign.end_date %></strong></p>
+    </div>
+
+    <div class="card-info campaign-card-info">
+      <h4>Budget</h4>
+      <i class="fas fa-pound-sign"></i>
+      <p><%= @campaign.budget %></p> <!--hide on influencer -->
+    </div>
+  </div>
+
+  <div class="card-info large-details-card">
+    <div class="description">
+      <h4>Description</h4>
+      <p><%= @campaign.description %></p>
+    </div>
+  </div>
+
+  <div class="card-info large-details-card">
+    <h4>Uploaded Documents</h4>
+  </div>
+
+</div>
