@@ -35,7 +35,7 @@ puts "Creating Influencers ..."
                               youtube_channel_name: username, youtube_subscribers: followers,
                               twitter_username: username, twitter_followers: followers,
                               facebook_username: username, facebook_followers: followers,
-                              gender: ['Male', 'Female', 'Prefer not to say'].sample, estimated_price: followers / 1000)
+                              gender: ['Male', 'Female'].sample, estimated_price: followers / 1000)
   file = URI.open(influencer_avatars[index])
   influencer.photo.attach(io: file, filename: "#{username}.png", content_type: 'image/png')
   influencer.user = user
