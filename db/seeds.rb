@@ -25,6 +25,8 @@ influencer_avatars = [
 ]
 statuses = ["Pending", "In Progress", "Completed"]
 booleans = [true, false]
+tasks = ["Do a live feed for", "Design a poster for", "Design a banner for", "Take a photo for",
+         "Make a video for", "Create a contest for"]
 influencers = []
 
 # Create 10 Influencers
@@ -71,11 +73,11 @@ emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef@gmail.com"
     campaign.save!
 
     # Create 1-3 Proposals for each Campaign
-    rand(2..4).times do |i|
+    rand(2..4).times do
       if campaign.archived
-        proposal = Proposal.new(title: "#{campaign.name} #{i + 1}", creator: "Business", status: "Completed")
+        proposal = Proposal.new(title: "#{tasks.sample} #{campaign.name}", creator: "Business", status: "Completed")
       else
-        proposal = Proposal.new(title: "#{campaign.name} #{i + 1}", creator: %w[Business Influencer].sample)
+        proposal = Proposal.new(title: "#{tasks.sample} #{campaign.name}", creator: %w[Business Influencer].sample)
         proposal.status = proposal.creator == "Influencer" ? "Pending" : statuses.sample
       end
       proposal.accepted = proposal.status != "Pending"
