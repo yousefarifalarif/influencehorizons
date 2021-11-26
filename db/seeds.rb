@@ -9,6 +9,7 @@ require 'faker'
 require "open-uri"
 
 User.destroy_all
+
 influencer_avatars = [
   "https://images.unsplash.com/photo-1605405748313-a416a1b84491?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODQ3MTgw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600",
   "https://images.unsplash.com/photo-1570158268183-d296b2892211?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8ZmFjZXx8fHx8fDE2Mzc4NDcyNTk&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600",
@@ -20,8 +21,10 @@ influencer_avatars = [
   "https://images.unsplash.com/photo-1554151228-14d9def656e4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODY1MDA2&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600",
   "https://images.unsplash.com/photo-1543357530-d91dab30fa97?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODY1MDE2&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600",
   "https://images.unsplash.com/photo-1514846326710-096e4a8035e0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODY1MDU1&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600",
-  "https://images.unsplash.com/photo-1607503873903-c5e95f80d7b9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODY1MDY2&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600",
+  "https://images.unsplash.com/photo-1607503873903-c5e95f80d7b9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9ydHJhaXR8fHx8fHwxNjM3ODY1MDY2&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600"
 ]
+statuses = ["Pending", "In Progress", "Completed"]
+booleans = [true, false]
 influencers = []
 
 # Create 10 Influencers
@@ -50,7 +53,7 @@ emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef@gmail.com"
   puts "Creating Business #{index + 1} ..."
   user = User.create!(email: emails[index], password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
                       first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "london", role: "Business")
-  business = Business.new(company_name: Faker::Company.name, company_url: Faker::Internet.url, industry: Faker::Company.industry )
+  business = Business.new(company_name: Faker::Company.name, company_url: Faker::Internet.url, industry: Faker::Company.industry)
   url = Faker::Company.logo
   file = URI.open(url)
   business.photo.attach(io: file, filename: "#{business.company_name}.png", content_type: 'image/png')
@@ -63,12 +66,19 @@ emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef@gmail.com"
     date = Faker::Date.forward(days: rand(10..30))
     campaign = Campaign.new(name: Faker::Commerce.product_name, location: "London", start_date: date,
                             end_date: date + rand(15..45), description: Faker::Marketing.buzzwords, budget: Faker::Commerce.price(range: 500..1000))
+    campaign.archived = index.zero? ? true : booleans.sample
     campaign.business = business
     campaign.save!
 
     # Create 1-3 Proposals for each Campaign
     rand(2..4).times do |i|
-      proposal = Proposal.new(title: "#{campaign.name} #{i + 1}", creator: %w[Business Influencer].sample)
+      if campaign.archived
+        proposal = Proposal.new(title: "#{campaign.name} #{i + 1}", creator: "Business", status: "Completed")
+      else
+        proposal = Proposal.new(title: "#{campaign.name} #{i + 1}", creator: %w[Business Influencer].sample)
+        proposal.status = proposal.creator == "Influencer" ? "Pending" : statuses.sample
+      end
+      proposal.accepted = proposal.status != "Pending"
       proposal.campaign = campaign
       proposal.influencer = influencers.sample
       proposal.save!

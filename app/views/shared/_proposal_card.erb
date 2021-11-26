@@ -1,17 +1,16 @@
 <div class="card-proposal">
-
-    <% if proposal.influencer %>
-      <%= cl_image_tag proposal.influencer.photo.key, class:"avatar-bordered large" %>
-      <h6>
-        <%= proposal.influencer.user.first_name + ' ' + proposal.influencer.user.last_name%>
-        <% case proposal.influencer.gender %>
-        <% when "Male" %>
-          <i class="fas fa-male"></i>
-        <% when "Female" %>
-          <i class="fas fa-female"></i>
-        <% end %>
-      </h6>
-    <% end %>
+  <% if proposal.influencer %>
+    <%= cl_image_tag proposal.influencer.photo.key, class:"avatar-bordered large" %>
+    <h6>
+      <%= proposal.influencer.user.first_name + ' ' + proposal.influencer.user.last_name%>
+      <% case proposal.influencer.gender %>
+      <% when "Male" %>
+        <i class="fas fa-male"></i>
+      <% when "Female" %>
+        <i class="fas fa-female"></i>
+      <% end %>
+    </h6>
+  <% end %>
   <p class="card-proposal-title"><%= proposal.title %></p>
   <p class="card-proposal-status"><%= proposal.status %></p>
 </div>

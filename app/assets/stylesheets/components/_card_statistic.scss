@@ -1,0 +1,29 @@
+.cards-statistic {
+  margin-top: 20px;
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card-statistic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .card-statistic-circle {
+    line-height: 200px;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 2px solid $blue;
+    color: $blue;
+    font-size: 40px;
+  }
+  p {
+    text-align: center;
+    padding: 12px 0;
+  }
+  strong {
+    font-size: 48px;
+  }
+}

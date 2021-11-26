@@ -4,6 +4,18 @@ class PagesController < ApplicationController
   def home
   end
 
-  def show
+  def dashboard
+    if current_user.business
+      @sum_eng_rate = 0
+      @campaigns = current_user.business.campaigns
+
+      @campaigns.each do |campaign|
+        campaign.proposals.each do |proposal|
+          @sum_eng_rate += proposal.influencer.ig_followers if proposal.accepted
+        end
+      end
+    elsif current_user.influencer
+      # TODO
+    end
   end
 end
