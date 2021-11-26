@@ -2,18 +2,17 @@
   <%if @campaigns.size == 0 %>
     <h1>Campaigns Overview</h1>
     <div class="d-flex justify-content-between">
-      <h4>You have no active campaigns</h4>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCampaignModal">Create campaign</button>
-      <%= render "./shared/create_campaign_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
+      <h1>You have no active campaigns</h1>
+      <button type="button" class="create-btn" data-toggle="modal" data-target="#createCampaignModal">Create new campaign</button>
     </div>
   <%else%>
     <div class="d-flex justify-content-between">
       <h1>Campaigns Overview</h1>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCampaignModal">Create campaign</button>
+      <!-- Button for creating new campaign -->
+      <button type="button" class="create-btn" data-toggle="modal" data-target="#createCampaignModal">Create new campaign</button>
     </div>
+    <!-- Render the search bar-->
     <%= render "search_bar" %>
-    <%= render "./shared/create_campaign_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
-
     <div class="open-campaigns" data-controller="dropdown">
       <div class="dropdown-header">
         <h4>Open Campaigns</h4>
@@ -21,6 +20,7 @@
       </div>
       <div class="card-container" data-dropdown-target="container">
         <%@open_campaigns.each do |campaign|%>
+          <!-- Render the cards for open campaigns-->
           <%= render "campaign_cards", campaign: campaign %>
         <% end %>
       </div>
@@ -32,9 +32,13 @@
       </div>
       <div class="card-container" data-dropdown-target="container">
       <%@closed_campaigns.each do |campaign|%>
+          <!-- Render the cards for closed campaigns-->
         <%= render "campaign_cards", campaign: campaign %>
       <% end %>
       </div>
     </div>
   <%end%>
 </div>
+
+<!-- Render the Create campaign modal-->
+<%= render "./shared/create_campaign_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
