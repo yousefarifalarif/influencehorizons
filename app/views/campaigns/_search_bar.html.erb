@@ -1,4 +1,4 @@
-<div class="form-row">
+<div class="form-row" style="margin-bottom: 40px;">
   <div class="col-4">
     <%= form_tag campaigns_path, method: :get do %>
       <%= text_field_tag :query,
@@ -7,7 +7,7 @@
         placeholder: "Search for Campaigns" %>
   </div>
   <div class="form-row">
-    <%= submit_tag "Search", class: "btn btn-secondary" %>
+    <%= submit_tag "Search", class: "blue" %>
     <% end %>
   </div>
 </div>
