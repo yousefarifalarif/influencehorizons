@@ -1,52 +1,56 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Create Collaboration
-</button>
-
-<div class="open-proposals" data-controller="dropdown">
-  <div class="dropdown-header">
-    <h4>Open</h4>
-    <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+<%if @proposals.size == 0 %>
+  <div class="d-flex justify-content-between">
+    <h1>You have no active collaborations</h1>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProposalModal">Create Collaboration</button>
   </div>
-  <div class="card-container" data-dropdown-target="container">
-    <% @proposals.each do |proposal| %>
-      <% if proposal.accepted && proposal.status != "Completed" %>
+<%else%>
+  <% unless @proposals.first.campaign.archived %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProposalModal">Create Collaboration</button>
+  <% end %>
+
+  <div class="open-proposals" data-controller="dropdown">
+    <div class="dropdown-header">
+      <h4>Open</h4>
+      <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+    </div>
+    <div class="card-container" data-dropdown-target="container">
+      <% @proposals.each do |proposal| %>
+        <% if proposal.accepted && proposal.status != "Completed" %>
+          <%= render 'shared/proposal_card', proposal: proposal %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="pending-proposals" data-controller="dropdown">
+    <div class="dropdown-header">
+      <h4>Pending</h4>
+      <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+    </div>
+    <div class="card-container" data-dropdown-target="container">
+      <% @proposals.each do |proposal| %>
+        <% unless proposal.accepted %>
+        <%= render "./shared/show_proposal_modal", proposal: proposal, modal_title: proposal.title %>
         <%= render 'shared/proposal_card', proposal: proposal %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 
-<div class="pending-proposals" data-controller="dropdown">
-  <div class="dropdown-header">
-    <h4>Pending</h4>
-    <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
-  </div>
-  <div class="card-container" data-dropdown-target="container">
-    <% @proposals.each do |proposal| %>
-      <% unless proposal.accepted %>
-      <% @show = proposal %>
-      <%= render "./shared/show_proposal_modal", proposal: @show, campaign: @campaign, modal_title: @show.title%>
-      <%= render 'shared/proposal_card', proposal: proposal %>
+  <div class="closed-proposals" data-controller="dropdown">
+    <div class="dropdown-header">
+      <h4>Closed</h4>
+      <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+    </div>
+    <div class="card-container" data-dropdown-target="container">
+      <% @proposals.each do |proposal| %>
+        <% if proposal.accepted && proposal.status == "Completed"  %>
+          <%= render "./shared/show_proposal_modal", proposal: proposal, modal_title: proposal.title %>
+          <%= render 'shared/proposal_card', proposal: proposal %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
-
-<div class="closed-proposals" data-controller="dropdown">
-  <div class="dropdown-header">
-    <h4>Closed</h4>
-    <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
-  </div>
-  <div class="card-container" data-dropdown-target="container">
-    <% @proposals.each do |proposal| %>
-      <% if proposal.accepted && proposal.status == "Completed"  %>
-        <% @show = proposal %>
-        <%= render "./shared/show_proposal_modal", proposal: @show, modal_title: @show.title%>
-        <%= render 'shared/proposal_card', proposal: proposal %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
+<% end %>
 <%# <%= render "./shared/create_proposal_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
