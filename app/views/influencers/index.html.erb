@@ -2,7 +2,6 @@
   <div class="d-flex justify-content-between">
     <h1>Influencers</h1>
     <button type="button" class="btn btn-primary" data-influencer-target="btn" disabled>Send Proposal</button>
-
   </div>
   <%= render "search_bar" %>
   <div class="d-flex flex-wrap justify-content-between">
@@ -17,22 +16,21 @@
             <i class="fab fa-instagram card-icon"></i>
             <%= influencer.ig_followers/1000 %>k
           </div>
-          <div class="d-flex flex-column">
-          <i class="fab fa-youtube card-icon"></i>
+          <div class="d-flex flex-column align-items-center">
+            <i class="fab fa-youtube card-icon"></i>
             <%= influencer.youtube_subscribers/1000 %>k
           </div>
-          <div class="d-flex flex-column">
-          <i class="fab fa-twitter card-icon"></i>
+          <div class="d-flex flex-column align-items-center">
+            <i class="fab fa-twitter card-icon"></i>
             <%= influencer.twitter_followers/1000 %>k
           </div>
-          <div class="d-flex flex-column">
-          <i class="fab fa-facebook card-icon"></i>
+          <div class="d-flex flex-column align-items-center">
+            <i class="fab fa-facebook card-icon"></i>
             <%= influencer.facebook_followers/1000 %>k
           </div>
         </div>
       </div>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <%= cl_image_tag influencer.photo.key, class:"avatar-bordered xlarge m-3" %>
     </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
