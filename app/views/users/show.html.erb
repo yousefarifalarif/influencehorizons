@@ -5,7 +5,7 @@
       # TODO
       <%= cl_image_tag current_user.influencer.photo.key, class:"" %>
     <% elsif current_user.business %>
-      <%= cl_image_tag current_user.business.photo.key, class:"" %>
+      <%= cl_image_tag current_user.business.photo.key, class:"mb-5" %>
       <h3> <%= @user.business.company_name %></h3>
       <p> <%= @user.first_name %> <%= @user.last_name %></p>
       <p> <%= @user.email %></p>
