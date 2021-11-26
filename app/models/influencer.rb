@@ -5,5 +5,5 @@ class Influencer < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :gender, presence: true, inclusion: { in: ['Male', 'Female', 'Others'] }
+  validates :gender, presence: true, inclusion: { in: ['Male', 'Female', 'Prefer not to say'] }
 end
