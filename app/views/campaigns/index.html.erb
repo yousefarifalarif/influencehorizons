@@ -1,16 +1,17 @@
 <div class="container py-5">
-<%if @campaigns.size == 0 %>
+  <%if @campaigns.size == 0 %>
+    <h1>Campaigns Overview</h1>
     <div class="d-flex justify-content-between">
-      <h1>You have no active campaigns</h1>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new campaign</button>
+      <h4>You have no active campaigns</h4>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCampaignModal">Create campaign</button>
+      <%= render "./shared/create_campaign_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
     </div>
   <%else%>
     <div class="d-flex justify-content-between">
       <h1>Campaigns Overview</h1>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new campaign</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCampaignModal">Create campaign</button>
     </div>
     <%= render "search_bar" %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCampaignModal">Create campaign</button>
     <%= render "./shared/create_campaign_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
 
     <div class="open-campaigns" data-controller="dropdown">

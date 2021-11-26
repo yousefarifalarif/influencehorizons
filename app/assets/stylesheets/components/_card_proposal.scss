@@ -1,3 +1,6 @@
+.card-container {
+  margin-bottom: 50px;
+}
 .card-proposal {
   background-color: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
@@ -15,7 +18,9 @@
   }
 }
 
-
+.card-proposal:hover {
+  background-color: #EEEEEE;
+}
 
 .card-proposal-title{
   margin-left: 50px;
