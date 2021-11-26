@@ -1,7 +1,9 @@
 <div class="container py-5" data-controller="influencer">
   <div class="d-flex justify-content-between">
     <h1>Influencers</h1>
-    <a href='/' type="button" class="btn create-btn proposal-btn" data-influencer-target="btn" data-id="">Send Proposal</a>
+    <%= link_to campaigns_path do %>
+      <button type="button" class="btn create-btn proposal-btn" data-influencer-target="btn" data-id="">Send Proposal</button>
+    <% end %>
   </div>
   <%= render "search_bar" %>
   <div class="d-flex flex-wrap justify-content-between" data-influencer-target="product">
