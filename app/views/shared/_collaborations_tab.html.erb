@@ -17,6 +17,7 @@
     <div class="card-container" data-dropdown-target="container">
       <% @proposals.each do |proposal| %>
         <% if proposal.accepted && proposal.status != "Completed" %>
+          <%= render "./shared/show_proposal_modal", proposal: proposal, modal_title: proposal.title %>
           <%= render 'shared/proposal_card', proposal: proposal %>
         <% end %>
       <% end %>
@@ -53,4 +54,4 @@
     </div>
   </div>
 <% end %>
-<%# <%= render "./shared/create_proposal_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
+<%= render "./shared/create_proposal_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign" %>
