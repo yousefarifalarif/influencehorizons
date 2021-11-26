@@ -1,6 +1,4 @@
-<%# style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/assets/IMG_lake.jpg);" %>
-
-<div class="banner">
+<div class="banner" style="background-image: url(<%= asset_path 'IMG_lake.jpg' %>);" >
   <div class="container" id="content">
     <h1 class="title">InfluenceHorizons</h1>
     <p>The #1 Platform for Regional Influencer Marketing</p>
@@ -8,7 +6,7 @@
     <br>
     <br>
     <% unless current_user %>
-      <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-outline-light btn-lg", role:"button" %>
+      <%= link_to "Join us now!", new_user_registration_path, class:"create-btn btn-lg", role:"button" %>
     <% end %>
   </div>
 </div>

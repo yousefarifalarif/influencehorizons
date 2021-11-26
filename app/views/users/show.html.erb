@@ -1,0 +1,18 @@
+<div class="container py-5">
+  <h1>Profile</h1>
+  <div class="d-flex flex-column align-items-center justify-content-center">
+    <% if current_user.influencer %>
+      # TODO
+      <%= cl_image_tag current_user.influencer.photo.key, class:"" %>
+    <% elsif current_user.business %>
+      <%= cl_image_tag current_user.business.photo.key, class:"" %>
+      <h3> <%= @user.business.company_name %></h3>
+      <p> <%= @user.first_name %> <%= @user.last_name %></p>
+      <p> <%= @user.email %></p>
+      <p> <%= @user.location %></p>
+      <p> <%= @user.phone_number %></p>
+      <p> <%= @user.business.company_url %></p>
+    <% end %>
+
+  </div>
+</div>
