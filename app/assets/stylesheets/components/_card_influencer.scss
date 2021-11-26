@@ -9,6 +9,7 @@
   width: 45%;
   justify-content: space-between;
   align-items: column;
+
 }
 
 .card-product h2 {
@@ -36,4 +37,16 @@
 .influencer-info {
 width: 200%;
 margin-top: 10px;
+}
+
+.selected {
+  box-shadow: 0 0 15px rgba(9, 255, 0, 0.5) !important;
+}
+
+.proposal-btn {
+  pointer-events: none;
+}
+
+.proposal-btn-active {
+  pointer-events: all !important;
 }
