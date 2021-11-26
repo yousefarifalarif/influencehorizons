@@ -1,4 +1,4 @@
-<div class="card-proposal">
+<div class="card-proposal" data-toggle="modal" data-target="#modal-<%= proposal.id %>">
   <% if proposal.influencer %>
     <%= cl_image_tag proposal.influencer.photo.key, class:"avatar-bordered large" %>
     <h6>
@@ -14,6 +14,3 @@
   <p class="card-proposal-title"><%= proposal.title %></p>
   <p class="card-proposal-status"><%= proposal.status %></p>
 </div>
-
-<button type="button" data-toggle="modal" data-target="#modal-<%= proposal.id %>" data-proposal="@show">
-</button>

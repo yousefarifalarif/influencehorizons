@@ -1,0 +1,23 @@
+.create-btn {
+    border: none;
+    background-color: rgba(252,163,17,1);
+    padding: 10px
+  }
+  .create-btn:hover {
+    border: none;
+    background-color: rgba(252,163,17,0.7);
+  }
+  .form-links {
+    color: $blue;
+  }
+  .blue {
+    color: $orange;
+    padding: 0px 10px;
+    width: 100%;
+    border: $blue;
+    background-color: rgba(20,33,61,0.8);
+  }
+  .blue:hover {
+    border: none;
+    background-color: rgba(20,33,61,1);
+  }
