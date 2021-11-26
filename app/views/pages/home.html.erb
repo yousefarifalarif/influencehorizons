@@ -7,6 +7,10 @@
     <br>
     <% unless current_user %>
       <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-outline-light btn-lg", role:"button" %>
+    <%# ------ this is just for styling purposes ------- %>
+    <% else %>
+      <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-outline-light btn-lg", role:"button", style: 'visibility: hidden' %>
+    <%# --------------------------- %>
     <% end %>
   </div>
 </div>
@@ -20,13 +24,13 @@
           This way you can grow regionally and nationally very easily!</p>
     </div>
     <div class="card-image">
-      <img src="/assets/business_picture.png" alt="">
+      <img src=<%= asset_path 'business_picture.png' %> alt="">
     </div>
   </div>
 
   <div class="card-info d-flex">
     <div class="card-image">
-      <img src="/assets/influencer_picture.png" alt="">
+      <img src=<%= asset_path 'influencer_picture.png' %> alt="">
     </div>
     <div class="card-description">
       <h2>For Micro-Influencers</h2>
