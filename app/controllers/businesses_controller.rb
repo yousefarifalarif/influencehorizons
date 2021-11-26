@@ -25,7 +25,6 @@ class BusinessesController < ApplicationController
     redirect_to business_path(@business)
   end
 
-
   private
 
   def set_user

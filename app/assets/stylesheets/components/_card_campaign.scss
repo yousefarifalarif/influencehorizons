@@ -5,6 +5,12 @@
   padding: 32px;
   display: flex;
   border-bottom: 1px solid rgba(20,33,61,0.5);
+  h6 {
+    margin: 12px 0;
+  }
+  p {
+    margin: 0 0 4px 0;
+  }
 }
 
 .card-campaign:hover {
@@ -12,7 +18,10 @@
 }
 
 .card-campaign-info {
-  flex-grow: 1;
+  width:560px;
+}
+.card-campaign-proposals {
+  flex-grow:1;
 }
 
 .card-campaign-ivs {
