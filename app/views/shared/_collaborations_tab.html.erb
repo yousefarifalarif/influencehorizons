@@ -6,7 +6,7 @@
   </div>
 <%else%>
   <% unless @proposals.first.campaign.archived %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProposalModal">Create Collaboration</button>
+    <button type="button" class="create-btn" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
   <% end %>
 
   <div class="open-proposals" data-controller="dropdown">
