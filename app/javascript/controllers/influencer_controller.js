@@ -11,6 +11,5 @@ export default class extends Controller {
   toggleDisable() {
     this.btnTarget.setAttribute("disabled", false);
     this.productTarget.setAttribute("selected", true);
-
   }
 }

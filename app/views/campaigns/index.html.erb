@@ -10,7 +10,9 @@
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new campaign</button>
     </div>
     <%= render "search_bar" %>
-    <%= render "./shared/modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign", button_name: "Create campaign"%>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCampaignModal">Create campaign</button>
+    <%= render "./shared/create_campaign_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
+
     <div class="open-campaigns" data-controller="dropdown">
       <div class="dropdown-header">
         <h4>Open Campaigns</h4>
