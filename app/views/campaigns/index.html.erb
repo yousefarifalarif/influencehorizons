@@ -1,5 +1,6 @@
 <div class="container py-5">
-<%if @campaigns.size == 0 %>
+  <%if @campaigns.size == 0 %>
+    <h1>Campaigns Overview</h1>
     <div class="d-flex justify-content-between">
       <h1>You have no active campaigns</h1>
       <button type="button" class="create-btn" data-toggle="modal" data-target="#createCampaignModal">Create new campaign</button>
