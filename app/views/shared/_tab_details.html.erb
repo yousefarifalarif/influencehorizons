@@ -12,13 +12,19 @@
 
   <div class="small-details d-flex justify-content-between">
     <div class="card-info campaign-card-info">
-      <h4>Location</h4>
-      <i class="fas fa-map-marker-alt"></i>
-      <p><%= @campaign.location %></p>
+      <div class="blue-bar">
+        <h4>Location</h4>
+      </div>
+      <div class="center-content mt-3">
+        <i class="fas fa-map-marker-alt"></i>
+        <p><%= @campaign.location %></p>
+      </div>
     </div>
 
     <div class="card-info campaign-card-info">
-      <h4>Dates</h4>
+      <div class="blue-bar">
+        <h4>Dates</h4>
+      </div>
       <i class="fas fa-calendar-alt"></i>
       <p class="campaign-card-small-text"><strong><%= @campaign.start_date %>
       <br>
@@ -28,22 +34,28 @@
     </div>
 
     <div class="card-info campaign-card-info">
-      <h4>Budget</h4>
-      <i class="fas fa-pound-sign"></i>
-      <p><%= @campaign.budget %></p> <!--hide on influencer -->
+      <div class="blue-bar">
+        <h4>Budget</h4>
+      </div>
+      <div class="center-content mt-3">
+        <i class="fas fa-wallet"></i>
+        <p>£ <%= @campaign.budget %></p> <!--hide on influencer -->
+      </div>
     </div>
   </div>
 
   <div class="card-info large-details-card">
     <div class="description">
-      <h4>Description</h4>
+      <div class="blue-bar">
+        <h4>Description</h4>
+      </div>
       <p><%= @campaign.description %></p>
     </div>
   </div>
 
   <% if current_user.business %>
     <div class="card-info large-details-card">
-      <h4>Uploaded Documents</h4>
+      <h4 class="blue-bar">Uploaded Documents</h4>
     </div>
   <% end %>
 
