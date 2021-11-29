@@ -1,0 +1,22 @@
+<div class="card-proposal" data-toggle="modal" data-target="#modal-<%= proposal.id %>">
+  <% if partner %>
+    <%= cl_image_tag partner.photo.key, class:"avatar-bordered large" %>
+    <h6>
+      <% if partner.instance_of? Business %>
+        <p><%= partner.company_name %></p>
+      <% else %>
+        <p>
+          <%= partner.user.first_name + ' ' + partner.user.last_name %>
+          <% case partner.gender %>
+          <% when "Male" %>
+            <i class="fas fa-male"></i>
+          <% when "Female" %>
+            <i class="fas fa-female"></i>
+          <% end %>
+        </p>
+      <% end %>
+    </h6>
+  <% end %>
+  <p class="card-proposal-title"><%= proposal.title %></p>
+  <p class="card-proposal-status"><%= proposal.status %></p>
+</div>

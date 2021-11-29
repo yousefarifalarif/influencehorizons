@@ -1,33 +1,37 @@
 <div class="container py-5">
   <h1 class='my-5'><%= @campaign.name %></h1>
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="collaborations-tab" data-toggle="tab" href="#collaborations" role="tab" aria-controls="collaborations" aria-selected="false">Collaborations</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="incoming-tab" data-toggle="tab" href="#incoming" role="tab" aria-controls="incoming" aria-selected="false">Incoming Proposals</a>
-    </li>
-  </ul>
+  <% if current_user.business %>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="collaborations-tab" data-toggle="tab" href="#collaborations" role="tab" aria-controls="collaborations" aria-selected="false">Collaborations</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="incoming-tab" data-toggle="tab" href="#incoming" role="tab" aria-controls="incoming" aria-selected="false">Incoming Proposals</a>
+      </li>
+    </ul>
 
-  <div class="tab-content py-5" id="myTabContent">
+    <div class="tab-content py-5" id="myTabContent">
 
-    <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-      <%= render 'shared/details_tab', campaign: @campaign %>
-    </div>
+      <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+        <%= render 'shared/tab_details', campaign: @campaign %>
+      </div>
 
-    <div class="tab-pane fade" id="collaborations" role="tabpanel" aria-labelledby="collaborations-tab">
-      <%= render 'shared/collaborations_tab', proposals: @proposals %>
-    </div>
+      <div class="tab-pane fade" id="collaborations" role="tabpanel" aria-labelledby="collaborations-tab">
+        <%= render 'shared/tab_collaborations', proposals: @proposals %>
+      </div>
 
-    <div class="tab-pane fade" id="incoming" role="tabpanel" aria-labelledby="incoming-tab">
-      <% @campaign.proposals.each do |proposal| %>
-        <% if proposal.creator == "Influencer" %>
-          <%= render 'shared/proposal_card', proposal: proposal %>
+      <div class="tab-pane fade" id="incoming" role="tabpanel" aria-labelledby="incoming-tab">
+        <% @campaign.proposals.each do |proposal| %>
+          <% if proposal.creator == "Influencer" %>
+            <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <%= render 'shared/tab_details', campaign: @campaign %>
+  <% end %>
 </div>

@@ -1,0 +1,42 @@
+<%if @campaigns.size == 0 %>
+  <div class="d-flex justify-content-between">
+    <h4>You have no active campaigns</h4>
+  </div>
+<%else%>
+  <div class="cards-statistic">
+    <div class="card-statistic">
+      <div class="card-statistic-circle">
+        <strong><%= @campaigns.select { |c| !c.archived }.size %></strong>
+      </div>
+      <p>Current Campaigns</p>
+    </div>
+    <div class="card-statistic">
+      <div class="card-statistic-circle">
+        <strong><%= @campaigns.size %></strong>
+      </div>
+      <p>All Campaigns</p>
+    </div>
+    <div class="card-statistic">
+      <div class="card-statistic-circle">
+        <% campaign = @campaigns.max_by { |c| c.end_date - c.start_date } %>
+        <% weeks = (( campaign.end_date - campaign.start_date ) / 7 ).ceil %>
+        <%= weeks.to_s + " #{weeks > 1 ? 'weeks' : 'week'}" %>
+      </div>
+      <p>Longest Campaign</p>
+    </div>
+    <div class="card-statistic">
+      <div class="card-statistic-circle">
+        <% campaign = @campaigns.min_by { |c| c.end_date - c.start_date } %>
+        <% weeks = (( campaign.end_date - campaign.start_date ) / 7 ).ceil %>
+        <%= weeks.to_s + " #{weeks > 1 ? 'weeks' : 'week'}" %>
+      </div>
+      <p>Shortest Campaign</p>
+    </div>
+    <div class="card-statistic">
+      <div class="card-statistic-circle">
+        <strong><%= @sum_eng_rate % 1000 %>k</strong>
+      </div>
+      <p>Total potential engagement rate</p>
+    </div>
+  </div>
+<% end %>

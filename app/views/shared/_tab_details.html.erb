@@ -1,10 +1,12 @@
 <div class="details">
 
   <div class="campaign-status">
-    <% if @campaign.visibility == true %>
-      <p>Public visibility: <strong>Activated</strong></p>
-    <% else %>
-      <p>Public visibility: <strong>Deactivated</strong></p>
+    <% if current_user.business %>
+      <% if @campaign.visibility == true %>
+        <p>Public visibility: <strong>Activated</strong></p>
+      <% else %>
+        <p>Public visibility: <strong>Deactivated</strong></p>
+      <% end %>
     <% end %>
   </div>
 
@@ -39,8 +41,10 @@
     </div>
   </div>
 
-  <div class="card-info large-details-card">
-    <h4>Uploaded Documents</h4>
-  </div>
+  <% if current_user.business %>
+    <div class="card-info large-details-card">
+      <h4>Uploaded Documents</h4>
+    </div>
+  <% end %>
 
 </div>
