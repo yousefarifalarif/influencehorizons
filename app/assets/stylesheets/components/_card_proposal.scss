@@ -36,3 +36,16 @@
   padding: 4px 8px;
   border-radius: 4px;
 }
+.card-proposal-status.accept {
+  background-color: rgb(110, 241, 215);
+  margin-right: 8px;
+  &:hover{
+    opacity:0.7;
+  }
+}
+.card-proposal-status.decline {
+  background-color: rgb(241, 125, 110);
+  &:hover{
+    opacity:0.7;
+  }
+}

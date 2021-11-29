@@ -24,11 +24,9 @@ class ProposalsController < ApplicationController
 
   def show; end
 
-  def edit; end
-
   def update
     @proposal.update(proposal_params)
-    redirect_to proposal_path(@proposal)
+    redirect_to proposals_path
   end
 
   private
@@ -42,6 +40,6 @@ class ProposalsController < ApplicationController
   end
 
   def proposal_params
-    params.require(:proposal).permit(:title)
+    params.require(:proposal).permit(:title, :status, :accepted)
   end
 end

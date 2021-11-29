@@ -24,6 +24,12 @@
           <% end %>
         </div>
       </div>
+      <% if proposal.status == "Pending" && partner.instance_of?(Business) %>
+        <div class="modal-footer">
+          <%= render "proposals/form_accept", proposal: proposal %>
+          <%= render "proposals/form_decline", proposal: proposal %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

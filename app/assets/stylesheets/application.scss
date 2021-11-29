@@ -19,3 +19,11 @@ a, a:hover {
 h1 {
   margin-bottom: 50px;
 }
+
+.preload * {
+  transition: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}

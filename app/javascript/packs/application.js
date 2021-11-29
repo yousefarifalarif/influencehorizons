@@ -25,3 +25,14 @@ $(function () {
     window.localStorage.removeItem("activeTab");
   }
 });
+
+window.addEventListener('load', (event) => {
+  document.querySelector("body").classList.remove("preload");
+
+  if (document.querySelector(".card-proposal-status.accept")) {
+    document.querySelector(".card-proposal-status.accept").addEventListener("click", (event) => {
+      console.log(event.currentTarget);
+      event.stopPropagation();
+    });
+  }
+});

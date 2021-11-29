@@ -18,5 +18,10 @@
     </h6>
   <% end %>
   <p class="card-proposal-title"><%= proposal.title %></p>
-  <p class="card-proposal-status"><%= proposal.status %></p>
+  <% if proposal.status == "Pending" && partner.instance_of?(Business) %>
+    <%= render "proposals/form_accept", proposal: proposal %>
+    <%= render "proposals/form_decline", proposal: proposal %>
+  <% else %>
+    <p class="card-proposal-status"><%= proposal.status %></p>
+  <% end %>
 </div>
