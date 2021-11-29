@@ -4,8 +4,9 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  padding: 0px;
   h4 {
-    font-weight: 600
+    font-weight: 400
   }
   i {
     font-size: 24px;
@@ -23,10 +24,33 @@
 .large-details-card {
   width: calc(100% - 64px) !important;
   margin: 32px 32px 64px 32px;
-
+  padding: 0px;
+  h4, p {
+    padding: 16px;
+  }
 }
 
 .campaign-status {
   text-align: right;
   margin-right: 32px;
 }
+
+.blue-bar {
+  width: 100%;
+  margin: 0px;
+  color: white;
+  background-color: $blue;
+  h4 {
+    padding: 16px;
+    margin-bottom: 0px;
+  }
+}
+
+// .center-content {
+//   display: flex;
+//   justify-self: center;
+//   align-self: center;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }

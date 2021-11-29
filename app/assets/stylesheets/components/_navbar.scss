@@ -2,6 +2,9 @@
   justify-content: space-between;
   background: transparent;
   transition: 0.5s background-color ease;
+  p {
+    color: white;
+  }
   a.nav-link {
     color: white;
     text-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -17,10 +20,11 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  border: white;
 }
 
-.navbar-lewagon-white {
-  background-color: white;
+.navbar-lewagon-blue {
+  background-color: $blue;
 }
 
 .nav-tabs {
@@ -29,4 +33,14 @@
 .nav-tabs .nav-link.active, .nav-tabs .nav-link:hover {
   border:none;
   border-bottom: 2px solid $blue;
+}
+
+.navbar-lewagon .avatar-bordered {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+  border: white 2px solid;
+  object-fit: cover;
+  background-color: white;
 }
