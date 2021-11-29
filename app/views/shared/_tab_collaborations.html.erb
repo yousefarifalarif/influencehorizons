@@ -1,4 +1,3 @@
-<!-- Button trigger modal -->
 <%if @proposals.size == 0 %>
   <div class="d-flex justify-content-between">
     <h1>You have no active collaborations</h1>
@@ -17,8 +16,8 @@
     <div class="card-container" data-dropdown-target="container">
       <% @proposals.each do |proposal| %>
         <% if proposal.accepted && proposal.status != "Completed" %>
-          <%= render "./shared/show_proposal_modal", proposal: proposal, modal_title: proposal.title %>
-          <%= render 'shared/proposal_card', proposal: proposal %>
+          <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
+          <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>
       <% end %>
     </div>
@@ -32,8 +31,8 @@
     <div class="card-container" data-dropdown-target="container">
       <% @proposals.each do |proposal| %>
         <% unless proposal.accepted %>
-        <%= render "./shared/show_proposal_modal", proposal: proposal, modal_title: proposal.title %>
-        <%= render 'shared/proposal_card', proposal: proposal %>
+          <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
+          <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>
       <% end %>
     </div>
@@ -47,11 +46,11 @@
     <div class="card-container" data-dropdown-target="container">
       <% @proposals.each do |proposal| %>
         <% if proposal.accepted && proposal.status == "Completed"  %>
-          <%= render "./shared/show_proposal_modal", proposal: proposal, modal_title: proposal.title %>
-          <%= render 'shared/proposal_card', proposal: proposal %>
+          <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
+          <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>
       <% end %>
     </div>
   </div>
 <% end %>
-<%= render "./shared/create_proposal_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign" %>
+<%= render "./shared/modal_create_proposal", campaign: @campaign, business: @business, modal_title: "Create a Campaign" %>

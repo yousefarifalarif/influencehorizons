@@ -1,0 +1,9 @@
+<!-- Render the search bar-->
+<%= render "search_bar" %>
+
+<div class="card-campaign-container">
+  <%@campaigns.each do |campaign|%>
+    <!-- Render the cards for open campaigns-->
+    <%= render "card_campaign_small", campaign: campaign %>
+  <% end %>
+</div>

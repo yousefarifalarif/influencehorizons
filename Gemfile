@@ -32,6 +32,15 @@ gem 'devise'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
+# Twitter API gem
+gem "typhoeus"
+gem 'json', '~> 2.6', '>= 2.6.1'
+gem 'oauth', '~> 0.5.6'
+
+# youtube API gem
+gem 'google-api-client', '>0.7'
+
+
 # cloudinary image hosting
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.16.0'
