@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :campaigns, only: %i[index show edit update] do
-    resources :proposals, only: %i[index new create]
+    resources :proposals, only: %i[new create]
   end
 
-  resources :proposals, only: %i[show edit update] do
+  resources :proposals, only: %i[index show edit update] do
     get "choose_influencers", to: "in"
     resources :reviews, only: %i[new create]
   end

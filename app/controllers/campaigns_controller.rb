@@ -24,7 +24,7 @@ class CampaignsController < ApplicationController
       @open_campaigns = @business.campaigns.where(archived: false)
       @closed_campaigns = @business.campaigns.where(archived: true)
     else
-
+      @campaigns = Campaign.where(visibility: true, archived: false)
     end
   end
 

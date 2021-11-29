@@ -1,10 +1,21 @@
-<% if user_signed_in? && (current_user.business || current_user.influencer) %>
+<% if user_signed_in? && current_user.business %>
   <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
   <div>
     <div id="mySidebar" class="sidebar" data-side-bar-target="sidebar">
       <%= link_to "Statistics", dashboard_path %>
       <%= link_to "Campaigns", campaigns_path %>
       <%= link_to "Influencers", influencers_path %>
+      <%#= link_to "Reviews", reviews_path %>
+      <%= link_to "Profile", user_path(current_user) %>
+    </div>
+  </div>
+<% elsif user_signed_in? && current_user.influencer %>
+  <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
+  <div>
+    <div id="mySidebar" class="sidebar" data-side-bar-target="sidebar">
+      <%= link_to "Statistics", dashboard_path %>
+      <%= link_to "Collaborations", proposals_path %>
+      <%= link_to "Campaigns", campaigns_path %> <%# hide invisible campaign %>
       <%#= link_to "Reviews", reviews_path %>
       <%= link_to "Profile", user_path(current_user) %>
     </div>

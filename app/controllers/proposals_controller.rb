@@ -2,6 +2,13 @@ class ProposalsController < ApplicationController
   before_action :set_campaign, only: [:create]
   before_action :find_proposal, only: %i[show edit update]
 
+  def index
+    if current_user.role == 'Influencer'
+      @influencer = current_user.influencer
+      @proposals = @influencer.proposals
+    end
+  end
+
   def create
     @proposal = Proposal.new(proposal_params)
     @proposal.campaign = @campaign
