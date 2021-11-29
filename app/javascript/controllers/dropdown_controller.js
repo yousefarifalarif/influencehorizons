@@ -5,10 +5,6 @@ export default class extends Controller {
 
   static targets = ["container", "btn"]
 
-  connect() {
-    console.log(this.containerTarget);
-  }
-
   toggleContent () {
     this.containerTarget.classList.toggle("d-none");
     this.btnTarget.classList.toggle("fa-caret-up");

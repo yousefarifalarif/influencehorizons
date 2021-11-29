@@ -15,23 +15,27 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
+// Keep current tab in Campaign detail
 $(function () {
-  $('a[data-toggle="tab"]').on('click', function (e) {
-    window.localStorage.setItem('activeTab', $(e.target).attr('href'));
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    localStorage.setItem('activeTab', $(e.target).attr('href'));
   });
-  var activeTab = window.localStorage.getItem('activeTab');
+
+  var activeTab = localStorage.getItem('activeTab');
   if (activeTab) {
-    $('#myTab a[href="' + activeTab + '"]').tab('show');
-    window.localStorage.removeItem("activeTab");
+    $('[href="' + activeTab + '"]').tab('show');
   }
 });
 
+// Skip modal for accept and decline clicks
 window.addEventListener('load', (event) => {
   document.querySelector("body").classList.remove("preload");
 
   if (document.querySelector(".card-proposal-status.accept")) {
     document.querySelector(".card-proposal-status.accept").addEventListener("click", (event) => {
-      console.log(event.currentTarget);
+      event.stopPropagation();
+    });
+    document.querySelector(".card-proposal-status.decline").addEventListener("click", (event) => {
       event.stopPropagation();
     });
   }
