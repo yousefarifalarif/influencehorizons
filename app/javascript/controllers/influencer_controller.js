@@ -5,14 +5,15 @@ export default class extends Controller {
   static targets = ["product", "btn", "cards"]
 
   connect() {
-    console.log(this.productTarget);
+    // console.log(this.productTarget);
   }
 
   toggleDisable(event) {
     // this.btnTarget.setAttribute("disabled", false);
     const id = event.target.dataset.id
     let card = [...this.productTarget.children].filter(child => parseInt(child.dataset.id) == parseInt(id))[0]
-    console.log(card)
+
+    // console.log(card)
     card.setAttribute("selected", true);
     // card.classList.toggle("card-product");
     card.classList.toggle("selected");

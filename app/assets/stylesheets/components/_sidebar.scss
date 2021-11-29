@@ -55,7 +55,7 @@
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidebar a:active, .sidebar a:hover {
+.sidebar a.active, .sidebar a:hover {
   color: $orange;
 }
 

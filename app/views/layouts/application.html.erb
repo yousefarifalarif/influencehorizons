@@ -16,7 +16,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body class="preload">
+  <body class="preload <%= params[:controller] %>_controller">
     <%= render 'shared/flashes' %>
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
