@@ -28,8 +28,8 @@
       </div>
       <div class="card-container" data-dropdown-target="container">
         <% @proposals.each do |proposal| %>
-          <% unless proposal.accepted %>
-          <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.campaign.business, modal_title: proposal.title %>
+          <% if proposal.status == "Pending" %>
+            <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.campaign.business, modal_title: proposal.title %>
             <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.campaign.business %>
           <% end %>
         <% end %>
@@ -43,7 +43,7 @@
       </div>
       <div class="card-container" data-dropdown-target="container">
         <% @proposals.each do |proposal| %>
-          <% if proposal.accepted && proposal.status == "Completed"  %>
+          <% if (proposal.accepted && proposal.status == "Completed") || proposal.status == "Declined" %>
             <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.campaign.business, modal_title: proposal.title %>
             <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.campaign.business %>
           <% end %>

@@ -6,6 +6,7 @@ class ProposalsController < ApplicationController
     if current_user.role == 'Influencer'
       @influencer = current_user.influencer
       @proposals = @influencer.proposals
+      @message = Message.new
     end
   end
 

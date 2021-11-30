@@ -84,6 +84,8 @@ emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef@gmail.com"
       proposal.campaign = campaign
       proposal.influencer = influencers.sample
       proposal.save!
+
+      chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
     end
   end
 end
