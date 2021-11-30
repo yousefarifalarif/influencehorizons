@@ -3,11 +3,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
     @message.save!
-    if current_user.role == "Business"
-      redirect_to campaign_path(@message.chatroom.proposal.campaign, anchor: "message-#{@message.id}")
-    else
-      redirect_to proposals_path(anchor: "message-#{@message.id}")
-    end
+    ChatroomChannel.broadcast_to(@message.chatroom, render_to_string(partial: "message", locals: { message: @message }))
   end
 
   private
