@@ -5,7 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   # after_action :after_sign_up_path_for, only: [:create]
 
-
   # GET /resource/sign_up
   def new
     super
@@ -67,6 +66,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       render :new
     end
+  end
+
+  def after_update_path_for(resource)
+    user_path(current_user)
   end
 
   # def after_inactive_sign_up_path_for(resource)

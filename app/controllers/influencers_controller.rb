@@ -29,8 +29,8 @@ class InfluencersController < ApplicationController
   def edit; end
 
   def update
-    @influencer.update(influencer_params)
-    redirect_to influencer_path(@influencer)
+    @influencer.update!(influencer_params)
+    redirect_to user_path(@influencer)
   end
 
   private
@@ -44,7 +44,7 @@ class InfluencersController < ApplicationController
   end
 
   def influencer_params
-    params.require(:influencer).permit(:ig_username, :ig_follwers, :youtube_channel_name, :youtube_subscribers,
+    params.require(:influencer).permit(:ig_username, :ig_followers, :youtube_channel_name, :youtube_subscribers,
                                        :twitter_username, :facebook_username, :facebook_followers,
                                        :profile_pic, :gender)
   end
