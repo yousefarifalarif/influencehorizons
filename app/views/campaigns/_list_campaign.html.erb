@@ -1,0 +1,32 @@
+<% if current_user.business %>
+  <div class="open-campaigns" data-controller="dropdown">
+    <div class="dropdown-header">
+      <h4>Open Campaigns</h4>
+      <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+    </div>
+    <div class="card-container" data-dropdown-target="container">
+    <% @campaigns.each do |campaign| %>
+      <!-- Render the cards for open campaigns-->
+      <%= render "card_campaign", campaign: campaign if !campaign.archived %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="closed-campaigns" data-controller="dropdown">
+    <div class="dropdown-header">
+      <h4>Closed Campaigns</h4>
+      <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
+    </div>
+    <div class="card-container" data-dropdown-target="container">
+    <% @campaigns.each do |campaign| %>
+        <!-- Render the cards for closed campaigns-->
+      <%= render "card_campaign", campaign: campaign if campaign.archived  %>
+    <% end %>
+    </div>
+  </div>
+<% else %>
+  <%@campaigns.each do |campaign|%>
+    <!-- Render the cards for open campaigns-->
+    <%= render "card_campaign_small", campaign: campaign %>
+  <% end %>
+<% end %>

@@ -2,6 +2,28 @@ class ProposalsController < ApplicationController
   before_action :set_campaign, only: [:create]
   before_action :find_proposal, only: %i[show edit update]
 
+  def index
+    if current_user.role == 'Influencer'
+      @influencer = current_user.influencer
+      @proposals = @influencer.proposals
+      @message = Message.new
+    end
+  end
+
+  def choose_influencers
+    @proposal = Proposal.find(params[:proposal][:proposals])
+    # @influencers = Influencer.find(params[:proposal][:influencer_ids])
+    params[:proposal][:influencer_ids].split(",").each do |id|
+      if @proposal.influencer.nil?
+        @proposal.update(influencer_id: id)
+      else
+        @new_proposal = Proposal.new(title: @proposal.title, status: @proposal.status, campaign: @proposal.campaign, influencer_id: id, creator: @proposal.creator )
+        @new_proposal.save!
+      end
+    end
+    redirect_to campaign_path(@proposal.campaign)
+  end
+
   def create
     @proposal = Proposal.new(proposal_params)
     @proposal.campaign = @campaign
@@ -17,11 +39,9 @@ class ProposalsController < ApplicationController
 
   def show; end
 
-  def edit; end
-
   def update
     @proposal.update(proposal_params)
-    redirect_to proposal_path(@proposal)
+    redirect_to proposals_path
   end
 
   private
@@ -35,7 +55,7 @@ class ProposalsController < ApplicationController
   end
 
   def proposal_params
-    params.require(:proposal).permit(:title)
+    params.require(:proposal).permit(:title, :status, :accepted)
   end
 end
 #

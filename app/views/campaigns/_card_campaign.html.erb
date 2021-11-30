@@ -2,12 +2,11 @@
   <div class="card-campaign">
     <div class="card-campaign-info">
       <h3><%= campaign.name %></h3>
-      <p><i class="far fa-calendar-alt"></i> <%= campaign.start_date%> to <%=campaign.end_date %></p>
+      <p><i class="far fa-calendar-alt"></i> <%= campaign.start_date%> to <%= campaign.end_date %></p>
       <p><i class="fas fa-map-marked-alt"></i> <%= campaign.location %></p>
     </div>
     <div class="card-campaign-proposals">
       <h6><strong><i class="fas fa-file-contract"></i> Collaborations:</strong></h6>
-      <%# raise %>
       <p>In Progress: <%= campaign.proposals.select{ |p| p.status == "In Progress" }.size %></p>
       <p>Pending: <%= campaign.proposals.select{ |p| p.status == "Pending" }.size %></p>
       <p>Completed: <%= campaign.proposals.select{ |p| p.status == "Completed" }.size %></p>

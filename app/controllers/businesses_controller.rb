@@ -22,7 +22,7 @@ class BusinessesController < ApplicationController
 
   def update
     @business.update(business_params)
-    redirect_to business_path(@business)
+    redirect_to user_path(@business)
   end
 
   private

@@ -15,13 +15,14 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
+// Keep current tab in Campaign detail
 $(function () {
-  $('a[data-toggle="tab"]').on('click', function (e) {
-    window.localStorage.setItem('activeTab', $(e.target).attr('href'));
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    localStorage.setItem('activeTab', $(e.target).attr('href'));
   });
-  var activeTab = window.localStorage.getItem('activeTab');
+
+  var activeTab = localStorage.getItem('activeTab');
   if (activeTab) {
-    $('#myTab a[href="' + activeTab + '"]').tab('show');
-    window.localStorage.removeItem("activeTab");
+    $('[href="' + activeTab + '"]').tab('show');
   }
 });

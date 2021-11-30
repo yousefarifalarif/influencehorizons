@@ -1,39 +1,13 @@
 <div class="container py-5">
-<%if @campaigns.size == 0 %>
-    <div class="d-flex justify-content-between">
-      <h1>You have no active campaigns</h1>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new campaign</button>
-    </div>
-  <%else%>
-    <div class="d-flex justify-content-between">
-      <h1>Campaigns Overview</h1>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new campaign</button>
-    </div>
-    <%= render "search_bar" %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCampaignModal">Create campaign</button>
-    <%= render "./shared/create_campaign_modal", campaign: @campaign, business: @business, modal_title: "Create a Campaign"%>
-
-    <div class="open-campaigns" data-controller="dropdown">
-      <div class="dropdown-header">
-        <h4>Open Campaigns</h4>
-        <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
-      </div>
-      <div class="card-container" data-dropdown-target="container">
-        <%@open_campaigns.each do |campaign|%>
-          <%= render "campaign_cards", campaign: campaign %>
-        <% end %>
+  <% if current_user.role == 'Business' %>
+    <%= render 'index_business' %>
+  <% elsif current_user.role == 'Influencer' %>
+    <h1>Campaigns</h1>
+    <div data-controller="search-campaigns">
+      <%= render "search_bar" %>
+      <div class="card-campaign-container" data-search-campaigns-target="list" >
+        <%= render "list_campaign" %>
       </div>
     </div>
-    <div class="closed-campaigns" data-controller="dropdown">
-      <div class="dropdown-header">
-        <h4>Closed Campaigns</h4>
-        <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
-      </div>
-      <div class="card-container" data-dropdown-target="container">
-      <%@closed_campaigns.each do |campaign|%>
-        <%= render "campaign_cards", campaign: campaign %>
-      <% end %>
-      </div>
-    </div>
-  <%end%>
+  <% end %>
 </div>

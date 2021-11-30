@@ -1,13 +1,15 @@
-<div class="form-row">
+<div class="form-row" style="margin-bottom: 40px;">
   <div class="col-4">
-    <%= form_tag campaigns_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Search for Campaigns" %>
+    <%= form_tag campaigns_path, method: :get, data: { search_campaigns_target: 'form' } do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search for Campaigns",
+      data: { search_campaigns_target: 'input',
+              action: current_user.business ? 'keyup->search-campaigns#updateBus' : 'keyup->search-campaigns#updateInf' } %>
   </div>
   <div class="form-row">
-    <%= submit_tag "Search", class: "btn btn-secondary" %>
+    <%= submit_tag "Search", class: "blue" %>
     <% end %>
   </div>
 </div>

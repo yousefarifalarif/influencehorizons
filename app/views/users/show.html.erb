@@ -1,0 +1,61 @@
+<div class="container py-5">
+  <h1>Profile</h1>
+  <% if current_user.influencer %>
+    <div class="d-flex flex-column align-items-center">
+      <%= cl_image_tag current_user.influencer.photo.key, :class=> "profile-avatar" %>
+      <h3 class="mt-4"><%= @user.first_name %> <%= @user.last_name %></h3>
+
+      <div class="profile-description d-flex">
+        <div class="information-card">
+          <div class="blue-bar">
+            <h4>Personal Information</h4>
+          </div>
+          <p><i class="fas fa-restroom"></i> <%= @user.influencer.gender %></p>
+          <p><i class="fas fa-envelope"></i> <%= @user.email %></p>
+          <p><i class="fas fa-map-marked-alt"></i> <%= @user.location.capitalize %></p>
+          <p><i class="fas fa-phone-alt"></i> <%= @user.phone_number %></p>
+          <%= link_to "Edit", edit_user_registration_path, class: "edit btn btn-outline-light" %>
+        </div>
+
+        <div class="information-card">
+          <div class="blue-bar">
+            <h4>Your Brand</h4>
+          </div>
+          <p><i class="fab fa-youtube card-icon"></i> <%= @user.influencer.youtube_channel_name %> | <%= @user.influencer.youtube_subscribers/1000 %>k</p>
+          <p><i class="fab fa-twitter card-icon"></i> <%= @user.influencer.twitter_username %> | <%= @user.influencer.twitter_followers/1000 %>k</p>
+          <p><i class="fab fa-instagram card-icon"></i> <%= @user.influencer.ig_username %> | <%= @user.influencer.ig_followers/1000 %>k</p>
+          <p><i class="fab fa-facebook card-icon"></i> <%= @user.influencer.facebook_username %> | <%= @user.influencer.facebook_followers/1000 %>k</p>
+          <%= link_to "Edit", edit_user_influencer_path(current_user.influencer.id), class: "edit btn btn-outline-light" %>
+        </div>
+      </div>
+    </div>
+
+  <% elsif current_user.business %>
+    <div class="d-flex flex-column align-items-center">
+      <%= cl_image_tag current_user.business.photo.key, :class=> "profile-avatar" %>
+      <h3 class="mt-4"><%= @user.business.company_name %></h3>
+
+      <div class="profile-description d-flex">
+        <div class="information-card">
+          <div class="blue-bar">
+            <h4>Personal Information</h4>
+          </div>
+          <p><i class="fas fa-user-circle"></i> <%= @user.first_name %> <%= @user.last_name %></p>
+          <p><i class="fas fa-envelope"></i> <%= @user.email %></p>
+          <p><i class="fas fa-phone-alt"></i> <%= @user.phone_number %></p>
+          <%= link_to "Edit", edit_user_registration_path, class: "edit btn btn-outline-light" %>
+        </div>
+
+        <div class="information-card">
+          <div class="blue-bar">
+            <h4>Business Information</h4>
+          </div>
+          <p><i class="fas fa-building"></i> <%= @user.business.company_name %></p>
+          <p><i class="fas fa-map-marked-alt"></i> <%= @user.location.capitalize %></p>
+          <p><i class="fas fa-link"></i> <%= @user.business.company_url %></p>
+          <%= link_to "Edit", edit_business_path(current_user.business.id), class: "edit btn btn-outline-light" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

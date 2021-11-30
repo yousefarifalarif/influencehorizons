@@ -15,7 +15,7 @@ class PagesController < ApplicationController
         end
       end
     elsif current_user.influencer
-      # TODO
+      @proposals = current_user.influencer.proposals
     end
   end
 end

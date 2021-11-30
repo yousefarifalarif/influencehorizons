@@ -1,0 +1,5 @@
+<%= simple_form_for (proposal) do |f| %>
+  <%= f.hidden_field :accepted, value: false %>
+  <%= f.hidden_field :status, value: "Declined" %>
+  <%= f.submit "Decline", class:"btn card-proposal-status decline" %>
+<% end %>

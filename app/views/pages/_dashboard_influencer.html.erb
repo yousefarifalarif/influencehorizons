@@ -1,0 +1,40 @@
+<%if @proposals.size == 0 %>
+  <div class="d-flex justify-content-between">
+    <h4>You have no active collaborations at the moment. Create your first collaboration now!</h4>
+  </div>
+<%else%>
+  <div class="cards-statistic">
+    <div class="card-statistic position margin-style">
+      <div class="card-statistic-circle">
+        <strong><%= @proposals.select { |p| !(p.status == "Completed") }.size %></strong>
+        <p>My current collaborations</p>
+      </div>
+    </div>
+
+    <div class="card-statistic">
+      <div class="card-statistic-circle">
+        <strong><%= @proposals.size %></strong>
+        <p>All my collaborations</p>
+      </div>
+    </div>
+
+    <div class="card-statistic position">
+      <div class="card-statistic-circle">
+        <!-- update money -->
+        <p> </p>
+        <p>My money earned</p>
+      </div>
+    </div>
+
+    <div>
+    </div>
+
+    <div class="card-statistic">
+      <div class="card-statistic-circle">
+        <!-- update reach -->
+        <strong><%= @current_user.influencer.ig_followers % 1000 %>k</strong>
+        <p>My total estimated reach</p>
+      </div>
+    </div>
+  </div>
+<% end %>
