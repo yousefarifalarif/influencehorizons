@@ -7,10 +7,16 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Mono', monospace;
+}
 
 a, a:hover {
   text-decoration: none;
