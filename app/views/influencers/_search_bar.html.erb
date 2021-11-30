@@ -1,10 +1,12 @@
 <div class="form-row">
   <div class="col-4 mb-4">
-    <%= form_tag influencers_path, method: :get do %>
+    <%= form_tag influencers_path, method: :get, data: { search_influencers_target: 'form' } do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Search for Influencers" %>
+        placeholder: "Search for Influencers",
+        data: { search_influencers_target: 'input',
+                action: 'keyup->search-influencers#update' } %>
   </div>
   <div class="form-row mb-4">
     <%= submit_tag "Search", class: "blue" %>
