@@ -18,7 +18,7 @@ class InfluencersController < ApplicationController
     @influencer = Influencer.new(influencer_params)
     @influencer.user = @user
     @influencer.twitter_followers = TwitterApi.new.twitter_api(influencer_params[:twitter_username])
-    # @influencer.ig_followers = InstagramApi.new.instagram_api("ethan_hardwick98")
+    # @influencer.ig_followers = InstagramApi.new.instagram_api("ethan_hardwick98" )
     if @influencer.save
       redirect_to root_path
     else
