@@ -23,5 +23,8 @@ Rails.application.routes.draw do
     get "choose_influencers", to: "in"
     resources :reviews, only: %i[new create]
   end
+
+  resources :messages, only: :create
+  # resources :chatrooms, only: :show
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

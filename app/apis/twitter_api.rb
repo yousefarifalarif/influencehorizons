@@ -17,7 +17,7 @@ class TwitterApi
     }
 
     response = user_lookup(user_lookup_url, bearer_token, params)
-    json_reponse = JSON.parse(response.body)
+    json_reponse = JSON.parse(response.body)["data"]["public_metrics"]["followers_count"]
   end
 
   def user_lookup(url, bearer_token, params)
