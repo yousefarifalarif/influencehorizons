@@ -25,7 +25,7 @@ class TwitterApi
       method: 'get',
       headers: {
         "User-Agent": "test-lookup",
-        "Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAF83WQEAAAAAp%2FKDtTvrJZ%2BolEDKS8ZjAfJWUvw%3DoihXeUN7PiXUM3GRLm7MnSZPg45upt7913n04u6K88aTXpYvuE"
+        "Authorization": "Bearer #{bearer_token}"
       },
       params: params
     }
