@@ -25,6 +25,10 @@ gem 'redis', '~> 4.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'nokogiri', '~> 1.12', '>= 1.12.5'
+gem 'open-uri'
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -39,6 +43,8 @@ gem 'oauth', '~> 0.5.6'
 
 # youtube API gem
 gem 'google-api-client', '>0.7'
+
+gem 'openssl', '~> 2.0.0.beta.1'
 
 
 # cloudinary image hosting
