@@ -17,14 +17,31 @@ class CampaignsController < ApplicationController
   end
 
   def index
-    if current_user.role == 'Business'
-      @business = current_user.business
+    case current_user.role
+    when 'Business'
+      # Get campaigns for business
       @campaign = Campaign.new
-      @campaigns = @business.campaigns
-      @open_campaigns = @business.campaigns.where(archived: false)
-      @closed_campaigns = @business.campaigns.where(archived: true)
-    else
-      @campaigns = Campaign.where(visibility: true, archived: false)
+      @business = current_user.business
+      if params[:query].present?
+        @campaigns = @business.campaigns.where("name ILIKE ?", "%#{params[:query]}%")
+      else
+        @campaigns = @business.campaigns
+      end
+    when 'Influencer'
+      # Get campaigns for influencers
+      if params[:query].present?
+        sql_query = "name ILIKE :query OR businesses.company_name ILIKE :query"
+        @campaigns = Campaign.joins(:business)
+                             .where(visibility: true, archived: false)
+                             .where(sql_query, query: "%#{params[:query]}%")
+      else
+        @campaigns = Campaign.where(visibility: true, archived: false)
+      end
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'campaigns/list_campaign', locals: { campaigns: @campaigns }, formats: [:html] }
     end
   end
 
