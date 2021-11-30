@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_154559) do
 
   create_table "proposals", force: :cascade do |t|
     t.string "title"
-    t.string "status", default: "pending"
+    t.string "status", default: "Pending"
     t.boolean "accepted", default: false
     t.bigint "campaign_id", null: false
     t.bigint "influencer_id"
