@@ -5,7 +5,7 @@ class InfluencersController < ApplicationController
   def index
     @influencers = Influencer.all
     # fetch proposals without influencer
-    @proposals = Proposal.where(influencer_id: nil)
+    @proposals = Proposal.joins(:campaign).where(creator: "Business", campaign: { business: current_user.business, archived: false }).distinct.pluck(:title)
   end
 
   def new
