@@ -36,6 +36,7 @@ class CampaignsController < ApplicationController
     else
 
     end
+    @message = Message.new
   end
 
   def edit; end

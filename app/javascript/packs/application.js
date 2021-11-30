@@ -26,17 +26,3 @@ $(function () {
     $('[href="' + activeTab + '"]').tab('show');
   }
 });
-
-// Skip modal for accept and decline clicks
-window.addEventListener('load', (event) => {
-  document.querySelector("body").classList.remove("preload");
-
-  if (document.querySelector(".card-proposal-status.accept")) {
-    document.querySelector(".card-proposal-status.accept").addEventListener("click", (event) => {
-      event.stopPropagation();
-    });
-    document.querySelector(".card-proposal-status.decline").addEventListener("click", (event) => {
-      event.stopPropagation();
-    });
-  }
-});
