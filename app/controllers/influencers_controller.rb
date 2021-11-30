@@ -4,6 +4,8 @@ class InfluencersController < ApplicationController
 
   def index
     @influencers = Influencer.all
+    # fetch proposals without influencer
+    @proposals = Proposal.where(influencer_id: nil)
   end
 
   def new

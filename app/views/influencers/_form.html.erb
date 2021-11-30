@@ -1,17 +1,12 @@
-<%= simple_form_for [business, campaign] do |f| %>
+<%= simple_form_for :proposal, url: choose_influencers_proposals_path do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :name %>
-      <%= f.input :description %>
-      <%= f.input :budget %>
-      <%= f.input :location %>
-      <%= f.input :start_date, as: :date, html5: true %>
-      <%= f.input :end_date, as: :date, html5: true  %>
-      <%= f.input :visibility, label: "Make campaign visible to public?"%>
+      <%= f.input :proposals, collection: @proposals %>
+      <%= f.hidden_field :influencer_ids, as: :array %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Create Campaign" %>
+      <%= f.button :submit, "Select Influencer" %>
     </div>
   <% end %>

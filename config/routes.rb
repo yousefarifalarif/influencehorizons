@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :proposals, only: %i[index show edit update] do
-    get "choose_influencers", to: "in"
+    post "choose_influencers", on: :collection
     resources :reviews, only: %i[new create]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

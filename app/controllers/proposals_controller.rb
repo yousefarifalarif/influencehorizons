@@ -9,6 +9,20 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def choose_influencers
+    @proposal = Proposal.find(params[:proposal][:proposals])
+    # @influencers = Influencer.find(params[:proposal][:influencer_ids])
+    params[:proposal][:influencer_ids].split(",").each do |id|
+      if @proposal.influencer.nil?
+        @proposal.update(influencer_id: id)
+      else
+        @new_proposal = Proposal.new(title: @proposal.title, status: @proposal.status, campaign: @proposal.campaign, influencer_id: id, creator: @proposal.creator )
+        @new_proposal.save!
+      end
+    end
+    redirect_to campaign_path(@proposal.campaign)
+  end
+
   def create
     @proposal = Proposal.new(proposal_params)
     @proposal.campaign = @campaign
