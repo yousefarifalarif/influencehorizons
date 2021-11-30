@@ -25,9 +25,14 @@
             <% end %>
           </div>
         </div>
-        <hr>
-        <%= render 'proposals/chatroom', chatroom: proposal.chatroom, message: @message %>
       </div>
+      <% unless proposal.status == "Pending" %>
+        <div class="modal-body border-top">
+          <div class="d-flex justify-content-between">
+            <%= render 'proposals/chatroom', chatroom: proposal.chatroom, message: @message %>
+          </div>
+        </div>
+      <% end %>
       <% if proposal.status == "Pending" && partner.instance_of?(Business) %>
         <div class="modal-footer">
           <%= render "proposals/form_accept", proposal: proposal %>
