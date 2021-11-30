@@ -29,8 +29,8 @@ class InfluencersController < ApplicationController
   def edit; end
 
   def update
-    @influencer.update(influencer_params)
-    redirect_to influencer_path(@influencer)
+    @influencer.update!(influencer_params)
+    redirect_to user_path(@influencer)
   end
 
   private

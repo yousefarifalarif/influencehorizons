@@ -1,7 +1,7 @@
 .create-btn {
     border: none;
     background-color: rgba(252,163,17,1);
-    padding: 10px
+    padding: 10px;
   }
   .create-btn:hover {
     border: none;
@@ -21,3 +21,10 @@
     border: none;
     background-color: rgba(20,33,61,1);
   }
+
+.edit {
+  margin-bottom: 20px;
+  border: none;
+  background-color: rgba(252,163,17,0.7);
+  position: absolute right 16px;
+}

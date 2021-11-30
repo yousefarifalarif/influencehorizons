@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
 
-  resources :users do
-    resources :businesses, only: %i[new create]
-    resources :influencers, only: %i[new create]
+  resources :users, only: [:show] do
+    resources :businesses, only: %i[new create edit update]
+    resources :influencers, only: %i[new create edit update]
   end
 
-  resources :influencers, only: %i[index show]
+  resources :influencers, only: %i[index show edit update]
 
   resources :businesses, only: %i[edit update index] do
     resources :campaigns, only: %i[new create]
