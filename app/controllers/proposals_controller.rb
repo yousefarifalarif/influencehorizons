@@ -11,7 +11,7 @@ class ProposalsController < ApplicationController
   end
 
   def choose_influencers
-    @proposal = Proposal.find(params[:proposal][:proposals])
+    @proposal = Proposal.where(title: params[:proposal][:proposals])[0]
     # @influencers = Influencer.find(params[:proposal][:influencer_ids])
     params[:proposal][:influencer_ids].split(",").each do |id|
       if @proposal.influencer.nil?
