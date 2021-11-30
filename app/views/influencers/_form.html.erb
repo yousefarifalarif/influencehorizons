@@ -1,0 +1,12 @@
+<%= simple_form_for :proposal, url: choose_influencers_proposals_path do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :proposals, collection: @proposals %>
+      <%= f.hidden_field :influencer_ids, as: :array %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Select Influencer" %>
+    </div>
+  <% end %>

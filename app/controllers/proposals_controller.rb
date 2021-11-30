@@ -38,3 +38,4 @@ class ProposalsController < ApplicationController
     params.require(:proposal).permit(:title)
   end
 end
+#
