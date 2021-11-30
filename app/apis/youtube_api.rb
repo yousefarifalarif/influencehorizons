@@ -1,41 +1,40 @@
+require 'uri'
+require 'net/http'
+require 'openssl'
+require 'open-uri'
+require 'nokogiri'
+
 class YoutubeApi
-require 'google/apis'
-require 'google/apis/youtube_v3'
-require 'googleauth'
-require 'googleauth/stores/file_token_store'
 
-require 'fileutils'
-require 'json'
+  def youtube_api(channelname)
+    channel_name = channelname
+    url = URI("https://scrapingbee.p.rapidapi.com/?url=https%3A%2F%2Fwww.youtube.com%2F#{channel_name}%2Fabout&render_js=true")
 
-# REPLACE WITH VALID REDIRECT_URI FOR YOUR CLIENT
-REDIRECT_URI = 'http://localhost'
-APPLICATION_NAME = 'YouTube Data API Ruby Tests'
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-# REPLACE WITH NAME/LOCATION OF YOUR client_secrets.json FILE
-CLIENT_SECRETS_PATH = 'client_secret.json'
+    request = Net::HTTP::Get.new(url)
+    request["x-rapidapi-host"] = 'scrapingbee.p.rapidapi.com'
+    request["x-rapidapi-key"] = '790ad7b274mshe2d4b13b77d1305p1d5c15jsncfc1190599eb'
 
-# REPLACE FINAL ARGUMENT WITH FILE WHERE CREDENTIALS WILL BE STORED
-CREDENTIALS_PATH = File.join(ENV[YOUTUBE_TOKEN])
+    response = http.request(request)
+    nokogiri_translate(response.read_body)
+  end
 
-# SCOPE FOR WHICH THIS SCRIPT REQUESTS AUTHORIZATION
-SCOPE = Google::Apis::YoutubeV3::AUTH_YOUTUBE_READONLY
+  def nokogiri_translate(html_file)
+    html_doc = Nokogiri::HTML(html_file)
+    subscriber_count = 0
+    html_doc.search('#subscriber-count').each do |element|
+      subscriber_count = element.text.strip.split[0]
+    end
+    convert_subscriber_count(subscriber_count)
+  end
 
+  def convert_subscriber_count(subscriber_count)
+    subscriber_metric = subscriber_count.chars.last
+    subscriber_count = subscriber_count.to_i
+    subscriber_metric.downcase == "k" ? subscriber_count *= 1000 : subscriber_count *= 100_000
+  end
 
-# Initialize the API
-service = Google::Apis::YoutubeV3::YouTubeService.new
-service.client_options.application_name = APPLICATION_NAME
-service.authorization = authorize
-
-# Sample ruby code for channels.list
-
-def channels_list_by_username(service, part, **params)
-  response = service.list_channels(part, params).to_json
-  item = JSON.parse(response).fetch("items")[0]
-
-  puts ("This channel's ID is #{item.fetch("id")}. " +
-        "Its title is '#{item.fetch("snippet").fetch("title")}', and it has " +
-        "#{item.fetch("statistics").fetch("viewCount")} views.")
-end
-
-channels_list_by_username(service, 'snippet,contentDetails,statistics', for_username: 'GoogleDevelopers')
 end
