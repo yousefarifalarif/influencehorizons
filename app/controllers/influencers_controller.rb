@@ -5,7 +5,20 @@ class InfluencersController < ApplicationController
   before_action :find_influencer, only: %i[show edit update]
 
   def index
-    @influencers = Influencer.all
+    if params[:query].present?
+      sql_query = "gender ILIKE :gender OR users.first_name ILIKE :query OR users.last_name ILIKE :query"
+      @influencers = Influencer.joins(:user)
+                               .where(sql_query, gender: "#{params[:query]}%", query: "%#{params[:query]}%")
+    else
+      @influencers = Influencer.all
+    end
+    # fetch proposals without influencer
+    @proposals = Proposal.joins(:campaign).where(creator: "Business", campaign: { business: current_user.business, archived: false }).distinct.pluck(:title)
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'influencers/list_influencers', locals: { influencers: @influencers }, formats: [:html] }
+    end
   end
 
   def new
@@ -15,8 +28,10 @@ class InfluencersController < ApplicationController
   def create
     @influencer = Influencer.new(influencer_params)
     @influencer.user = @user
-    @influencer.twitter_followers = TwitterApi.new.twitter_api(influencer_params[:twitter_username])
-    # @influencer.ig_followers = InstagramApi.new.instagram_api("ethan_hardwick98")
+    # @influencer.twitter_followers = TwitterApi.new.twitter_api(influencer_params[:twitter_username])
+    # @influencer.ig_followers = InstagramApi.new.instagram_api(influencer_params[:ig_username])
+    # @influencer.youtube_subscribers = YoutubeApi.new.youtube_api(influencer_params[:youtube_channel_name])
+    # @influencer.facebook_followers = FacebookApi.new.facebook_api(influencer_params[:facebook_username])
     if @influencer.save
       redirect_to root_path
     else

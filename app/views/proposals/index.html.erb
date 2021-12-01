@@ -1,12 +1,12 @@
 <div class="container py-5">
-  <h1>Collaborations Overview</h1>
+  <h1 class="my-5">Collaborations Overview</h1>
   <%if @proposals.size == 0 %>
     <div class="d-flex justify-content-between">
-      <h3>You have no active collaborations</h3>
+      <h4 class="my-5">You have no active collaborations</h4>
       <%= link_to "Find campaigns", campaigns_path %>
     </div>
   <%else%>
-    <div class="open-proposals" data-controller="dropdown">
+    <div class="proposals-group" data-controller="dropdown">
       <div class="dropdown-header">
         <h4>Open</h4>
         <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="pending-proposals" data-controller="dropdown">
+    <div class="proposals-group" data-controller="dropdown">
       <div class="dropdown-header">
         <h4>Pending</h4>
         <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="closed-proposals" data-controller="dropdown">
+    <div class="proposals-group" data-controller="dropdown">
       <div class="dropdown-header">
         <h4>Closed</h4>
         <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>

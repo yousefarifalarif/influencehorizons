@@ -18,13 +18,12 @@
         <li class="nav-item dropdown d-flex align-items-center">
           <p class="my-0 mr-2">Welcome, <%= current_user.first_name %></p>
           <% if current_user.influencer %>
-            <%= cl_image_tag current_user.influencer.photo.key, class:"avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.influencer.photo.key, class:"avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.influencer.photo.attached? %>
           <% elsif current_user.business %>
-            <%= cl_image_tag current_user.business.photo.key, class:"avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.business.photo.key, class:"avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.business.photo.attached? %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>

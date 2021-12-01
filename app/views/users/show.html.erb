@@ -1,8 +1,8 @@
 <div class="container py-5">
-  <h1>Profile</h1>
+  <h1 class="my-5">Profile</h1>
   <% if current_user.influencer %>
     <div class="d-flex flex-column align-items-center">
-      <%= cl_image_tag current_user.influencer.photo.key, :class=> "profile-avatar" %>
+      <%= cl_image_tag current_user.influencer.photo.key, :class=> "profile-avatar" if current_user.influencer.photo.attached? %>
       <h3 class="mt-4"><%= @user.first_name %> <%= @user.last_name %></h3>
 
       <div class="profile-description d-flex">
@@ -32,7 +32,7 @@
 
   <% elsif current_user.business %>
     <div class="d-flex flex-column align-items-center">
-      <%= cl_image_tag current_user.business.photo.key, :class=> "profile-avatar" %>
+      <%= cl_image_tag current_user.business.photo.key, :class=> "profile-avatar" if current_user.business.photo.attached? %>
       <h3 class="mt-4"><%= @user.business.company_name %></h3>
 
       <div class="profile-description d-flex">
