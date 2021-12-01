@@ -1,46 +1,35 @@
-.card-product {
-  overflow: hidden;
-  height: 200px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  // align-items: center;
-  margin-top: 2%;
-  width: 45%;
-  justify-content: space-between;
-  align-items: column;
-
+.card-influencer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
+.card-influencer {
+  background-color: white;
+  border: solid 2px transparent;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+  padding: 32px;
+  text-align: center;
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
 }
 
 .card-icon {
   font-size: 20px;
 }
 
-.influencer-info {
-width: 200%;
-margin-top: 10px;
-}
-
 .selected {
-  box-shadow: 0 0 15px rgba(9, 255, 0, 0.5) !important;
+  border: solid 2px $blue;
 }
 
 .proposal-btn {

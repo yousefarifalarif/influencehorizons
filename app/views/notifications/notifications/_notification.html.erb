@@ -1,0 +1,22 @@
+<%= cache(['notifications', Notifications::VERSION, notification]) do %>
+<div id="notification-<%= notification.id %>"
+     data-id="<%= notification.id %>"
+     class="d-flex align-items-center media notification pb-2 notification-<%= notification.notify_type %><%= ' unread' unless notification.read? %>">
+  <div class="media-left pr-2">
+    <% case notification.actor.role %>
+    <% when "Business" %>
+      <%= cl_image_tag notification.actor.business.photo.key, class:"avatar-bordered large" if notification.actor.business.photo.attached? %>
+    <% when "Influencer" %>
+      <%= cl_image_tag notification.actor.influencer.photo.key, class:"avatar-bordered large" if notification.actor.influencer.photo.attached? %>
+    <% end %>
+  </div>
+  <div>
+    <div class="media-body">
+      <%= render partial: "/notifications/#{notification.notify_type}", locals: { notification: notification } %>
+    </div>
+    <small class="media-body">
+      <%= l notification.created_at, format: :short %>
+    </small>
+  </div>
+</div>
+<% end %>

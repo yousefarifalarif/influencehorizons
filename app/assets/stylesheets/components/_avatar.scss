@@ -16,6 +16,10 @@
   border: $blue 2px solid;
   object-fit: cover;
 }
+.avatar-bordered.white {
+  box-shadow: 0 0px 5px rgba(255, 255, 255, 0.2);
+  border: white 2px solid;
+}
 .avatar-bordered.large {
   width: 64px;
   height: 64px;

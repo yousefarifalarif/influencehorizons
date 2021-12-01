@@ -21,7 +21,7 @@
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
       <div class="content-container" data-controller="side-bar">
-        <% if current_page?(root_path) || !(user_signed_in? && (current_user.business || current_user.influencer)) %>
+        <% if current_page?("/") || !(user_signed_in? && (current_user.business || current_user.influencer)) %>
           <%= yield %>
         <% else %>
           <div class="sidebar-container"><%= render "shared/sidebar" %></div>
@@ -31,7 +31,7 @@
           </div>
         <% end %>
       </div>
-      <% if current_page?(root_path) || !(user_signed_in? && (current_user.business || current_user.influencer)) %>
+      <% if current_page?("/") || !(user_signed_in? && (current_user.business || current_user.influencer)) %>
         <div class="footer-container"><%= render "shared/footer" %></div>
       <% end %>
     </div>

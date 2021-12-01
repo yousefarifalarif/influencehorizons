@@ -4,7 +4,7 @@
       <%= cl_image_tag campaign.business.photo.key, class:"avatar-bordered xlarge" if campaign.business.photo.attached? %>
       <h5><%= campaign.business.company_name %></h5>
       <h5><%= campaign.name %></h5>
-      <p><i class="far fa-calendar-alt"></i> <%= campaign.start_date%> to <%= campaign.end_date %></p>
+      <p><i class="far fa-calendar-alt"></i> <%= campaign.start_date.strftime("%e %b %Y") %> - <%= campaign.end_date.strftime("%e %b %Y") %></p>
       <p><i class="fas fa-map-marked-alt"></i> <%= campaign.location %></p>
     </div>
   </div>
