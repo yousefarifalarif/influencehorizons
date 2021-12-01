@@ -1,9 +1,7 @@
 <div class="container py-5" data-controller="influencer">
   <div class="d-flex justify-content-between">
     <h1 class="my-5">Influencers</h1>
-    <%= link_to campaigns_path do %>
-      <button type="button" class="btn btn-create btn-outline-light" data-influencer-target="btn" data-action="click->influencer#sendProposal" data-id="" data-toggle="modal" data-target="#selectProposalModal">Send Proposal</button>
-    <% end %>
+    <button type="button" class="btn btn-create btn-outline-light my-5" data-influencer-target="btn" data-action="click->influencer#sendProposal" data-id="" data-toggle="modal" data-target="#selectProposalModal">Send Proposal</button>
   </div>
   <div data-controller="search-influencers">
     <%= render "search_bar" %>
