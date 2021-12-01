@@ -33,7 +33,9 @@
           </div>
         </div>
       <% end %>
-      <% if proposal.status == "Pending" && partner.instance_of?(Business) %>
+      <% influencer_condition = proposal.status == "Pending" && partner.instance_of?(Business) && proposal.creator == "Business" %>
+      <% business_condition = proposal.status == "Pending" && partner.instance_of?(Influencer) && proposal.creator == "Influencer" %>
+      <% if influencer_condition || business_condition %>
         <div class="modal-footer">
           <%= render "proposals/form_accept", proposal: proposal %>
           <%= render "proposals/form_decline", proposal: proposal %>
