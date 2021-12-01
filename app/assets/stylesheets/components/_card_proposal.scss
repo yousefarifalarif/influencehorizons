@@ -1,6 +1,16 @@
-.card-container {
+.proposals-group, .campaigns-group{
   margin-bottom: 50px;
 }
+
+.card-container {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+.card-container-shrinked {
+  max-height: 0;
+}
+
 .card-proposal {
   background-color: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.15);

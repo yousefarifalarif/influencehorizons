@@ -1,5 +1,5 @@
 <% if current_user.business %>
-  <div class="open-campaigns" data-controller="dropdown">
+  <div class="campaigns-group" data-controller="dropdown">
     <div class="dropdown-header">
       <h4>Open Campaigns</h4>
       <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="closed-campaigns" data-controller="dropdown">
+  <div class="campaigns-group" data-controller="dropdown">
     <div class="dropdown-header">
       <h4>Closed Campaigns</h4>
       <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
