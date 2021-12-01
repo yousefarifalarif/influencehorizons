@@ -7,10 +7,10 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.input :ig_username %>
-            <%= f.input :ig_followers %>
-            <%= f.input :youtube_channel_name %>
-            <%= f.input :youtube_subscribers %>
+            <%= f.input :ig_username, label: "IG Username"  %>
+            <%= f.input :ig_followers, label: "IG Followers"  %>
+            <%= f.input :youtube_channel_name, label: "YouTube Channel" %>
+            <%= f.input :youtube_subscribers, label: "YouTube Subscribers" %>
             <%= f.input :twitter_username %>
             <%= f.input :facebook_username %>
             <%= f.input :facebook_followers %>
@@ -18,7 +18,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Sign up", class: "btn btn-outline-light" %>
+            <%= f.button :submit, "Sign up", class: "btn btn-signup btn-outline-light" %>
           </div>
         <% end %>
       </div>
