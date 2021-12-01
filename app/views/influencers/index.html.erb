@@ -1,38 +1,11 @@
 <div class="container py-5" data-controller="influencer">
   <div class="d-flex justify-content-between">
-    <h1>Influencers</h1>
-    <%= link_to campaigns_path do %>
-      <button type="button" class="btn create-btn proposal-btn" data-influencer-target="btn" data-id="">Send Proposal</button>
-    <% end %>
+    <h1 class="my-5">Influencers</h1>
+    <button type="button" class="btn btn-create btn-outline-light my-5" data-influencer-target="btn" data-action="click->influencer#sendProposal" data-id="" data-toggle="modal" data-target="#selectProposalModal">Send Proposal</button>
   </div>
-  <%= render "search_bar" %>
-  <div class="d-flex flex-wrap justify-content-between" data-influencer-target="product">
-    <% @influencers.each do |influencer| %>
-    <div class="card-product" data-id="<%= influencer.id %>" data-influencer-target="cards" data-action="click->influencer#toggleDisable">
-      <div class="card-product-infos">
-        <h2><%= influencer.user.first_name %>
-        <%= influencer.user.last_name %></h2>
-        <p><%= influencer.gender %></p>
-        <div class="d-inline-flex justify-content-around influencer-info" >
-          <div class="d-flex flex-column align-items-center">
-            <i class="fab fa-instagram card-icon"></i>
-            <%= influencer.ig_followers/1000 %>k
-          </div>
-          <div class="d-flex flex-column align-items-center">
-            <i class="fab fa-youtube card-icon"></i>
-            <%= influencer.youtube_subscribers/1000 %>k
-          </div>
-          <div class="d-flex flex-column align-items-center">
-            <i class="fab fa-twitter card-icon"></i>
-            <%= influencer.twitter_followers/1000 %>k
-          </div>
-          <div class="d-flex flex-column align-items-center">
-            <i class="fab fa-facebook card-icon"></i>
-            <%= influencer.facebook_followers/1000 %>k
-          </div>
-        </div>
-      </div>
-      <%= cl_image_tag influencer.photo.key, class:"avatar-bordered xlarge m-3" %>
-    </div>
-  <% end %>
+  <div data-controller="search-influencers">
+    <%= render "search_bar" %>
+    <%= render "list_influencers" %>
+  </div>
 </div>
+<%= render "./shared/modal_select_influencer", influencer: @influencer, proposals: @proposals, modal_title: "Select an Influencer"%>

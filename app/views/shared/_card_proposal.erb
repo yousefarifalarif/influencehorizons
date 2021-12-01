@@ -1,7 +1,7 @@
 <div class="card-proposal-outer">
   <div class="card-proposal" data-toggle="modal" data-target="#modal-<%= proposal.id %>">
     <% if partner %>
-      <%= cl_image_tag partner.photo.key, class:"avatar-bordered large" %>
+      <%= cl_image_tag partner.photo.key, class:"avatar-bordered large" if partner.photo.attached?%>
       <h6>
         <% if partner.instance_of? Business %>
           <p><%= partner.company_name %></p>
@@ -20,7 +20,9 @@
     <% end %>
     <p class="card-proposal-title"><%= proposal.title %></p>
   </div>
-  <% if proposal.status == "Pending" && partner.instance_of?(Business) %>
+  <% influencer_condition = proposal.status == "Pending" && partner.instance_of?(Business) && proposal.creator == "Business" %>
+  <% business_condition = proposal.status == "Pending" && partner.instance_of?(Influencer) && proposal.creator == "Influencer" %>
+  <% if influencer_condition || business_condition %>
     <%= render "proposals/form_accept", proposal: proposal %>
     <%= render "proposals/form_decline", proposal: proposal %>
   <% else %>

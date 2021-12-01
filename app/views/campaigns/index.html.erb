@@ -2,7 +2,12 @@
   <% if current_user.role == 'Business' %>
     <%= render 'index_business' %>
   <% elsif current_user.role == 'Influencer' %>
-    <h1>Campaigns</h1>
-    <%= render 'index_influencer' %>
+    <h1 class="my-5">Campaigns</h1>
+    <div data-controller="search-campaigns">
+      <%= render "search_bar" %>
+      <div class="card-campaign-container" data-search-campaigns-target="list" >
+        <%= render "list_campaign" %>
+      </div>
+    </div>
   <% end %>
 </div>

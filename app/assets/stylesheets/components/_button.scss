@@ -1,30 +1,121 @@
-.create-btn {
-    border: none;
-    background-color: rgba(252,163,17,1);
-    padding: 10px;
-  }
-  .create-btn:hover {
-    border: none;
-    background-color: rgba(252,163,17,0.7);
-  }
-  .form-links {
-    color: $blue;
-  }
-  .blue {
-    color: $orange;
-    padding: 0px 10px;
-    width: 100%;
-    border: $blue;
-    background-color: rgba(20,33,61,0.8);
-  }
-  .blue:hover {
-    border: none;
-    background-color: rgba(20,33,61,1);
-  }
-
-.edit {
-  margin-bottom: 20px;
+// Homepage Button
+.btn-home {
+  opacity: 1;
+  size: 24px;
+  color: $orange;
   border: none;
-  background-color: rgba(252,163,17,0.7);
-  position: absolute right 16px;
+  background-color: $blue;
+}
+.btn-home:hover {
+  size: 24px;
+  color: $orange;
+  border: none;
+  background-color: $blue;
+  transform: scale(1.1);
+  transition: all .3s ease-in-out;
+}
+
+
+// Sign In & Sign Up
+.btn-login {
+  width: 100%;
+  margin-bottom: 10px;
+  border: solid 2px $orange;
+  color: $blue;
+  background-color: rgba(252,163,17,0.9) !important;
+}
+.btn-login:hover {
+  border: solid 2px $blue;
+  color: $blue;
+  background-color: $orange !important;
+}
+
+.btn-signup {
+  width: 100% !important;
+  margin-bottom: 20px;
+  border: solid 2px $blue;
+  color: $orange;
+  background-color: rgba(20,33,61,0.9) !important;
+}
+.btn-signup:hover {
+  border: solid 2px $orange;
+  color: $orange;
+  background-color: $blue !important;
+}
+
+
+// Profile Page Buttons
+.btn-edit {
+  width: auto;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border: solid 2px $orange;
+  color: $blue;
+  background-color: rgba(252,163,17,0.9) !important;
+}
+.btn-edit:hover {
+  border: solid 2px $blue;
+  color: $blue;
+  background-color: $orange !important;
+}
+
+.btn-update {
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: solid 2px $orange;
+  color: $blue;
+  background-color: rgba(252,163,17,0.9) !important;
+}
+.btn-update:hover {
+  border: solid 2px $blue;
+  color: $blue;
+  background-color: $orange !important;
+}
+
+.btn-back {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  height: auto;
+  border: solid 2px $blue;
+  color: $orange;
+  background-color: rgba(20,33,61,0.9) !important;
+}
+.btn-back:hover {
+  border: solid 2px $orange;
+  color: $orange;
+  background-color: $blue !important;
+}
+
+// Campaigns Index
+.btn-search {
+  padding: 0px 10px;
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: rgba(20,33,61,0.9) !important;
+}
+.btn-search:hover {
+  border: none;
+  color: $orange;
+  background-color: $blue !important;
+}
+
+.btn-create {
+  border: solid 2px $orange;
+  color: $blue;
+  background-color: rgba(252,163,17,0.9) !important;
+  margin-bottom: 50px !important;
+  }
+.btn-create:hover {
+  border: solid 2px $blue;
+  color: $blue;
+  background-color: $orange !important;
+  margin-bottom: 50px !important;
+}
+
+.form-links {
+  color: $blue;
 }

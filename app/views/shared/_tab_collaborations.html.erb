@@ -1,14 +1,14 @@
 <%if @proposals.size == 0 %>
   <div class="d-flex justify-content-between">
-    <h1>You have no active collaborations</h1>
-    <button type="button" class="create-btn" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
+    <h4>You have no active collaborations</h4>
+    <button type="button" class="btn-create" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
   </div>
 <%else%>
   <% unless @proposals.first.campaign.archived %>
-    <button type="button" class="create-btn" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
+    <button type="button" class="btn-create" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
   <% end %>
 
-  <div class="open-proposals" data-controller="dropdown">
+  <div class="proposals-group" data-controller="dropdown">
     <div class="dropdown-header">
       <h4>Open</h4>
       <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
@@ -23,14 +23,14 @@
     </div>
   </div>
 
-  <div class="pending-proposals" data-controller="dropdown">
+  <div class="proposals-group" data-controller="dropdown">
     <div class="dropdown-header">
       <h4>Pending</h4>
       <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
     </div>
     <div class="card-container" data-dropdown-target="container">
       <% @proposals.each do |proposal| %>
-        <% unless proposal.accepted %>
+        <% if proposal.status == "Pending" %>
           <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
           <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>
@@ -38,14 +38,14 @@
     </div>
   </div>
 
-  <div class="closed-proposals" data-controller="dropdown">
+  <div class="proposals-group" data-controller="dropdown">
     <div class="dropdown-header">
       <h4>Closed</h4>
       <div class="dropdown-btn fas fa-caret-up" data-dropdown-target="btn" data-action="click->dropdown#toggleContent"></div>
     </div>
     <div class="card-container" data-dropdown-target="container">
       <% @proposals.each do |proposal| %>
-        <% if proposal.accepted && proposal.status == "Completed"  %>
+        <% if (proposal.accepted && proposal.status == "Completed") || proposal.status == "Declined" %>
           <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
           <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>
