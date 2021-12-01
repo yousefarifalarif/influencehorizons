@@ -8,13 +8,11 @@
 
           <div class="form-inputs">
             <%= f.input :ig_username, label: "IG Username"  %>
-            <%= f.input :ig_followers, label: "IG Followers"  %>
             <%= f.input :youtube_channel_name, label: "YouTube Channel" %>
-            <%= f.input :youtube_subscribers, label: "YouTube Subscribers" %>
             <%= f.input :twitter_username %>
             <%= f.input :facebook_username %>
-            <%= f.input :facebook_followers %>
             <%= f.input :gender, collection: ['Male', 'Female', 'Prefer not to say'] %>
+            <%= f.input :photo, label: "Profile picture", as: :file %>
           </div>
 
           <div class="form-actions">

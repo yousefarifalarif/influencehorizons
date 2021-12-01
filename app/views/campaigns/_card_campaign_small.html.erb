@@ -1,7 +1,7 @@
 <%= link_to campaign_path(campaign) do %>
   <div class="card-campaign-small">
     <div class="card-campaign-small-info">
-      <%= cl_image_tag campaign.business.photo.key, class:"avatar-bordered xlarge"%>
+      <%= cl_image_tag campaign.business.photo.key, class:"avatar-bordered xlarge" if campaign.business.photo.attached? %>
       <h5><%= campaign.business.company_name %></h5>
       <h5><%= campaign.name %></h5>
       <p><i class="far fa-calendar-alt"></i> <%= campaign.start_date%> to <%= campaign.end_date %></p>
