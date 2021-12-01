@@ -1,11 +1,11 @@
 <%if @proposals.size == 0 %>
   <div class="d-flex justify-content-between">
     <h4>You have no active collaborations</h4>
-    <button type="button" class="create-btn" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
+    <button type="button" class="btn-create" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
   </div>
 <%else%>
   <% unless @proposals.first.campaign.archived %>
-    <button type="button" class="create-btn" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
+    <button type="button" class="btn-create" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
   <% end %>
 
   <div class="proposals-group" data-controller="dropdown">

@@ -2,16 +2,16 @@
   <div class="container" id="content">
     <h1 class="title">InfluenceHorizons</h1>
     <p>The #1 Platform for Regional Influencer Marketing</p>
-    <br>
-    <br>
-    <br>
-    <% unless current_user %>
-      <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-outline-light btn-lg", role:"button" %>
-    <%# ------ this is just for styling purposes ------- %>
-    <% else %>
-      <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-outline-light btn-lg", role:"button", style: 'visibility: hidden' %>
-    <%# --------------------------- %>
-    <% end %>
+
+    <div class="banner-button">
+      <% unless current_user %>
+        <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-home btn-outline-light btn-lg", role:"button" %>
+      <%# ------ this is just for styling purposes ------- %>
+      <% else %>
+        <%= link_to "Join us now!", new_user_registration_path, class:"btn btn-home btn-outline-light btn-lg", role:"button", style: 'visibility: hidden' %>
+      <%# --------------------------- %>
+      <% end %>
+    </div>
   </div>
 </div>
 
