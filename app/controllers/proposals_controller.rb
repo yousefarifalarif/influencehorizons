@@ -28,8 +28,10 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.campaign = @campaign
     @proposal.creator = current_user.role
-    if @proposal.save
-      redirect_to influencers_path
+    @proposal.influencer = current_user.influencer if current_user.role == "Influencer"
+    if @proposal.save!
+      @chatroom = Chatroom.create!(name: @proposal.title, proposal: @proposal)
+      redirect_to current_user.role == "Business" ? influencers_path : proposals_path
     else
       @proposals = @campaign.proposals.where(creator: "Business")
       @incoming_proposals = @campaign.proposals.where(creator: "Influencer")
@@ -41,7 +43,11 @@ class ProposalsController < ApplicationController
 
   def update
     @proposal.update(proposal_params)
-    redirect_to proposals_path
+    if current_user.role == "Business"
+      redirect_to campaign_path(@proposal.campaign)
+    else
+      redirect_to proposals_path
+    end
   end
 
   private

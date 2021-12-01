@@ -50,8 +50,6 @@ class CampaignsController < ApplicationController
     if current_user.role == 'Business'
       @proposals = @campaign.proposals.where(creator: "Business")
       @incoming_proposals = @campaign.proposals.where(creator: "Influencer")
-    else
-
     end
     @message = Message.new
   end

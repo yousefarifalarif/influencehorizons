@@ -22,5 +22,5 @@
       </div>
     </div>
   </div>
-  <%= cl_image_tag influencer.photo.key, class:"avatar-bordered xlarge m-3" %>
+  <%= cl_image_tag influencer.photo.key, class:"avatar-bordered xlarge m-3" if influencer.photo.attached? %>
 </div>

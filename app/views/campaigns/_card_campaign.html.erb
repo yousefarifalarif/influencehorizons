@@ -14,7 +14,7 @@
     <div class="card-campaign-ivs">
       <% campaign.proposals.first(3).each do |proposal| %>
         <% if proposal.influencer %>
-          <%= cl_image_tag proposal.influencer.photo.key, class:"avatar-bordered large"%>
+          <%= cl_image_tag proposal.influencer.photo.key, class:"avatar-bordered large" if proposal.influencer.photo.attached? %>
         <% end %>
       <% end %>
     </div>

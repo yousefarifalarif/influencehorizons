@@ -1,38 +1,42 @@
 <div class="container py-5">
+<% if current_user.business %>
   <h1 class='my-5'><%= @campaign.name %></h1>
-  <% if current_user.business %>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="collaborations-tab" data-toggle="tab" href="#collaborations" role="tab" aria-controls="collaborations" aria-selected="false">Collaborations</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="incoming-tab" data-toggle="tab" href="#incoming" role="tab" aria-controls="incoming" aria-selected="false">Incoming Proposals</a>
-      </li>
-    </ul>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="collaborations-tab" data-toggle="tab" href="#collaborations" role="tab" aria-controls="collaborations" aria-selected="false">Collaborations</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="incoming-tab" data-toggle="tab" href="#incoming" role="tab" aria-controls="incoming" aria-selected="false">Incoming Proposals</a>
+    </li>
+  </ul>
 
-    <div class="tab-content py-5" id="myTabContent">
-
-      <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-        <%= render 'shared/tab_details', campaign: @campaign %>
-      </div>
-
-      <div class="tab-pane fade" id="collaborations" role="tabpanel" aria-labelledby="collaborations-tab">
-        <%= render 'shared/tab_collaborations', proposals: @proposals %>
-      </div>
-
-      <div class="tab-pane fade" id="incoming" role="tabpanel" aria-labelledby="incoming-tab">
-        <% @campaign.proposals.each do |proposal| %>
-          <% if proposal.creator == "Influencer" %>
-            <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
-            <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
-          <% end %>
-        <% end %>
-      </div>
+  <div class="tab-content py-5" id="myTabContent">
+    <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+      <%= render 'shared/tab_details', campaign: @campaign %>
     </div>
-  <% else %>
-    <%= render 'shared/tab_details', campaign: @campaign %>
-  <% end %>
+
+    <div class="tab-pane fade" id="collaborations" role="tabpanel" aria-labelledby="collaborations-tab">
+      <%= render 'shared/tab_collaborations', proposals: @proposals %>
+    </div>
+
+    <div class="tab-pane fade" id="incoming" role="tabpanel" aria-labelledby="incoming-tab">
+      <% @campaign.proposals.each do |proposal| %>
+        <% if proposal.creator == "Influencer" %>
+          <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
+          <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="d-flex justify-content-between">
+    <h1 class='my-5'><%= @campaign.name %></h1>
+    <button type="button" class="create-btn my-5" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
+  </div>
+  <%= render 'shared/tab_details', campaign: @campaign %>
+<% end %>
 </div>
+<%= render "./shared/modal_create_proposal", campaign: @campaign, business: @business, modal_title: "Create a Campaign" %>
