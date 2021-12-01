@@ -89,6 +89,7 @@
   background-color: $blue !important;
 }
 
+
 // Campaigns Index
 .btn-search {
   padding: 0px 10px;
@@ -118,4 +119,24 @@
 
 .form-links {
   color: $blue;
+}
+
+.blue-font {
+  color: $blue !important;
+}
+
+
+// Modal Forms
+.btn-form {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  border: solid 2px $orange;
+  color: $blue;
+  background-color: rgba(252,163,17,0.9) !important;
+}
+.btn-form:hover {
+  border: solid 2px $blue;
+  color: $blue;
+  background-color: $orange !important;
 }

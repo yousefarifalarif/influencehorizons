@@ -2,11 +2,11 @@
   <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
   <div>
     <div id="mySidebar" class="sidebar" data-side-bar-target="sidebar">
-      <%= link_to "Statistics", dashboard_path %>
-      <%= link_to "Campaigns", campaigns_path %>
-      <%= link_to "Influencers", influencers_path %>
+      <%= link_to "Statistics", dashboard_path, class:"#{'active' if controller_name == 'pages' && action_name == 'dashboard'}" %>
+      <%= link_to "Campaigns", campaigns_path, class:"#{'active' if controller_name == 'campaigns' && action_name == 'index'}" %>
+      <%= link_to "Influencers", influencers_path, class:"#{'active' if controller_name == 'influencers' && action_name == 'index'}" %>
       <%#= link_to "Reviews", reviews_path %>
-      <%= link_to "Profile", user_path(current_user) %>
+      <%= link_to "Profile", user_path(current_user), class:"#{'active' if controller_name == 'users' && action_name == 'show'}" %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "sign-out-btn" %>
     </div>
   </div>
@@ -14,11 +14,11 @@
   <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
   <div>
     <div id="mySidebar" class="sidebar" data-side-bar-target="sidebar">
-      <%= link_to "Statistics", dashboard_path %>
-      <%= link_to "Collaborations", proposals_path %>
-      <%= link_to "Campaigns", campaigns_path %> <%# hide invisible campaign %>
+      <%= link_to "Statistics", dashboard_path, class:"#{'active' if controller_name == 'pages' && action_name == 'dashboard'}" %>
+      <%= link_to "Collaborations", proposals_path, class:"#{'active' if controller_name == 'proposals' && action_name == 'index'}" %>
+      <%= link_to "Campaigns", campaigns_path, class:"#{'active' if controller_name == 'campaigns' && action_name == 'index'}" %> <%# hide invisible campaign %>
       <%#= link_to "Reviews", reviews_path %>
-      <%= link_to "Profile", user_path(current_user) %>
+      <%= link_to "Profile", user_path(current_user), class:"#{'active' if controller_name == 'users' && action_name == 'show'}" %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "sign-out-btn" %>
     </div>
   </div>

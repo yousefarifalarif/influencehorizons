@@ -1,5 +1,5 @@
 <div class="container py-5">
-  <h1 class="my-5">Profile</h1>
+  <h1 class="mt-5 mb-0">Profile</h1>
   <% if current_user.influencer %>
     <div class="d-flex flex-column align-items-center">
       <%= cl_image_tag current_user.influencer.photo.key, :class=> "profile-avatar" if current_user.influencer.photo.attached? %>
