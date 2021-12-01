@@ -8,10 +8,10 @@
       <%= f.input :location %>
       <%= f.input :start_date, as: :date, html5: true %>
       <%= f.input :end_date, as: :date, html5: true  %>
-      <%= f.input :visibility, label: "Make campaign visible to all influencers"%>
+      <%= f.input :visibility, label: "Make campaign visible to all influencers", label_html: { class:"blue-font" } %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Create Campaign", class:"create-btn"%>
+      <%= f.button :submit, "Create Campaign", class:"btn btn-create btn-outline-light w-100"%>
     </div>
   <% end %>

@@ -1,4 +1,4 @@
 <%= simple_form_for [campaign, proposal] do |f|%>
   <%= f.input :title %>
-  <%= f.submit current_user.role == "Business" ? "Look for potential influencers" : "Create Collaboration", class:"btn create-btn" %>
+  <%= f.submit current_user.role == "Business" ? "Look for potential influencers" : "Create Collaboration", class:"btn btn-form btn-outline-light" %>
 <% end %>

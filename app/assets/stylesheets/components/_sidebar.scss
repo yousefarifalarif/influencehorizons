@@ -33,6 +33,9 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   padding-top: 80px; /* Place content 60px from the top */
+  .active {
+    color: $orange;
+  }
 }
 .main-expanded {
   margin-left: 0px !important;
@@ -44,6 +47,7 @@
 .button-to-left {
   left: 0px !important; /* 0 width - change this with JavaScript */
 }
+
 
 /* The sidebar links */
 .sidebar a {

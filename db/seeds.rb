@@ -28,22 +28,36 @@ booleans = [true, false]
 tasks = ["Do a live feed for", "Design a poster for", "Design a banner for", "Take a photo for",
          "Make a video for", "Create a contest for"]
 influencers = []
+live_users = [{first_name: 'Yousef', last_name: 'Júlio', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Tessie', last_name: 'Emily', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Alexus', last_name: 'Renie', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Melva', last_name: 'Madilyn', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Paulene', last_name: 'Jewel', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Zac', last_name: 'Saylor', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Eben', last_name: 'Kenzie', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Moriah', last_name: 'Wilfred', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Esther', last_name: 'Millie', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Noel', last_name: 'Jaylyn', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" },
+              {first_name: 'Serena', last_name: 'Annabel', password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164, location: "London", role: "Influencer" } ]
 
 # Create 10 Influencers
 puts "Creating Influencers ..."
-11.times do |index|
-  user = User.create!(email: Faker::Internet.email, password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
-                      first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "London", role: "Influencer")
-  username = Faker::Twitter.screen_name
-  followers = rand(1000..200_000)
-  influencer = Influencer.new(ig_username: username, ig_followers: followers,
-                              youtube_channel_name: username, youtube_subscribers: followers,
-                              twitter_username: username, twitter_followers: followers,
-                              facebook_username: username, facebook_followers: followers,
-                              gender: ['Male', 'Female'].sample, estimated_price: followers / 1000)
+live_users.each_with_index do |user, index|
+  new_user = User.create!(email: "#{user[:first_name]}.#{user[:last_name]}@gmail.com", password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+                      first_name: user[:first_name], last_name: user[:last_name], location: "London", role: "Influencer")
+  username = "#{user[:first_name].chars.first}_#{user[:last_name]}"
+  i_followers = rand(1500..200_000)
+  t_followers = rand(i_followers * 0.5..i_followers)
+  y_followers = rand(i_followers * 0.5..i_followers)
+  f_followers = rand(i_followers * 0.5..i_followers)
+  influencer = Influencer.new(ig_username: username, ig_followers: i_followers,
+                              youtube_channel_name: username, youtube_subscribers: y_followers,
+                              twitter_username: username, twitter_followers: t_followers,
+                              facebook_username: username, facebook_followers: f_followers,
+                              gender: ['Male', 'Female'].sample, estimated_price: i_followers / 1000)
   file = URI.open(influencer_avatars[index])
   influencer.photo.attach(io: file, filename: "#{username}.png", content_type: 'image/png')
-  influencer.user = user
+  influencer.user = new_user
   influencer.save!
   influencers << influencer
 end
