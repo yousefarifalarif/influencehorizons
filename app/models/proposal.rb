@@ -15,7 +15,7 @@ class Proposal < ApplicationRecord
       Notification.create(
         notify_type: 'incoming',
         actor: influencer.user,
-        user: No,
+        user: campaign.business.user,
         target: self,
         second_target: campaign
       )

@@ -2,24 +2,24 @@
   <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
   <div>
     <div id="mySidebar" class="sidebar" data-side-bar-target="sidebar">
-      <%= link_to "Statistics", main_app.dashboard_path, class: "#{'active' if current_page?(main_app.dashboard_path)}" %>
-      <%= link_to "Campaigns", main_app.campaigns_path, class: "#{'active' if current_page?(main_app.campaigns_path) || request.fullpath.start_with?('/campaigns/')}" %>
-      <%= link_to "Influencers", main_app.influencers_path, class: "#{'active' if current_page?(main_app.influencers_path)}" %>
+      <%= link_to "Statistics", main_app.dashboard_path, class: "#{'active' if current_page?(main_app.dashboard_path)} text-center" %>
+      <%= link_to "Campaigns", main_app.campaigns_path, class: "#{'active' if current_page?(main_app.campaigns_path) || request.fullpath.start_with?('/campaigns/')} text-center" %>
+      <%= link_to "Influencers", main_app.influencers_path, class: "#{'active' if current_page?(main_app.influencers_path)} text-center" %>
       <%#= link_to "Reviews", reviews_path %>
-      <%= link_to "Profile", main_app.user_path(current_user), class: "#{'active' if current_page?(main_app.user_path(current_user))}" %>
-      <%= link_to "Log out", main_app.destroy_user_session_path, method: :delete, class: "sign-out-btn" %>
+      <%= link_to "Profile", main_app.user_path(current_user), class: "#{'active' if current_page?(main_app.user_path(current_user))} text-center" %>
+      <%= link_to "Log out", main_app.destroy_user_session_path, method: :delete, class: "sign-out-btn text-center" %>
     </div>
   </div>
 <% elsif user_signed_in? && current_user.influencer %>
   <a><i class="fas fa-angle-left" data-action="click->side-bar#toggle" data-side-bar-target="button"></i></a>
   <div>
     <div id="mySidebar" class="sidebar" data-side-bar-target="sidebar">
-      <%= link_to "Statistics", main_app.dashboard_path, class: "#{'active' if current_page?(main_app.dashboard_path)}" %>
-      <%= link_to "Collaborations", main_app.proposals_path, class: "#{'active' if current_page?(main_app.proposals_path)}"   %>
-      <%= link_to "Campaigns", main_app.campaigns_path, class: "#{'active' if current_page?(main_app.campaigns_path) || request.fullpath.start_with?('/campaigns/')}" %>
+      <%= link_to "Statistics", main_app.dashboard_path, class: "#{'active' if current_page?(main_app.dashboard_path)} text-center" %>
+      <%= link_to "Collaborations", main_app.proposals_path, class: "#{'active' if current_page?(main_app.proposals_path)} text-center"   %>
+      <%= link_to "Campaigns", main_app.campaigns_path, class: "#{'active' if current_page?(main_app.campaigns_path) || request.fullpath.start_with?('/campaigns/')} text-center" %>
       <%#= link_to "Reviews", reviews_path %>
-      <%= link_to "Profile", main_app.user_path(current_user), class: "#{'active' if current_page?(main_app.user_path(current_user))}"  %>
-      <%= link_to "Log out", main_app.destroy_user_session_path, method: :delete, class: "sign-out-btn" %>
+      <%= link_to "Profile", main_app.user_path(current_user), class: "#{'active' if current_page?(main_app.user_path(current_user))} text-center"  %>
+      <%= link_to "Log out", main_app.destroy_user_session_path, method: :delete, class: "sign-out-btn text-center" %>
     </div>
   </div>
 <% end %>
