@@ -6,22 +6,22 @@
   <div class="cards-statistic">
     <div class="card-statistic position margin-style">
       <div class="card-statistic-circle">
-        <strong><%= @proposals.select { |p| !(p.status == "Completed") }.size %></strong>
-        <p>My current collaborations</p>
+        <strong><%= p = @proposals.select { |p| !(p.status == "Completed" || p.status == "Declined" || p.status == "Pending" ) }.size %></strong>
+        <p>My current <%= p <= 1 ? 'collaboration' : 'collaborations' %></p>
       </div>
     </div>
 
     <div class="card-statistic">
       <div class="card-statistic-circle">
-        <strong><%= @proposals.size %></strong>
-        <p>All my collaborations</p>
+        <strong><%= current_user.influencer.ig_followers / 1000 %>k</strong>
+        <p>My total estimated reach</p>
       </div>
     </div>
 
     <div class="card-statistic position">
       <div class="card-statistic-circle">
-        <!-- update money -->
-        <p> </p>
+        <!-- update money - [ ] Money earned: followers/1000*15*proposal completed -->
+        <p>£ <%= current_user.influencer.ig_followers / 1000 * 15 * @proposals.select { |p| p.status == "Completed" }.size %></p>
         <p>My money earned</p>
       </div>
     </div>
@@ -32,8 +32,8 @@
     <div class="card-statistic">
       <div class="card-statistic-circle">
         <!-- update reach -->
-        <strong><%= @current_user.influencer.ig_followers % 1000 %>k</strong>
-        <p>My total estimated reach</p>
+        <strong><%= a = @proposals.select { |p| !(p.status == "Declined" || p.status == "Pending" ) }.size %></strong>
+        <p>All my <%= a <= 1 ? 'collaboration' : 'collaborations' %></p>
       </div>
     </div>
   </div>

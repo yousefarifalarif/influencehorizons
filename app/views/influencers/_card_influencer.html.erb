@@ -1,21 +1,10 @@
 <div class="card-influencer" data-id="<%= influencer.id %>" data-influencer-target="cards" data-action="click->influencer#toggleDisable">
   <div class="influencer-bar blue-bar d-flex align-items-center">
-    <h2><%= influencer.user.first_name %> <%= influencer.user.last_name %></h2>
+    <h2><%= influencer.user.first_name %> <%= influencer.user.last_name %> <span class="influencer-gender">(<%= influencer.gender %>)</span></h2>
     <%= cl_image_tag influencer.photo.key, class:"influencer-picture avatar-bordered m-3" if influencer.photo.attached? %>
   </div>
   <div class="influencer-card-info">
     <div class="influencer-descripton d-flex flex-column align-items-start">
-      <p>
-        <% case influencer.gender %>
-        <% when "Male" %>
-          <i class="fas fa-male"></i>
-        <% when "Female" %>
-          <i class="fas fa-female"></i>
-        <% when "Prefer not to say" %>
-          <i class="fas fa-genderless"></i>
-        <% end %>
-        <%= influencer.gender %>
-      </p>
       <p><i class="fas fa-map-marker-alt"></i> <%= influencer.user.location %></p>
     </div>
     <div class="d-flex justify-content-between influencer-info" >

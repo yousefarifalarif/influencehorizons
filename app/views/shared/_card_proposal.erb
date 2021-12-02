@@ -7,13 +7,7 @@
           <p><%= partner.company_name %></p>
         <% else %>
           <p>
-            <%= partner.user.first_name + ' ' + partner.user.last_name %>
-            <% case partner.gender %>
-            <% when "Male" %>
-              <i class="fas fa-male"></i>
-            <% when "Female" %>
-              <i class="fas fa-female"></i>
-            <% end %>
+            <%= partner.user.first_name + ' ' + partner.user.last_name %> <small>(<%= partner.gender %>)</small>
           </p>
         <% end %>
       </h6>

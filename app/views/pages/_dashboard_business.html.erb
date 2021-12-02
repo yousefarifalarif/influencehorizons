@@ -6,15 +6,15 @@
   <div class="cards-statistic">
     <div class="card-statistic position margin-style">
       <div class="card-statistic-circle">
-        <strong><%= @campaigns.select { |c| !c.archived }.size %></strong>
-        <p>My current campaigns</p>
+        <strong><%= c = @campaigns.select { |c| !c.archived }.size %></strong>
+        <p>My current <%= c <= 1 ? 'campaign' : 'campaigns' %></p>
       </div>
     </div>
 
     <div class="card-statistic">
       <div class="card-statistic-circle">
-        <strong><%= @campaigns.size %></strong>
-        <p>All my campaigns</p>
+        <strong><%= @sum_eng_rate / 1000 %>k</strong>
+        <p>My total reach</p>
       </div>
     </div>
 
@@ -32,8 +32,8 @@
 
     <div class="card-statistic">
       <div class="card-statistic-circle">
-        <strong><%= @sum_eng_rate % 1000 %>k</strong>
-        <p>My total reach</p>
+        <strong><%= a = @campaigns.size %></strong>
+        <p>All my <%= a <= 1 ? 'campaign' : 'campaigns' %></p>
       </div>
     </div>
   </div>
