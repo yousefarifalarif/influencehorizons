@@ -1,138 +1,155 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>Service Unavailable (503)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 
     @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body{
-      overflow:hidden;
+    body {
+      overflow: hidden;
       background-color: #f4f6ff;
     }
 
-    .container{
-      width:100vw;
-      height:100vh;
+    .container {
+      width: 100vw;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: "Poppins", sans-serif;
       position: relative;
-      left:6vmin;
+      left: 6vmin;
       text-align: center;
     }
 
-    .cog-wheel1, .cog-wheel2{
-      transform:scale(0.7);
+    .cog-wheel1,
+    .cog-wheel2 {
+      transform: scale(0.7);
     }
 
-    .cog1, .cog2{
-      width:40vmin;
-      height:40vmin;
-      border-radius:50%;
-      border:6vmin solid rgb(252,163,17);
+    .cog1,
+    .cog2 {
+      width: 40vmin;
+      height: 40vmin;
+      border-radius: 50%;
+      border: 6vmin solid rgb(252, 163, 17);
       position: relative;
     }
 
 
-    .cog2{
-      border:6vmin solid rgb(20,33,61);
+    .cog2 {
+      border: 6vmin solid rgb(20, 33, 61);
     }
 
-    .top, .down, .left, .right, .left-top, .left-down, .right-top, .right-down{
-      width:10vmin;
-      height:10vmin;
-      background-color: rgb(252,163,17);
+    .top,
+    .down,
+    .left,
+    .right,
+    .left-top,
+    .left-down,
+    .right-top,
+    .right-down {
+      width: 10vmin;
+      height: 10vmin;
+      background-color: rgb(252, 163, 17);
       position: absolute;
     }
 
-    .cog2 .top,.cog2  .down,.cog2  .left,.cog2  .right,.cog2  .left-top,.cog2  .left-down,.cog2  .right-top,.cog2  .right-down{
-      background-color: rgb(20,33,61);
+    .cog2 .top,
+    .cog2 .down,
+    .cog2 .left,
+    .cog2 .right,
+    .cog2 .left-top,
+    .cog2 .left-down,
+    .cog2 .right-top,
+    .cog2 .right-down {
+      background-color: rgb(20, 33, 61);
     }
 
-    .top{
-      top:-14vmin;
-      left:9vmin;
+    .top {
+      top: -14vmin;
+      left: 9vmin;
     }
 
-    .down{
-      bottom:-14vmin;
-      left:9vmin;
+    .down {
+      bottom: -14vmin;
+      left: 9vmin;
     }
 
-    .left{
-      left:-14vmin;
-      top:9vmin;
+    .left {
+      left: -14vmin;
+      top: 9vmin;
     }
 
-    .right{
-      right:-14vmin;
-      top:9vmin;
+    .right {
+      right: -14vmin;
+      top: 9vmin;
     }
 
-    .left-top{
-      transform:rotateZ(-45deg);
-      left:-8vmin;
-      top:-8vmin;
+    .left-top {
+      transform: rotateZ(-45deg);
+      left: -8vmin;
+      top: -8vmin;
     }
 
-    .left-down{
-      transform:rotateZ(45deg);
-      left:-8vmin;
-      top:25vmin;
+    .left-down {
+      transform: rotateZ(45deg);
+      left: -8vmin;
+      top: 25vmin;
     }
 
-    .right-top{
-      transform:rotateZ(45deg);
-      right:-8vmin;
-      top:-8vmin;
+    .right-top {
+      transform: rotateZ(45deg);
+      right: -8vmin;
+      top: -8vmin;
     }
 
-    .right-down{
-      transform:rotateZ(-45deg);
-      right:-8vmin;
-      top:25vmin;
+    .right-down {
+      transform: rotateZ(-45deg);
+      right: -8vmin;
+      top: 25vmin;
     }
 
-    .cog2{
+    .cog2 {
       position: relative;
-      left:-10.2vmin;
-      bottom:10vmin;
+      left: -10.2vmin;
+      bottom: 10vmin;
     }
 
-    h1{
-      color:lightslategray;
+    h1 {
+      color: lightslategray;
     }
 
-    .first-four{
+    .first-four {
       position: relative;
-      left:6vmin;
-      font-size:40vmin;
+      left: 6vmin;
+      font-size: 40vmin;
     }
 
-    .second-four{
+    .second-four {
       position: relative;
-      right:18vmin;
+      right: 18vmin;
       z-index: -1;
-      font-size:40vmin;
+      font-size: 40vmin;
     }
 
-    .wrong-para{
+    .wrong-para {
       font-family: "Montserrat", sans-serif;
       position: absolute;
-      bottom:15vmin;
-      padding:3vmin 12vmin 3vmin 3vmin;
-      font-weight:600;
-      color:#092532;
+      bottom: 15vmin;
+      padding: 3vmin 12vmin 3vmin 3vmin;
+      font-weight: 600;
+      color: #092532;
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
@@ -167,7 +184,8 @@
         <div class="right"></div>
       </div>
     </div>
-    <p class="wrong-para">Uh Oh! Something went wrong!</p>
+    <h1 class="second-four">3</h1>
+    <p class="wrong-para">Uh Oh! Service unavailable!</p>
   </div>
 
   <script>
