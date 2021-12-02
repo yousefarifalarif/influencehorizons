@@ -59,7 +59,7 @@ def create_influences(users, avatars)
                                 youtube_channel_name: username, youtube_subscribers: y_followers,
                                 twitter_username: username, twitter_followers: t_followers,
                                 facebook_username: username, facebook_followers: f_followers,
-                                gender: index.even? ? 'Female' : 'Male', estimated_price: i_followers / 1000)
+                                gender: index.even? ? 'She/Her' : 'He/Him', estimated_price: i_followers / 1000)
     file = URI.open(avatars[index])
     influencer.photo.attach(io: file, filename: "#{username}.png", content_type: 'image/png')
     influencer.user = new_user
@@ -82,7 +82,7 @@ def create_yousef(demo_influencers, yousef_avatar)
                                 youtube_channel_name: username, youtube_subscribers: y_followers,
                                 twitter_username: username, twitter_followers: t_followers,
                                 facebook_username: username, facebook_followers: f_followers,
-                                gender: 'Male', estimated_price: i_followers / 1000)
+                                gender: 'He/Him', estimated_price: i_followers / 1000)
   file = URI.open(yousef_avatar)
   influencer.photo.attach(io: file, filename: "#{username}.png", content_type: 'image/png')
   influencer.user = new_user
