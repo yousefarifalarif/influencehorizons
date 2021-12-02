@@ -1,14 +1,14 @@
 .card-influencer-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  row-gap: 32px;
+  column-gap: 64px;
 }
 
 .card-influencer {
   background-color: white;
   border: solid 2px transparent;
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
-  padding: 32px;
   text-align: center;
   h2 {
     font-size: 16px;
@@ -38,4 +38,47 @@
 
 .proposal-btn-active {
   pointer-events: all !important;
+}
+
+.influencer-bar {
+  width: 100%;
+  margin: 0px;
+  color: white;
+  background-color: $blue;
+  height: 60px;
+  padding: 32px;
+  position: relative;
+  h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+  }
+}
+
+.influencer-card-info {
+  height: 160px;
+  padding: 0px 24px 16px 24px;
+}
+
+.influencer-descripton {
+  padding-top: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  p {
+    font-size: 16px;
+    color: $blue;
+  }
+}
+
+.influencer-info {
+  padding: 16px;
+}
+
+.influencer-picture {
+  position: absolute;
+  right: 16px;
+  top: 2px;
+  height: 90px;
+  width: 90px;
 }
