@@ -1,9 +1,9 @@
-<div class="card-product" data-id="<%= influencer.id %>" data-influencer-target="cards" data-action="click->influencer#toggleDisable">
-  <div class="card-product-infos">
+<div class="card-influencer" data-id="<%= influencer.id %>" data-influencer-target="cards" data-action="click->influencer#toggleDisable">
+  <div class="card-influencer-infos">
     <h2><%= influencer.user.first_name %>
     <%= influencer.user.last_name %></h2>
     <p><%= influencer.gender %></p>
-    <div class="d-inline-flex justify-content-around influencer-info" >
+    <div class="d-flex justify-content-around influencer-info" >
       <div class="d-flex flex-column align-items-center">
         <i class="fab fa-instagram card-icon"></i>
         <%= influencer.ig_followers/1000 %>k
@@ -19,9 +19,6 @@
       <div class="d-flex flex-column align-items-center">
         <i class="fab fa-facebook card-icon"></i>
         <%= influencer.facebook_followers/1000 %>k
-      </div>
-      <div>
-        <p>i</p>
       </div>
     </div>
   </div>

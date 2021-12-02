@@ -48,7 +48,7 @@ class CampaignsController < ApplicationController
   def show
     @proposal = Proposal.new
     if current_user.role == 'Business'
-      @proposals = @campaign.proposals.where(creator: "Business")
+      @proposals = @campaign.proposals
       @incoming_proposals = @campaign.proposals.where(creator: "Influencer")
     end
     @message = Message.new

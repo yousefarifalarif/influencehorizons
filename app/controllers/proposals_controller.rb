@@ -19,6 +19,7 @@ class ProposalsController < ApplicationController
       else
         @new_proposal = Proposal.new(title: @proposal.title, status: @proposal.status, campaign: @proposal.campaign, influencer_id: id, creator: @proposal.creator )
         @new_proposal.save!
+        @chatroom = Chatroom.create!(name: @new_proposal.title, proposal: @new_proposal)
       end
     end
     redirect_to campaign_path(@proposal.campaign)

@@ -46,6 +46,8 @@ gem 'google-api-client', '>0.7'
 
 gem 'openssl', '~> 2.0.0.beta.1'
 
+# notifications
+gem 'notifications'
 
 # cloudinary image hosting
 gem 'dotenv-rails', groups: [:development, :test]
@@ -54,10 +56,9 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'dotenv-rails'
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

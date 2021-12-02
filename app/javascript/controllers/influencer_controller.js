@@ -11,7 +11,7 @@ export default class extends Controller {
   sendProposal() {
     console.log('sending proposal. LEts open modal')
     // fetch IDs of selected influences
-    const elements = Array.from(document.querySelectorAll(".card-product.selected"))
+    const elements = Array.from(document.querySelectorAll(".card-influencer.selected"))
     const ids = elements.map(el => el.dataset.id)
 
     const hiddenProposalIdsInput = document.getElementById("proposal_influencer_ids")
@@ -27,7 +27,7 @@ export default class extends Controller {
 
     // console.log(card)
     card.setAttribute("selected", true);
-    // card.classList.toggle("card-product");
+    // card.classList.toggle("card-influencer");
     card.classList.toggle("selected");
     // this.btnTarget.classList.toggle("proposal-btn-active");
     // const array = []

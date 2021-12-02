@@ -1,0 +1,15 @@
+<div id="message-<%= message.id %>" class="d-flex align-items-center mb-2 justify-content-start">
+  <% case message.user.role %>
+  <% when "Business" %>
+    <%= cl_image_tag message.user.business.photo.key, class:"avatar-bordered white m-2" if message.user.business.photo.attached? %>
+  <% when "Influencer" %>
+    <%= cl_image_tag message.user.influencer.photo.key, class:"avatar-bordered white m-2" if message.user.influencer.photo.attached? %>
+  <% end %>
+  <div class="message p-2 text-left">
+    <small>
+      <strong><%= message.user.role == "Business" ? message.user.business.company_name : message.user.first_name %></strong>
+      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    </small>
+    <p class="mb-0"><%= message.content %></p>
+  </div>
+</div>

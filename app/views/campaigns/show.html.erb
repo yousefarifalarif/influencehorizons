@@ -23,8 +23,8 @@
     </div>
 
     <div class="tab-pane fade" id="incoming" role="tabpanel" aria-labelledby="incoming-tab">
-      <% @campaign.proposals.each do |proposal| %>
-        <% if proposal.creator == "Influencer" %>
+      <% @proposals.each do |proposal| %>
+        <% if proposal.creator == "Influencer" && proposal.status == "Pending" %>
           <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
           <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>

@@ -32,7 +32,7 @@
     </div>
     <div class="card-container" data-dropdown-target="container">
       <% @proposals.each do |proposal| %>
-        <% if proposal.status == "Pending" %>
+        <% if proposal.status == "Pending" && proposal.creator == "Business" %>
           <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
           <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>
