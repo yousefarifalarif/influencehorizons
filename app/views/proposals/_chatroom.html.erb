@@ -1,11 +1,9 @@
-<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
+<div class="container chatroom" data-controller="chatroom-subscription"
+     data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>"
+     data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
   <div class="messages" data-chatroom-subscription-target="messages">
     <% chatroom.messages.each do |message| %>
-      <% if current_user == message.user %>
-        <%= render "messages/message_right", message: message, partner: partner %>
-      <% else %>
-        <%= render "messages/message_left", message: message, partner: partner %>
-      <% end %>
+      <%= render "messages/message", message: message, partner: partner %>
     <% end %>
   </div>
   <%= simple_form_for(@message, remote: true, style:"background-color: white;") do |f| %>
