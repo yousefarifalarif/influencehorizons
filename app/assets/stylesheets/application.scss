@@ -15,3 +15,11 @@
 a, a:hover {
   text-decoration: none;
 }
+
+.modal-header {
+  background: rgba($blue, 0.85);
+  color: white;
+  .close {
+    color: white;
+  }
+}
