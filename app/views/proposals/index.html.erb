@@ -3,7 +3,7 @@
   <%if @proposals.size == 0 %>
     <div class="d-flex justify-content-between">
       <h4 class="my-5">You have no active collaborations</h4>
-      <%= link_to "Find campaigns", campaigns_path %>
+      <%= link_to "Find campaigns", campaigns_path, class:"btn btn-create my-5" %>
     </div>
   <%else%>
     <div class="proposals-group" data-controller="dropdown">
