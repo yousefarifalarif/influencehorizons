@@ -1,6 +1,6 @@
 .chatroom {
   border-radius: 5px;
-  background: $blue;
+  background: rgba($blue, 0.85);
   height: calc(60vh - 75px);
   display: flex;
   flex-direction: column;
