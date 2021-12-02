@@ -19,6 +19,14 @@ class Proposal < ApplicationRecord
         target: self,
         second_target: campaign
       )
+    elsif creator == "Business" && influencer
+      Notification.create(
+        notify_type: 'incoming',
+        actor: campaign.business.user,
+        user: influencer.user,
+        target: self,
+        second_target: campaign
+      )
     end
   end
 
@@ -44,6 +52,22 @@ class Proposal < ApplicationRecord
         notify_type: 'accepted',
         actor: creator == "Business" ? influencer.user : campaign.business.user,
         user: creator == "Business" ? campaign.business.user : influencer.user,
+        target: self,
+        second_target: campaign
+      )
+    elsif status == "Pending Payment" && accepted == true
+      Notification.create(
+        notify_type: 'markdone',
+        actor: influencer.user,
+        user: campaign.business.user,
+        target: self,
+        second_target: campaign
+      )
+    elsif status == "Completed" && accepted == true
+      Notification.create(
+        notify_type: 'markpaid',
+        actor: campaign.business.user,
+        user: influencer.user,
         target: self,
         second_target: campaign
       )

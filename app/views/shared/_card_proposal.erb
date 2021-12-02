@@ -25,7 +25,7 @@
     <%= render "proposals/form_decline", proposal: proposal %>
   <% else %>
     <%= render "proposals/form_mark_as_done", proposal: proposal if proposal.status == "In Progress" && current_user.role == "Influencer" %>
-    <%= render "proposals/form_mark_as_paid", proposal: proposal if proposal.status == "Pending payment" && current_user.role == "Business" %>
+    <%= render "proposals/form_mark_as_paid", proposal: proposal if proposal.status == "Pending Payment" && current_user.role == "Business" %>
     <p class="card-proposal-status"><%= proposal.status %></p>
   <% end %>
   </div>

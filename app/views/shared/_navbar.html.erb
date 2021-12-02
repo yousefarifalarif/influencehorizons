@@ -1,11 +1,15 @@
 <% if current_page?(main_app.root_path)%>
   <div class="navbar navbar-expand-sm navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
+  <%= link_to main_app.root_path, class: "navbar-brand" do %>
+    <%# <img src="https://res.cloudinary.com/katielht/image/upload/v1637870614/Logo_IH_OhneSlogan_ccqxey.png"> %>
+  <% end %>
 <% else %>
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-lewagon-blue fixed-top">
-<% end %>
   <%= link_to main_app.root_path, class: "navbar-brand" do %>
-    <img src="https://res.cloudinary.com/katielht/image/upload/v1637870614/Logo_IH_OhneSlogan_ccqxey.png">
+    <h3 style="padding: 4px 0 0 8px; color: white;">InfluenceHorizons</h3>
+    <%# <img src="https://res.cloudinary.com/katielht/image/upload/v1637870614/Logo_IH_OhneSlogan_ccqxey.png"> %>
   <% end %>
+<% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

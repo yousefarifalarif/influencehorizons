@@ -6,7 +6,7 @@ class InfluencersController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "gender ILIKE :gender OR users.first_name ILIKE :query OR users.last_name ILIKE :query OR users.locationILIKE :query"
+      sql_query = "gender ILIKE :gender OR users.first_name ILIKE :query OR users.last_name ILIKE :query OR users.location ILIKE :query"
       @influencers = Influencer.joins(:user)
                                .where(sql_query, gender: "#{params[:query]}%", query: "%#{params[:query]}%")
     else
