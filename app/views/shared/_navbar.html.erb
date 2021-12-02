@@ -18,7 +18,9 @@
         <li class="nav-item">
           <%= link_to notifications_path, class:"nav-link d-flex justify-content-between" do %>
             <i class="fas fa-bell"></i>
-            <div class="batch"><%= Notification.unread_count(current_user) %></div>
+            <% if !Notification.unread_count(current_user).zero? %>
+              <div class="batch"><%= Notification.unread_count(current_user) %></div>
+            <% end %>
           <% end %>
         </li>
 
