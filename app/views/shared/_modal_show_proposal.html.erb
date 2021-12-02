@@ -10,7 +10,13 @@
       <div class="modal-body">
         <div class="d-flex justify-content-between">
           <div>
-            <p><i class="far fa-comment-dots"></i> <%= proposal.campaign.description %></p>
+            <div class="d-flex">
+              <i class="pt-1 far fa-comment-dots"></i>
+              <div class="ml-1">
+                <p class="m-0"><strong><%= proposal.campaign.name %></strong></p>
+                <p><%= proposal.campaign.description %></p>
+              </div>
+            </div>
             <p><i class="fas fa-info-circle"></i> <%= proposal.status %></p>
             <p><i class="far fa-calendar-alt"></i> <%= proposal.campaign.start_date.strftime("%e %b %Y") %> - <%= proposal.campaign.end_date.strftime("%e %b %Y") %></p>
           </div>
@@ -26,21 +32,31 @@
           </div>
         </div>
       </div>
-      <% unless proposal.status == "Pending" %>
+      <% unless proposal.status == "Pending" || proposal.status == "Declined" %>
         <div class="modal-body border-top">
           <div class="d-flex justify-content-between">
             <%= render 'proposals/chatroom', chatroom: proposal.chatroom, message: @message, partner: partner %>
           </div>
         </div>
       <% end %>
-      <% influencer_condition = proposal.status == "Pending" && partner.instance_of?(Business) && proposal.creator == "Business" %>
-      <% business_condition = proposal.status == "Pending" && partner.instance_of?(Influencer) && proposal.creator == "Influencer" %>
-      <% if influencer_condition || business_condition %>
-        <div class="modal-footer">
-          <%= render "proposals/form_accept", proposal: proposal %>
-          <%= render "proposals/form_decline", proposal: proposal %>
-        </div>
-      <% end %>
+        <% influencer_condition = proposal.status == "Pending" && partner.instance_of?(Business) && proposal.creator == "Business" %>
+        <% business_condition = proposal.status == "Pending" && partner.instance_of?(Influencer) && proposal.creator == "Influencer" %>
+        <% if influencer_condition || business_condition %>
+          <div class="modal-footer">
+            <%= render "proposals/form_accept", proposal: proposal %>
+            <%= render "proposals/form_decline", proposal: proposal %>
+          </div>
+        <% end %>
+        <% if proposal.status == "In Progress" && current_user.role == "Influencer" %>
+          <div class="modal-footer">
+            <%= render "proposals/form_mark_as_done", proposal: proposal %>
+          </div>
+        <% end %>
+        <% if proposal.status == "Pending Payment" && current_user.role == "Business" %>
+          <div class="modal-footer">
+            <%= render "proposals/form_mark_as_paid", proposal: proposal %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

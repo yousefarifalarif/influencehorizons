@@ -19,12 +19,13 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(20,33,61,0.5);
+  height: 96px;
   p {
     margin: 0;
   }
   h6 {
     margin: 0 0 0 24px;
-    width: 320px;
+    width: 216px;
   }
 }
 
@@ -60,6 +61,18 @@
     top:32px;
     right: 24px;
   }
+  .card-proposal-status.mark-as-done {
+    position: absolute;
+    top:32px;
+    right: 136px;
+    z-index: 10;
+  }
+  .card-proposal-status.mark-as-paid {
+    position: absolute;
+    top:32px;
+    right: 184px;
+    z-index: 10;
+  }
 }
 .card-proposal-status {
   background-color: lightgrey;
@@ -79,6 +92,21 @@
 .card-proposal-status.decline {
   border: none;
   background-color: rgb(241, 125, 110);
+  &:hover{
+    opacity:0.7;
+  }
+}
+.card-proposal-status.mark-as-done {
+  border: none;
+  background-color: rgb(110, 241, 215);
+  &:hover{
+    opacity:0.7;
+  }
+}
+
+.card-proposal-status.mark-as-paid {
+  border: none;
+  background-color: rgb(110, 241, 215);
   &:hover{
     opacity:0.7;
   }
