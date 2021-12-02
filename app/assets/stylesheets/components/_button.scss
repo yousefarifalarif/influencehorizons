@@ -20,12 +20,12 @@
 .btn-login {
   width: 100%;
   margin-bottom: 10px;
-  border: none;
-  color: white;
+  border: solid 2px $orange;
+  color: $blue;
   background-color: rgba(252,163,17,0.9) !important;
 }
 .btn-login:hover {
-  border: none;
+  border: solid 2px $blue;
   color: $blue;
   background-color: $orange !important;
 }
@@ -33,12 +33,12 @@
 .btn-signup {
   width: 100% !important;
   margin-bottom: 20px;
-  border: none;
-  color: white;
+  border: solid 2px $blue;
+  color: $orange;
   background-color: rgba(20,33,61,0.9) !important;
 }
 .btn-signup:hover {
-  border: none;
+  border: solid 2px $orange;
   color: $orange;
   background-color: $blue !important;
 }
@@ -46,18 +46,47 @@
 
 // Profile Page Buttons
 .btn-edit {
-  width: 50px;
+  width: auto;
   position: absolute;
   right: 10px;
   bottom: 10px;
-  border: none;
-  color: white;
+  border: solid 2px $orange;
+  color: $blue;
   background-color: rgba(252,163,17,0.9) !important;
 }
 .btn-edit:hover {
-  border: none;
+  border: solid 2px $blue;
   color: $blue;
   background-color: $orange !important;
+}
+
+.btn-update {
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: solid 2px $orange;
+  color: $blue;
+  background-color: rgba(252,163,17,0.9) !important;
+}
+.btn-update:hover {
+  border: solid 2px $blue;
+  color: $blue;
+  background-color: $orange !important;
+}
+
+.btn-back {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  height: auto;
+  border: solid 2px $blue;
+  color: $orange;
+  background-color: rgba(20,33,61,0.9) !important;
+}
+.btn-back:hover {
+  border: solid 2px $orange;
+  color: $orange;
+  background-color: $blue !important;
 }
 
 
@@ -76,16 +105,38 @@
 }
 
 .btn-create {
-  border: none;
+  border: solid 2px $orange;
   color: $blue;
   background-color: rgba(252,163,17,0.9) !important;
+  margin-bottom: 50px !important;
   }
 .btn-create:hover {
   border: solid 2px $blue;
   color: $blue;
   background-color: $orange !important;
+  margin-bottom: 50px !important;
 }
 
 .form-links {
   color: $blue;
+}
+
+.blue-font {
+  color: $blue !important;
+}
+
+
+// Modal Forms
+.btn-form {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  border: solid 2px $orange;
+  color: $blue;
+  background-color: rgba(252,163,17,0.9) !important;
+}
+.btn-form:hover {
+  border: solid 2px $blue;
+  color: $blue;
+  background-color: $orange !important;
 }

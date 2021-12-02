@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "users/registrations" }
 
   root to: 'pages#home'
+  mount Notifications::Engine => "/notifications"
+  devise_for :users, controllers: { registrations: "users/registrations" }
+
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
 
   resources :users, only: [:show] do

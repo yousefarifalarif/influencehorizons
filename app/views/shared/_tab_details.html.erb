@@ -26,11 +26,11 @@
         <h4>Dates</h4>
       </div>
       <i class="fas fa-calendar-alt"></i>
-      <p class="campaign-card-small-text"><strong><%= @campaign.start_date %>
+      <p class="campaign-card-small-text"><strong><%= @campaign.start_date.strftime("%e %b %Y") %>
       <br>
       </strong> to <strong>
       <br>
-      <%= @campaign.end_date %></strong></p>
+      <%= @campaign.end_date.strftime("%e %b %Y") %></strong></p>
     </div>
 
     <% if current_user.business %>

@@ -13,15 +13,17 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 250px;
-    width: 250px;
+    height: 230px;
+    width: 230px;
     border-radius: 50%;
     border: 2px solid $blue;
     color: white;
     background-color: $blue;
-    font-size: 40px;
+    font-size: 30px;
     padding: 16px;
     box-shadow: 0 0 40px rgba(0,0,0,0.15);
+    margin: 15px 0;
+    opacity: 0.85;
   }
   p {
     text-align: center;
@@ -29,13 +31,13 @@
     color: white;
   }
   strong {
-    font-size: 48px;
+    font-size: 30px;
   }
 }
 
 .position {
   position: relative;
-  top: 160px;
+  top: 130px;
 }
 
 .margin-style {
@@ -43,8 +45,8 @@
 }
 
 .card-statistic-circle:hover {
-  box-shadow: 0 0 32px $blue;
-  transform: scale(1.1);
+  box-shadow: 0 0 20px $blue;
+  transform: scale(1.02);
   transition-timing-function: ease-in-out;
   transition: all.3s ease-in-out;
 }

@@ -1,0 +1,6 @@
+<div class="media-heading">
+
+  <strong><%= notification.actor.role == "Business" ? notification.actor.business.company_name : "#{notification.actor.first_name} #{notification.actor.last_name}" %></strong>
+  has sent you a request to collaborate <strong><%= notification.target.title %></strong>
+  under campaign <strong><%= link_to notification.second_target.name, main_app.campaign_path(notification.second_target) %></strong>
+</div>

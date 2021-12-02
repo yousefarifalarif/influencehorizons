@@ -23,8 +23,8 @@
     </div>
 
     <div class="tab-pane fade" id="incoming" role="tabpanel" aria-labelledby="incoming-tab">
-      <% @campaign.proposals.each do |proposal| %>
-        <% if proposal.creator == "Influencer" %>
+      <% @proposals.each do |proposal| %>
+        <% if proposal.creator == "Influencer" && proposal.status == "Pending" %>
           <%= render "./shared/modal_show_proposal", proposal: proposal, partner: proposal.influencer, modal_title: proposal.title %>
           <%= render "./shared/card_proposal", proposal: proposal, partner: proposal.influencer %>
         <% end %>
@@ -34,7 +34,7 @@
 <% else %>
   <div class="d-flex justify-content-between">
     <h1 class='my-5'><%= @campaign.name %></h1>
-    <button type="button" class="create-btn my-5" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
+    <button type="button" class="btn btn-create btn-outline-light my-5" data-toggle="modal" data-target="#createProposalModal" style="margin-bottom: 30px">Create Collaboration</button>
   </div>
   <%= render 'shared/tab_details', campaign: @campaign %>
 <% end %>
