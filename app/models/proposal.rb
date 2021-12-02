@@ -15,7 +15,7 @@ class Proposal < ApplicationRecord
       Notification.create(
         notify_type: 'incoming',
         actor: influencer.user,
-        user: No,
+        user: campaign.business.user,
         target: self,
         second_target: campaign
       )
@@ -24,13 +24,13 @@ class Proposal < ApplicationRecord
 
   def update_notifications
     if status == "Pending" && creator == "Business"
-      # Notification.create(
-      #   notify_type: 'incoming',
-      #   actor: campaign.business.user,
-      #   user: influencer.user,
-      #   target: self,
-      #   second_target: campaign
-      # )
+      Notification.create(
+        notify_type: 'incoming',
+        actor: campaign.business.user,
+        user: influencer.user,
+        target: self,
+        second_target: campaign
+      )
     elsif status == "Declined" && accepted == false
       Notification.create(
         notify_type: 'declined',
