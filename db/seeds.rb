@@ -65,10 +65,20 @@ end
 
 def create_yousef_proposals(campaign, yousef)
   # Create pending proposal from business to yousef
-  if campaign.archived
-      proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Business", status: "Completed")
-    else
       proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Business")
+      proposal.status = "Pending"
+    proposal.accepted = proposal.status != "Pending"
+    proposal.campaign = campaign
+    proposal.influencer = yousef
+    proposal.save!
+
+    chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
+
+    # Create pending proposal for yousef to decline / accept
+    if campaign.archived
+      proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Influencer", status: "Completed")
+    else
+      proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Influencer")
       proposal.status = "Pending"
     end
     proposal.accepted = proposal.status != "Pending"
@@ -77,20 +87,6 @@ def create_yousef_proposals(campaign, yousef)
     proposal.save!
 
     chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
-
-    # # Create pending proposal for yousef to decline / accept
-    # if campaign.archived
-    #   proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Influencer", status: "Completed")
-    # else
-    #   proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Influencer")
-    #   proposal.status = "Pending"
-    # end
-    # proposal.accepted = proposal.status != "Pending"
-    # proposal.campaign = campaign
-    # proposal.influencer = INFLUENCERS.last
-    # proposal.save!
-
-    # chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
 
 end
 
