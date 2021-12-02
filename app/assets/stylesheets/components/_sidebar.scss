@@ -18,9 +18,10 @@
   top: 65px;
   left: 200px;
   transition: left .5s; /* If you want a transition effect */
+  opacity: 0.85;
 }
 .fa-angle-left:hover, .fa-angle-right:hover {
-  opacity:0.7;
+  opacity:1;
 }
 .sidebar {
   height: 100%; /* 100% Full-height */
@@ -33,6 +34,7 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   padding-top: 80px; /* Place content 60px from the top */
+  opacity: 0.85;
   .active {
     color: $orange;
   }
