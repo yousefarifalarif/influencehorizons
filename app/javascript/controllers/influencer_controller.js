@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   sendProposal() {
-    console.log('sending proposal. LEts open modal')
     // fetch IDs of selected influences
     const elements = Array.from(document.querySelectorAll(".card-influencer.selected"))
     const ids = elements.map(el => el.dataset.id)
@@ -22,7 +21,7 @@ export default class extends Controller {
 
   toggleDisable(event) {
     // this.btnTarget.setAttribute("disabled", false);
-    const id = event.target.dataset.id
+    const id = event.currentTarget.dataset.id
     let card = [...this.productTarget.children].filter(child => parseInt(child.dataset.id) == parseInt(id))[0]
 
     // console.log(card)

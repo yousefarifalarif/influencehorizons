@@ -1,0 +1,4 @@
+<%= simple_form_for (proposal) do |f| %>
+  <%= f.hidden_field :status, value: "Pending Payment" %>
+  <%= f.submit "Mark as done", class:"btn card-proposal-status mark-as-done" %>
+<% end %>
