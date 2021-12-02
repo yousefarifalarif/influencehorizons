@@ -30,7 +30,13 @@
     padding: 1rem;
 
     .form-group {
+      margin-right: 8px;
       margin-bottom: 0;
+      flex-grow: 1;
+    }
+    .btn-create {
+      padding: 5px 12px;
+      margin-bottom: 0px !important;
     }
   }
 }

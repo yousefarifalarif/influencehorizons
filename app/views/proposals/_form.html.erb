@@ -1,4 +1,5 @@
 <%= simple_form_for [campaign, proposal] do |f|%>
-  <%= f.input :title, label: "Please provide details of your proposal" %>
+  <p>Detail your proposal:</p>
+  <%= f.text_area :title, placeholder: "#Need a post on instagram", class:"w-100 py-1 px-2" %>
   <%= f.submit current_user.role == "Business" ? "Look for potential influencers" : "Create Collaboration", class:"btn btn-form btn-outline-light" %>
 <% end %>

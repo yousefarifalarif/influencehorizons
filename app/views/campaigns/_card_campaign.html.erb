@@ -8,11 +8,13 @@
     <div class="card-campaign-proposals">
       <h6><strong><i class="fas fa-file-contract"></i> Collaborations:</strong></h6>
       <p>In Progress: <%= campaign.proposals.select{ |p| p.status == "In Progress" }.size %></p>
-      <p>Pending: <%= campaign.proposals.select{ |p| p.status == "Pending" }.size %></p>
+      <p>Pending: <%= campaign.proposals.select{ |p| p.status == "Pending" && p.creator == "Business" }.size %></p>
+      <p>Incoming: <%= campaign.proposals.select{ |p| p.status == "Pending" && p.creator == "Influencer" }.size %></p>
       <p>Completed: <%= campaign.proposals.select{ |p| p.status == "Completed" }.size %></p>
     </div>
     <div class="card-campaign-ivs">
-      <% campaign.proposals.first(3).each do |proposal| %>
+      <% campaign.proposals.select{ |p| !(p.status == "Pending") && !(p.status == "Declined") }.first(3).each do |proposal| %>
+      <%# campaign.proposals.first(3).each do |proposal| %>
         <% if proposal.influencer %>
           <%= cl_image_tag proposal.influencer.photo.key, class:"avatar-bordered large" if proposal.influencer.photo.attached? %>
         <% end %>

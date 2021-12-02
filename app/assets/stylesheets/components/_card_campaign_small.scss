@@ -4,6 +4,7 @@
   grid-gap: 20px;
 }
 .card-campaign-small {
+  cursor: pointer;
   background-color: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.15);
   padding: 32px;
@@ -15,4 +16,7 @@
   p {
     margin: 0 0 4px 0;
   }
+}
+.card-campaign-small:hover {
+  background-color: #EEEEEE;
 }

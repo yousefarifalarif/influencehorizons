@@ -39,7 +39,10 @@ export default class extends Controller {
 
         // send the message
         this.messagesTarget.insertAdjacentElement("beforeend", message);
-        this.inputTarget.value = "";
+
+        if (senderId === currentUserId) {
+          this.inputTarget.value = "";
+        }
       }}
     )
     console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`);
