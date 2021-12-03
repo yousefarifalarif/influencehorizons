@@ -3,12 +3,11 @@
 }
 
 .card-container {
-  max-height: 1000px;
+  height: auto;
   overflow: hidden;
-  transition: max-height 0.5s;
 }
 .card-container-shrinked {
-  max-height: 0;
+  height: 0;
 }
 
 .card-proposal {

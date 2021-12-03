@@ -21,7 +21,7 @@
     <div class="card-statistic position">
       <div class="card-statistic-circle">
         <!-- update money - [ ] Money earned: followers/1000*15*proposal completed -->
-        <p>£ <%= current_user.influencer.ig_followers / 1000 * 15 * @proposals.select { |p| p.status == "Completed" }.size %></p>
+        <strong>£ <%= current_user.influencer.ig_followers / 1000 * 15 * @proposals.select { |p| p.status == "Completed" }.size %></strong>
         <p>My money earned</p>
       </div>
     </div>
