@@ -3,6 +3,6 @@
     <strong><%= notification.actor.role == "Business" ? notification.actor.business.company_name : "#{notification.actor.first_name} #{notification.actor.last_name}" %></strong>
     has <strong><span style="color: #5CDB5C">accepted</span></strong> your request to collaborate.
   </p>
-  <p class="m-0 p-0" style="font-size: 12px">Campaign: <strong><%= link_to notification.second_target.name, main_app.campaign_path(notification.second_target) %></strong></p>
+  <p class="m-0 p-0" style="font-size: 12px">Campaign: <strong><%= link_to notification.second_target.name, current_user.role == "Business" ? main_app.campaign_path(notification.second_target) : main_app.proposals_path  %></strong></p>
   <p class="m-0 p-0" style="font-size: 12px">Collaboration: <strong><%= notification.target.title %></strong></p>
 </div>

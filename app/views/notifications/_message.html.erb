@@ -3,6 +3,6 @@
     <strong><%= notification.actor.role == "Business" ? notification.actor.business.company_name : "#{notification.actor.first_name} #{notification.actor.last_name}" %></strong>
     has sent you a <strong>message</strong>.
   </p>
-  <p class="m-0 p-0" style="font-size: 12px">Campaign: <strong><%= link_to notification.second_target.campaign.name, main_app.campaign_path(notification.second_target.campaign) %></strong></p>
+  <p class="m-0 p-0" style="font-size: 12px">Campaign: <strong><%= link_to notification.second_target.campaign.name, current_user.role == "Business" ? main_app.campaign_path(notification.second_target.campaign) : main_app.proposals_path %></strong></p>
   <p class="m-0 p-0" style="font-size: 12px">Collaboration: <strong><%= notification.second_target.title %></strong></p>
 </div>
