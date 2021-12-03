@@ -60,6 +60,9 @@ def create_influences(users, avatars)
                                 twitter_username: username, twitter_followers: t_followers,
                                 facebook_username: username, facebook_followers: f_followers,
                                 gender: index.even? ? 'She/Her' : 'He/Him', estimated_price: i_followers / 1000)
+    if user[:first_name] == "Noel" || user[:first_name] == "Kenzie"
+    influencer.gender = "They/Them"
+    end
     file = URI.open(avatars[index])
     influencer.photo.attach(io: file, filename: "#{username}.png", content_type: 'image/png')
     influencer.user = new_user
