@@ -2,12 +2,17 @@ import { Controller } from "stimulus";
 import consumer from "../channels/consumer";
 
 export default class extends Controller {
-  static values = { chatroomId: Number, currentUserId: Number }
-  static targets = ["input", "messages"]
+  static values = { chatroomId: Number, currentUserId: Number, proposalId: Number }
+  static targets = ["input", "messages", "chatroom"]
 
   connect() {
-    console.log(this.messagesTarget)
-    console.log(this.inputTarget);
+    console.log("connected");
+
+    $(`#modal-${this.proposalIdValue}`).on('show.bs.modal', (e) => {
+      setTimeout(()=> {
+        this.element.firstElementChild.scrollTop = this.element.firstElementChild.scrollHeight;
+      }, 200);
+    })
 
     this.channel = consumer.subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
@@ -23,9 +28,6 @@ export default class extends Controller {
         // get current_user id, numbers
         let currentUserId = parseInt(this.currentUserIdValue);
 
-        console.log("Before");
-        console.log(message);
-
         // update message classes for incoming message
         if (senderId !== currentUserId){
           message.classList.remove("justify-content-end");
@@ -39,6 +41,8 @@ export default class extends Controller {
 
         // send the message
         this.messagesTarget.insertAdjacentElement("beforeend", message);
+        message.scrollIntoView();
+
 
         if (senderId === currentUserId) {
           this.inputTarget.value = "";

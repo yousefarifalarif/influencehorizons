@@ -1,5 +1,5 @@
 <div class="card-proposal-outer">
-  <div class="card-proposal" data-toggle="modal" data-target="#modal-<%= proposal.id %>">
+  <div class="card-proposal" data-toggle="modal" data-target="#modal-<%= proposal.id %>" >
     <% if partner %>
       <%= cl_image_tag partner.photo.key, class:"avatar-bordered large" if partner.photo.attached?%>
       <h6>
