@@ -51,7 +51,7 @@ def create_influences(users, avatars)
     new_user = User.create!(email: "#{user[:first_name]}.#{user[:last_name]}@gmail.com", password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
                         first_name: user[:first_name], last_name: user[:last_name], location: "London", role: "Influencer")
     username = "#{user[:first_name].chars.first}_#{user[:last_name]}"
-    i_followers = rand(1500..200_000)
+    i_followers = rand(1500..90_000)
     t_followers = rand(i_followers * 0.5..i_followers)
     y_followers = rand(i_followers * 0.5..i_followers)
     f_followers = rand(i_followers * 0.5..i_followers)
@@ -77,7 +77,7 @@ def create_yousef(demo_influencers, yousef_avatar)
   new_user = User.create!(email: demo_influencers[:email], password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
                       first_name: demo_influencers[:first_name], last_name: demo_influencers[:last_name], location: "London", role: "Influencer")
   username = "#{demo_influencers[:first_name].chars.first}_#{demo_influencers[:last_name]}"
-  i_followers = rand(10000..100000)
+  i_followers = 86_031
   t_followers = rand(i_followers * 0.5..i_followers)
   y_followers = rand(i_followers * 0.5..i_followers)
   f_followers = rand(i_followers * 0.5..i_followers)
@@ -93,43 +93,26 @@ def create_yousef(demo_influencers, yousef_avatar)
   influencer
 end
 
-def create_yousef_proposals(campaign, yousef)
+def create_yousef_proposals(campaign, yousef, status)
   # Create pending proposal from business to yousef
       proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Business")
-      proposal.status = "Pending"
+      proposal.status = status
     proposal.accepted = proposal.status != "Pending"
     proposal.campaign = campaign
     proposal.influencer = yousef
     proposal.save!
 
-    chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
-
-    # Create pending proposal for yousef to decline / accept
-    if campaign.archived
-      proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Influencer", status: "Completed")
-    else
-      proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Influencer")
-      proposal.status = "Pending"
-    end
-    proposal.accepted = proposal.status != "Pending"
-    proposal.campaign = campaign
-    proposal.influencer = yousef
-    proposal.save!
-
-    chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
-
+    Chatroom.create!(name: proposal.title, proposal:proposal)
 end
 
 YOUSEF = create_yousef(demo_influencers, yousef_avatar)
 
 # Create 4 Businesses
 def create_businesses
-  create_proposalr = false;
   puts "Creating Businesses ..."
-  emails = ["m.kern@ingwiest.de", "hardwick.ethan@outlook.com", "yousef.arif@gmail.com", "katiekklht@gmail.com"]
-  4.times do |index|
+  15.times do |index|
     puts "Creating Business #{index + 1} ..."
-    user = User.create!(email: emails[index], password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+    user = User.create!(email: Faker::Internet.email, password: "123456", phone_number: Faker::PhoneNumber.cell_phone_in_e164,
                         first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, location: "london", role: "Business")
     business = Business.new(company_name: Faker::Company.name, company_url: Faker::Internet.url, industry: Faker::Company.industry)
     url = Faker::Company.logo
@@ -138,36 +121,30 @@ def create_businesses
     business.user = user
     business.save!
 
-    # Create 1-2 Campaign for each Business
+    # Create 1 Campaign for each Business
     puts "Creating Campaigns & Proposals for Business #{index + 1} ..."
-    rand(4..8).times do
-      date = Faker::Date.forward(days: rand(10..30))
-      campaign = Campaign.new(name: Faker::Commerce.product_name, location: "London", start_date: date,
-                              end_date: date + rand(15..45), description: Faker::Marketing.buzzwords, budget: Faker::Commerce.price(range: 500..1000))
-      campaign.archived = index.zero? ? true : BOOLEANS.sample
-      campaign.business = business
-      campaign.save!
+    date = Faker::Date.forward(days: rand(10..30))
+    campaign = Campaign.new(name: Faker::Commerce.product_name, location: "London", start_date: date,
+                            end_date: date + rand(15..45), description: Faker::Marketing.buzzwords, budget: Faker::Commerce.price(range: 500..1000))
+    campaign.archived = index.zero? ? true : BOOLEANS.sample
+    campaign.business = business
+    campaign.save!
 
-      # Create 1-3 Proposals for each Campaign
-      rand(1..4).times do
-        if create_proposalr == false
-          create_yousef_proposals(campaign, YOUSEF)
-          create_proposalr = true
-        end
-        if campaign.archived
-          proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Business", status: "Completed")
-        else
-          proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: %w[Business Influencer].sample)
-          proposal.status = proposal.creator == "Influencer" ? "Pending" : STATUSES.sample
-        end
-        proposal.accepted = proposal.status != "Pending"
-        proposal.campaign = campaign
-        proposal.influencer = INFLUENCERS.sample
-        proposal.save!
-
-        chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
+    # Create 2 Proposals for each Campaign
+    2.times do
+      if campaign.archived
+        proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: "Business", status: "Completed")
+      else
+        proposal = Proposal.new(title: "#{TASKS.sample} #{campaign.name}", creator: %w[Business Influencer].sample)
+        proposal.status = proposal.creator == "Influencer" ? "Pending" : STATUSES.sample
       end
+      proposal.accepted = proposal.status != "Pending"
+      proposal.campaign = campaign
+      proposal.influencer = INFLUENCERS.sample
+      proposal.save!
+      Chatroom.create!(name: proposal.title, proposal:proposal)
     end
+    create_yousef_proposals(campaign, YOUSEF, index.zero? ? "Pending" : "Completed")
   end
 end
 
@@ -211,7 +188,7 @@ def create_campaigns(campaign, business)
       proposal.influencer = INFLUENCERS.sample
       proposal.save!
 
-      chatroom = Chatroom.create!(name: proposal.title, proposal:proposal)
+      Chatroom.create!(name: proposal.title, proposal:proposal)
     end
   end
 end
