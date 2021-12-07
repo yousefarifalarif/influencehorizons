@@ -10,7 +10,7 @@
 <body class="stackedit">
   <div class="stackedit__html"><h1 id="about-influencehorizons">About InfluenceHorizons</h1>
 <p>InfluenceHorizons is a platform that connects regional businesses with (micro-) influencers to establish collaborations for authentic social media marketing.<br>
-As a team of 4 students ([Katie](https://github.com/katiekk), [Ethan](https://github.com/EthanHardwick), [Yousef](https://github.com/yousefarifalarif), [Max](https://github.com/MaxKern)), we have designed, implemented, and shipped this platform during the final project weeks at the Le Wagon Web Development Bootcamp in London.</p>
+As a team of 4 students ([Katie]( https://github.com/katiekk), [Ethan]( https://github.com/EthanHardwick), [Yousef]( https://github.com/yousefarifalarif), [Max]( https://github.com/MaxKern)), we have designed, implemented, and shipped this platform during the final project weeks at the Le Wagon Web Development Bootcamp in London.</p>
 <h2 id="usage">Usage</h2>
 <p>InfluenceHorizons offers two user journeys: One for business customers and one for influencers.</p>
 <p>It is used to make especially the life of regional business owners a lot easier because it saves them a lot of time, making it easier than ever to create a marketing campaign, to find authentic influencers for this campaign, to exchange information about and the current status of the campaign with the collaborators and to pay the influencer for his marketing efforts.</p>
