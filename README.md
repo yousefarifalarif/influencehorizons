@@ -21,6 +21,6 @@ As soon as the influencer accepted the proposal, they can chat with each other a
 On InfluenceHorizons, an influencer can have a look at the public campaigns of all the companies that are registered on the platform.
 They can then send a proposal to collaborate on a specific campaign to the business. As soon as the business accepted the proposal, they can chat with each other and exchange campaign-related information and documents with each other.
 
-# Feedback
+## Feedback
 
 Please feel free to leave feedback about this project in the comments. I’m looking forward to increasing my community!
