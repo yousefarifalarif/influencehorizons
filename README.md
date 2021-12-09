@@ -23,4 +23,4 @@ They can then send a proposal to collaborate on a specific campaign to the busin
 
 ## Feedback
 
-Please feel free to leave feedback about this project in the comments. I’m looking forward to increasing my community!
+Please feel free to leave feedback about this project in the comments. We're looking forward to increasing our community!
