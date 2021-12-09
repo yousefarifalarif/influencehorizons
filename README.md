@@ -2,7 +2,7 @@
 
 InfluenceHorizons is a platform that connects regional businesses with (micro-) influencers to establish collaborations for authentic social media marketing.
 
-As a team of 4 students ([Katie](www.github.com/katiekk), [Ethan](www.github.com/EthanHardwick), [Yousef](www.github.com/yousefarifalarif), [Max](www.github.com/MaxKern)), we have designed, implemented, and shipped this platform during the final project weeks at the Le Wagon Web Development Bootcamp in London.
+As a team of 4 students ([Katie](https://github.com/katiekk), [Ethan](https://github.com/EthanHardwick), [Yousef](https://github.com/yousefarifalarif), [Max](https://github.com/MaxKern)), we have designed, implemented, and shipped this platform during the final project weeks at the Le Wagon Web Development Bootcamp in London.
 
 ## Usage
 
